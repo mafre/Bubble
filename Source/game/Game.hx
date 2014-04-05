@@ -30,7 +30,7 @@ import common.Image;
 import game.emitter.*;
 import game.satellite.*;
 import game.entity.player.Player;
-import game.menu.Menu;
+import game.menu.*;
 import game.ContactListener;
 import game.level.Level;
 import game.emitter.EmitterType;
@@ -61,7 +61,6 @@ class Game extends Sprite
 	private var playerStartX:Float;
 	private var playerStartY:Float;
 	private var dragging:Bool;
-
 	private var level:Level;
 
 	public function new()
@@ -116,7 +115,7 @@ class Game extends Sprite
 		var score:ScoreHandler = ScoreHandler.getInstance();
 
 		player = new Player(0, 0);
-		player.setEmitter(new SprayEmitter(Bubble, 10, 15));
+		player.setEmitter(new Emitter(Bubble, 10, 15));
 		entityHandler.addEntity(player);
 	};
 

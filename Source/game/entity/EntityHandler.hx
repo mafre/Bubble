@@ -122,8 +122,6 @@ class EntityHandler
             }
         }
 
-        trace(items.length);
-
         for (entity in items)
         {
             entity.update();

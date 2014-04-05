@@ -41,7 +41,7 @@ class Button extends Sprite
 		down.visible = true;
 		up.visible = false;
 		addEventListener(MouseEvent.ROLL_OUT, mouseUp);
-		SoundHandler.playSound("button0");
+		SoundHandler.playEffect("button0");
 		dispatchEvent(new Event(EventType.BUTTON_PRESSED));
 	}
 
@@ -50,7 +50,7 @@ class Button extends Sprite
 		down.visible = false;
 		up.visible = true;
 		removeEventListener(MouseEvent.ROLL_OUT, mouseUp);
-		SoundHandler.playSound("button2");
+		SoundHandler.playEffect("button2");
 		dispatchEvent(new Event(EventType.BUTTON_RELEASED));
 	}
 }

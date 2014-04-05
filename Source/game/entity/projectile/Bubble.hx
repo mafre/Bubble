@@ -36,7 +36,7 @@ class Bubble extends Entity
 			case EmitterType.ENEMY:
 				var enemy:Enemy = cast(entity, Enemy);
                 enemy.takeDamage();
-                SoundHandler.playSound("pop");
+                SoundHandler.playEffect("pop");
                 dispose = true;
 		}
 	}

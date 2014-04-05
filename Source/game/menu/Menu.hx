@@ -5,6 +5,7 @@ import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.text.TextField;
 
+import game.menu.Settings;
 import utils.TextfieldFactory;
 import common.StageInfo;
 import common.GridSprite;
@@ -28,24 +29,38 @@ class Menu extends Sprite
 	private var multiShotButton:LabelButton;
 	private var sprayShotButton:LabelButton;
 	private var resetButton:LabelButton;
+	private var settingsButton:LabelButton;
 	private var score:TextField;
 	private var health:TextField;
+	private var settings:Settings;
 
 	public function new()
 	{
 		super();
 
+		settingsButton = new LabelButton("images/buttons/button1/", "Settings");
+		settingsButton.addEventListener(EventType.BUTTON_PRESSED, settingsSelected);
+		addChild(settingsButton);
+		settingsButton.x = settingsButton.y = 5;
+
 		score = TextfieldFactory.getDefault();
 		addChild(score);
-		score.x = score.y = 10;
+		score.y = 5;
+		score.x = settingsButton.x + settingsButton.width + 5;
+		updateScore();
 
 		health = TextfieldFactory.getDefault();
 		addChild(health);
-		health.x = score.x + 150;
-		health.y = 10;
+		health.x = score.x + score.width + 25;
+		health.y = 5;
+		updateHealth();
+
+		settings = new Settings();
+		addChild(settings);
+		settings.visible = false;
 
 		ScoreHandler.getInstance().addEventListener(EventType.UPDATE_SCORE, updateScore);
-		ScoreHandler.getInstance().addEventListener(EventType.UPDATE_HEALTH, setHealth);
+		ScoreHandler.getInstance().addEventListener(EventType.UPDATE_HEALTH, updateHealth);
 
 		/*
 		normalShotButton = new LabelButton("images/buttons/button1/", "Normal");
@@ -85,15 +100,20 @@ class Menu extends Sprite
 		this.game = game;
 	}
 
-	public function updateScore(e:Event):Void
+	public function updateScore(?e:Event):Void
 	{
 		score.text = ScoreHandler.getInstance().score + " points";
 	}
 
-	public function setHealth(e:Event):Void
+	public function updateHealth(?e:Event):Void
 	{
 		health.text = ScoreHandler.getInstance().health + " hp";
 	}
+
+	public function settingsSelected(e:Event):Void
+	{
+		settings.visible = true;
+	};
 
 	public function shotNormalSelected(e:Event):Void
 	{
