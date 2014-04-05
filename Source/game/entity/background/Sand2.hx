@@ -21,7 +21,7 @@ class Sand2 extends Entity
 
 	private override function addImage():Void
 	{
-		image = new Image("images/game/background/sand2.png");
+		image = new Image("images/game/background/sand3.png");
 		addChild(image);
 	}
 }

@@ -44,59 +44,61 @@ class Level implements ILevel
 		this.player = player;
 		this.game = game;
 
+		var sand:Sequence = new Sequence(1, 1000, StageInfo.stageWidth, StageInfo.stageHeight-80, Math.PI);
+		sand.initEmitter(new Emitter(Sand2, 12, 3));
+		queuedSequences.set(sand.time, sand);
+
 		var sequence:Sequence = new Sequence(50, 50, StageInfo.stageWidth, StageInfo.stageHeight-200, Math.PI+0.3);
 		sequence.initEmitter(new Emitter(Jellyfish, 20, 5));
 		queuedSequences.set(sequence.time, sequence);
 
-		/*
 		var sequence2:Sequence = new Sequence(400, 50, StageInfo.stageWidth, 100, Math.PI-0.2);
 		sequence2.initEmitter(new Emitter(Jellyfish, 30, 5));
 		queuedSequences.set(sequence2.time, sequence2);
 	
-		*/
 		var angler:Sequence = new Sequence(1000, 100, StageInfo.stageWidth, 300, Math.PI);
 		angler.initEmitter(new Emitter(Angler, 50, 4));
 		queuedSequences.set(angler.time, angler);
 
-		var sand:Sequence = new Sequence(1, 1000, StageInfo.stageWidth, StageInfo.stageHeight-50, Math.PI);
-		sand.initEmitter(new Emitter(Sand2, 12, 3));
-		queuedSequences.set(sand.time, sand);
-
-		var other:Sequence = new Sequence(7, 5, StageInfo.stageWidth, StageInfo.stageHeight-25, Math.PI);
-		other.initEmitter(new RandomEmitter(
+		var other:Sequence = new Sequence(6, 1000, StageInfo.stageWidth, StageInfo.stageHeight-80, Math.PI);
+		other.initEmitter(new LayerEmitter(
 			[Anchor],
 			function():Int{return Math.floor(Math.random()*1000+1000);},
-			function():Int{return Math.floor(Math.random()*20);},
+			function():Int{return Math.floor(Math.random()*5)+1;},
+			14,
 			3,
 			true)
 		);
 		queuedSequences.set(other.time, other);
 
-		var treasure:Sequence = new Sequence(6, 30, StageInfo.stageWidth, StageInfo.stageHeight-25, Math.PI);
-		treasure.initEmitter(new RandomEmitter(
+		var treasure:Sequence = new Sequence(6, 1000, StageInfo.stageWidth, StageInfo.stageHeight-80, Math.PI);
+		treasure.initEmitter(new LayerEmitter(
 			[Shoe, TreasureChest, Safe],
 			function():Int{return Math.floor(Math.random()*200+200);},
-			function():Int{return Math.floor(Math.random()*20);},
+			function():Int{return Math.floor(Math.random()*5)+1;},
+			14,
 			3,
 			true)
 		);
 		queuedSequences.set(treasure.time, treasure);
 
-		var sequence3:Sequence = new Sequence(3, 1000, StageInfo.stageWidth, StageInfo.stageHeight-25, Math.PI);
-		sequence3.initEmitter(new RandomEmitter(
+		var sequence3:Sequence = new Sequence(3, 1000, StageInfo.stageWidth, StageInfo.stageHeight-80, Math.PI);
+		sequence3.initEmitter(new LayerEmitter(
 			[Shell1, Shell2, Kelp1, Kelp2, Kelp3, Kelp1, Kelp2, Kelp3],
 			function():Int{return Math.floor(Math.random()*30+15);},
-			function():Int{return Math.floor(Math.random()*20);},
+			function():Int{return Math.floor(Math.random()*5)+1;},
+			14,
 			3,
 			true)
 		);
 		queuedSequences.set(sequence3.time, sequence3);
 
-		var sequence4:Sequence = new Sequence(4, 1000, StageInfo.stageWidth, StageInfo.stageHeight-25, Math.PI);
-		sequence4.initEmitter(new RandomEmitter(
-			[Kelp1, Kelp2, Kelp3],
-			function():Int{return Math.floor(Math.random()*30+30);},
-			function():Int{return Math.floor(Math.random()*20);},
+		var sequence4:Sequence = new Sequence(4, 1000, StageInfo.stageWidth, StageInfo.stageHeight-80, Math.PI);
+		sequence4.initEmitter(new LayerEmitter(
+			[Shell1, Shell2, Kelp1, Kelp2, Kelp3, Kelp1, Kelp2, Kelp3],
+			function():Int{return Math.floor(Math.random()*30+15);},
+			function():Int{return Math.floor(Math.random()*5)+1;},
+			14,
 			3,
 			true)
 		);

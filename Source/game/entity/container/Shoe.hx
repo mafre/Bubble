@@ -19,7 +19,6 @@ class Shoe extends Container
 	{
 		super(xSpeed, ySpeed);
 		emitPosition = new Point(-10, -35);
-		offsetY = 12;
 	}
 
 	private override function setEmitter():Void

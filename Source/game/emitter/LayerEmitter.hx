@@ -13,22 +13,24 @@ import game.emitter.EmitterType;
 import game.entity.EntityHandler;
 import game.entity.Entity;
 
-class RandomEmitter
+class LayerEmitter
 {
 	private var classes:Array<Class<Dynamic>>;
 	private var time:Int;
 	private var timeLimit:Int;
 	private var timeLimitFunction:Function;
-	private var yFunction:Function;
+	private var layerFunction:Function;
+	private var layerHeight:Float;
 	private var speedMod:Float;
 	private var duration:Int;
 	private var alignBottom:Bool;
 
-	public function new(classes:Array<Class<Dynamic>>, timeLimitFunction:Function, yFunction:Function, speedMod:Float, ?alignBottom:Bool)
+	public function new(classes:Array<Class<Dynamic>>, timeLimitFunction:Function, layerFunction:Function, layerHeight:Float, speedMod:Float, ?alignBottom:Bool)
 	{
 		this.classes = classes;
 		this.timeLimitFunction = timeLimitFunction;
-		this.yFunction = yFunction;
+		this.layerFunction = layerFunction;
+		this.layerHeight = layerHeight;
 		this.speedMod = speedMod;
 		timeLimit = timeLimitFunction();
 
@@ -69,8 +71,11 @@ class RandomEmitter
 		var ySpeed:Float = Math.sin(angle);
 		var i:Int = Math.floor(Math.random()*classes.length);
 		var entity:Entity = Type.createInstance(classes[i], [xSpeed*speedMod, ySpeed*speedMod]);
+
+		var layer:Int = layerFunction();
 		entity.x = startX;
-		entity.y = startY+yFunction()+entity.offsetY;
+		entity.y = startY+layer*layerHeight+entity.offsetY;
+		entity.layer = layer;
 
 		if(alignBottom)
 		{

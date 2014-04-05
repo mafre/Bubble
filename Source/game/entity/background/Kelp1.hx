@@ -15,7 +15,7 @@ class Kelp1 extends Entity
 	{
 		super(xSpeed, ySpeed);
 		type = EmitterType.VEGETATION;
-		layer = 3;
+		layer = 1;
 		addBody = false;
 	};
 

@@ -20,7 +20,6 @@ class Safe extends Container
 		super(xSpeed, ySpeed);
 		health = 5;
 		emitPosition = new Point(15, 0);
-		offsetY = 10;
 	}
 
 	private override function setEmitter():Void
