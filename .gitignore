@@ -1,0 +1,8 @@
+/Export/*
+/.DS_Store
+/Assets/.DS_Store
+Assets/.DS_Store
+
+.idea/*
+build
+report

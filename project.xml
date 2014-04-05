@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="Bubble" package="com.Delphic.Bubble" version="1.0.0" company="Delphic" />
+	<app main="Main" path="Export" file="Bubble" />
+
+	<window fps="60" orientation="landscape" hardware="true"/>
+	<window width="1136" height="640" if="desktop" />
+	
+	<source path="Source" />
+	
+	<haxelib name="openfl" />
+
+	<haxelib name="box2d" />
+	
+	<assets path="Assets" rename="assets" exclude="openfl.svg" />
+	<assets path="Assets/images" rename="images" include="*" exclude="icon.svg" />
+
+	<source path="Assets/fonts" />
+	
+	<icon path="Assets/openfl.svg" />
+	
+</project>
