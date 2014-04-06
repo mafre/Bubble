@@ -7,6 +7,7 @@ import game.sequence.SequenceVO;
 
 class Sequence implements ISequence
 {
+	private var vo:SequenceVO;
 	public var id:String;
 	public var time:Int;
 	private var duration:Int;
@@ -18,22 +19,24 @@ class Sequence implements ISequence
 	public function new():Void
 	{
 		//setSequenceProperties();
-		setEmitter();
 	};
 
 	public function setSequenceProperties(vo:SequenceVO):Void
 	{
+		this.vo = vo;
 		id = vo.id;
 		time = vo.time;
 		duration = vo.duration;
 		xPosition = vo.xPosition;
 		yPosition = vo.yPosition;
 		angle = vo.angle;
+
+		setEmitter();
 	};
 
 	public function setEmitter():Void
 	{
-		this.emitter = new Emitter(Bubble, 10, 10);
+		this.emitter = new Emitter(Bubble, 10, vo.speed);
 	}
 
 	public function update():Bool

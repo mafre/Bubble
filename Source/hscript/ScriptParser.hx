@@ -24,6 +24,7 @@ class ScriptParser
         parser = new Parser();
         interp = new Interp();
         interp.variables.set("PI", Math.PI);
+        interp.variables.set("Math", Math);
         StageInfo.addEventListener(EventType.STAGE_RESIZED, stageResized);
         stageResized();
     }

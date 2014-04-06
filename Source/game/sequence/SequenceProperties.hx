@@ -59,6 +59,8 @@ class SequenceProperties
             vo.xPosition = parseProperty(Std.string(sequence.x));
             vo.yPosition = parseProperty(Std.string(sequence.y));
             vo.angle = parseProperty(Std.string(sequence.angle));
+            vo.timeLimit = parseProperty(Std.string(sequence.timeLimit));
+            vo.speed = parseProperty(Std.string(sequence.speed));
             sequences.push(vo);
         }
     }
