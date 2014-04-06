@@ -1,27 +1,95 @@
 {
-	"entity":
+	"sequences":
 	{
-		"projectile":
+		"world1":
 		{
-			"axe":
+			"Surface1Sequence":
 			{
-				"speed":30
+				"time":11,
+				"duration": 10000,
+				"x":"width",
+				"y":"height*0.1",
+				"angle":"PI"
 			},
-			"cannonball":
+			"Surface2Sequence":
 			{
-				"speed":30
-			}
-		},
-		"boat":
-		{
-			"viking":
-			{
-				"fire_rate":40
+				"time":12,
+				"duration": 10000,
+				"x":"width",
+				"y":"height*0.1+25",
+				"angle":"PI"
 			},
-			
-			"pirate":
+			"SandSequence":
 			{
-				"fire_rate":40
+				"time":1,
+				"duration": 10000,
+				"x":"width",
+				"y":"height-80",
+				"angle":"PI"
+			},
+			"Vegetation1Sequence":
+			{
+				"time":101,
+				"duration": 10001,
+				"x":"width",
+				"y":"height-80",
+				"angle":"PI"
+			},
+			"Vegetation2Sequence":
+			{
+				"time":102,
+				"duration": 10000,
+				"x":"width",
+				"y":"height-80",
+				"angle":"PI"
+			},
+			"BoatSequence":
+			{
+				"time":10,
+				"duration": 30,
+				"x":"width",
+				"y":"height*0.1+40",
+				"angle":"PI"
+			},
+			"AnglerSequence":
+			{
+				"time":1000,
+				"duration": 100,
+				"x":"width",
+				"y":"300",
+				"angle":"PI"
+			},
+			"JellyfishSequence":
+			{
+				"time":400,
+				"duration": 50,
+				"x":"width",
+				"y":"100",
+				"angle":"PI-0.2"
+			},
+			"AnchorSequence":
+			{
+				"time":20,
+				"duration": 1000,
+				"x":"width",
+				"y":"height-80",
+				"angle":"PI"
+			},
+			"ContainerSequence":
+			{
+				"time":103,
+				"duration": 100,
+				"x":"width",
+				"y":"height-80",
+				"angle":"PI"
+			},
+			"SatelliteSequence":
+			{
+				"time":100,
+				"duration": 100,
+				"x":"width",
+				"y":"height/2",
+				"angle":"PI"
 			}
 		}
 	}

@@ -1,6 +1,5 @@
 package;
 
-import openfl.display.FPS;
 import openfl.Assets;
 
 import flash.display.Sprite;
@@ -22,12 +21,13 @@ import hscript.ScriptParser;
 
 class Main extends Sprite
 {
-	private var fps:FPS;
 	private var game:Game;
 
 	public function new()
 	{
 		super ();
+
+		Font.registerFont(OpenSansFont);
 
 		var soundHandler:SoundHandler = new SoundHandler();
 		var entityProperties:EntityProperties = new EntityProperties();
@@ -36,10 +36,6 @@ class Main extends Sprite
 		var scriptParser:ScriptParser = new ScriptParser();
 
 		entityProperties.load();
-
-		Font.registerFont(OpenSansFont);
-		
-    	fps = new FPS();
 
     	game = new Game();
     	addChild(game);

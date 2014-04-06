@@ -15,8 +15,8 @@ import game.entity.Entity;
 class Emitter
 {
 	private var classType:Class<Dynamic>;
-	private var time:Int;
-	private var timeLimit:Int;
+	public var time:Int;
+	public var timeLimit:Int;
 	private var speedMod:Float;
 	private var duration:Int;
 

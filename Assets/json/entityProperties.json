@@ -5,23 +5,23 @@
 		{
 			"axe":
 			{
-				"speed":30
+				"speed":15
 			},
 			"cannonball":
 			{
-				"speed":30
+				"speed":15
 			}
 		},
 		"boat":
 		{
 			"viking":
 			{
-				"fire_rate":40
+				"fireRate":40
 			},
 			
 			"pirate":
 			{
-				"fire_rate":40
+				"fireRate":40
 			}
 		}
 	}

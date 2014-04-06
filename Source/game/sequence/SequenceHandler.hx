@@ -10,7 +10,17 @@ import flash.display.Sprite;
 
 import common.EventType;
 import game.sequence.*;
+import game.sequence.world1.AnchorSequence;
+import game.sequence.world1.AnglerSequence;
 import game.sequence.world1.BoatSequence;
+import game.sequence.world1.ContainerSequence;
+import game.sequence.world1.JellyFishSequence;
+import game.sequence.world1.SandSequence;
+import game.sequence.world1.SatelliteSequence;
+import game.sequence.world1.Surface1Sequence;
+import game.sequence.world1.Surface2Sequence;
+import game.sequence.world1.Vegetation1Sequence;
+import game.sequence.world1.Vegetation2Sequence;
 
 class SequenceHandler
 {

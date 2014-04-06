@@ -20,7 +20,6 @@ class Viking extends Boat
 	{
 		super(xSpeed, ySpeed);
 		emitPosition = new Point(50, 70);
-		EntityProperties.getInstance().addEventListener(EventType.ENTITY_PROPERTIES_LOADED, reload);
 	};
 
 	private override function getPath():String
@@ -31,10 +30,5 @@ class Viking extends Boat
 	private override function setEmitter():Void
 	{
 		emitter = new Emitter(Axe, EntityProperties.Boat_viking_fireRate, EntityProperties.Projectile_axe_speed);
-	}
-
-	private function reload(e:Event):Void
-	{
-		setEmitter();
 	}
 }

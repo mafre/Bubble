@@ -8,6 +8,7 @@ import flash.geom.Point;
 
 import game.entity.Entity;
 import game.emitter.*;
+import common.EventType;
 import common.StageInfo;
 import game.entity.projectile.Bubble;
 
@@ -28,7 +29,13 @@ class Boat extends Entity
 		state = State_Default;
 		emitPosition = new Point(40, 70);
 		setEmitter();
+		EntityProperties.getInstance().addEventListener(EventType.ENTITY_PROPERTIES_LOADED, reloadEmitter);
 	};
+
+	private function reloadEmitter(e:Event):Void
+	{
+		setEmitter();
+	}
 
 	private function getPath():String
 	{
