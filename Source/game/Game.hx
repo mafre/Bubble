@@ -33,7 +33,7 @@ import game.entity.player.Player;
 import game.menu.*;
 import game.ContactListener;
 import game.level.Level;
-import game.emitter.EmitterType;
+import game.entity.EntityType;
 import game.entity.EntityHandler;
 import game.entity.projectile.Bubble;
 import game.score.ScoreHandler;
@@ -73,7 +73,7 @@ class Game extends Sprite
 		addChild(background);
 
 		sky = new GridSprite("images/background/bg1/", 200, 200, true);
-		sky.alpha = 0.5;
+		sky.alpha = 0.3;
 		addChild(sky);
 
 		container = new Sprite();

@@ -7,7 +7,7 @@ import common.Image;
 import flash.geom.Point;
 
 import game.entity.Entity;
-import game.emitter.EmitterType;
+import game.entity.EntityType;
 import common.StageInfo;
 import game.entity.score.Score;
 

@@ -4,7 +4,7 @@ import box2D.dynamics.contacts.B2Contact;
 import box2D.dynamics.B2Fixture;
 import box2D.dynamics.B2ContactListener;
 
-import game.emitter.EmitterType;
+import game.entity.EntityType;
 import game.entity.projectile.Bubble;
 import game.entity.enemies.Enemy;
 import game.entity.Entity;

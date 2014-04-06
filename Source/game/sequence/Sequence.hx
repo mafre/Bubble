@@ -2,9 +2,12 @@ package game.sequence;
 
 import game.sequence.ISequence;
 import game.emitter.Emitter;
+import game.entity.projectile.Bubble;
+import game.sequence.SequenceVO;
 
 class Sequence implements ISequence
 {
+	public var id:String;
 	public var time:Int;
 	private var duration:Int;
 	private var xPosition:Float;
@@ -12,18 +15,25 @@ class Sequence implements ISequence
 	private var angle:Float;
 	private var emitter:Dynamic;
 
-	public function new(aTime:Int, aDuration:Int, aXPosition:Float, aYPosition:Float, aAngle:Float):Void
+	public function new():Void
 	{
-		time = aTime;
-		duration = aDuration;
-		xPosition = aXPosition;
-		yPosition = aYPosition;
-		angle = aAngle;
+		//setSequenceProperties();
+		setEmitter();
 	};
 
-	public function initEmitter(aEmitter:Dynamic):Void
+	public function setSequenceProperties(vo:SequenceVO):Void
 	{
-		emitter = aEmitter;
+		id = vo.id;
+		time = vo.time;
+		duration = vo.duration;
+		xPosition = vo.xPosition;
+		yPosition = vo.yPosition;
+		angle = vo.angle;
+	};
+
+	public function setEmitter():Void
+	{
+		this.emitter = new Emitter(Bubble, 10, 10);
 	}
 
 	public function update():Bool

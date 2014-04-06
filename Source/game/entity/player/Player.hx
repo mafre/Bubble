@@ -29,7 +29,7 @@ class Player extends Entity
 
 		health = 100;
 
-		type = EmitterType.PLAYER;
+		type = EntityType.PLAYER;
 		layer = 8;
 
 		mouseEnabled = true;
@@ -57,18 +57,18 @@ class Player extends Entity
 	{
 		switch (entity.type)
 		{
-			case EmitterType.ENEMY:
+			case EntityType.ENEMY:
 				takeDamage();
 
-			case EmitterType.SATELLITE:
+			case EntityType.SATELLITE:
 				var satellite:Satellite = cast(entity, Satellite);
                 addSatellite(satellite);
 		}
 	}
 
-	public function takeDamage():Void
+	public function takeDamage(damage:Int = 1):Void
 	{
-		health--;
+		health -= damage;
 		ScoreHandler.getInstance().setHealth(health);
 
 		if(health <= 0)

@@ -15,9 +15,11 @@ import common.EventType;
 import common.Image;
 import game.Game;
 import game.emitter.*;
-import game.emitter.EmitterType;
+import game.entity.EntityType;
 import game.entity.player.Player;
 import game.score.ScoreHandler;
+import game.entity.EntityProperties;
+import game.sequence.SequenceHandler;
 
 class Menu extends Sprite
 {
@@ -30,6 +32,7 @@ class Menu extends Sprite
 	private var sprayShotButton:LabelButton;
 	private var resetButton:LabelButton;
 	private var settingsButton:LabelButton;
+	private var propertiesButton:LabelButton;
 	private var score:TextField;
 	private var health:TextField;
 	private var settings:Settings;
@@ -42,6 +45,12 @@ class Menu extends Sprite
 		settingsButton.addEventListener(EventType.BUTTON_PRESSED, settingsSelected);
 		addChild(settingsButton);
 		settingsButton.x = settingsButton.y = 5;
+
+		propertiesButton = new LabelButton("images/buttons/button1/", "Load properties");
+		propertiesButton.addEventListener(EventType.BUTTON_PRESSED, loadProperties);
+		addChild(propertiesButton);
+		propertiesButton.x = 5;
+		propertiesButton.y = settingsButton.x + settingsButton.height + 5;
 
 		score = TextfieldFactory.getDefault();
 		addChild(score);
@@ -115,29 +124,35 @@ class Menu extends Sprite
 		settings.visible = true;
 	};
 
+	public function loadProperties(e:Event):Void
+	{
+		SequenceHandler.getInstance().reloadProperties();
+		EntityProperties.getInstance().load();
+	};
+
 	public function shotNormalSelected(e:Event):Void
 	{
-		//player.setEmitter(new Emitter(EmitterType.BUBBLE, container, items, "images/game/bubble", 2, 1, 15));
+		//player.setEmitter(new Emitter(EntityType.PROJECTILE, container, items, "images/game/bubble", 2, 1, 15));
 	};
 
 	public function shotBurstSelected(e:Event):Void
 	{
-		//player.setEmitter(new BurstEmitter(EmitterType.BUBBLE, container, items, "images/game/bubble", 2, 60, 15));
+		//player.setEmitter(new BurstEmitter(EntityType.PROJECTILE, container, items, "images/game/bubble", 2, 60, 15));
 	};
 
 	public function shotSineSelected(e:Event):Void
 	{
-		//player.setEmitter(new SineEmitter(EmitterType.BUBBLE, container, items, "images/game/bubble", 2, 5, 10));
+		//player.setEmitter(new SineEmitter(EntityType.PROJECTILE, container, items, "images/game/bubble", 2, 5, 10));
 	};
 
 	public function shotMultiSelected(e:Event):Void
 	{
-		//player.setEmitter(new MultiEmitter(EmitterType.BUBBLE, container, items, "images/game/bubble", 2, 5, 15));
+		//player.setEmitter(new MultiEmitter(EntityType.PROJECTILE, container, items, "images/game/bubble", 2, 5, 15));
 	};
 
 	public function shotSpraySelected(e:Event):Void
 	{
-		//player.setEmitter(new SprayEmitter(EmitterType.BUBBLE, container, items, "images/game/bubble", 2, 5, 15));
+		//player.setEmitter(new SprayEmitter(EntityType.PROJECTILE, container, items, "images/game/bubble", 2, 5, 15));
 	};
 
 	public function resetSelected(e:Event):Void

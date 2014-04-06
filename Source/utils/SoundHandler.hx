@@ -101,6 +101,7 @@ class SoundHandler
 	{
 		musicPosition = 0;
 		musicChannel = music.play(0, 0, musicSoundTransform);
+		musicChannel.addEventListener(Event.SOUND_COMPLETE, musicComplete);
 	}
 
 	public static function stopMusic():Void

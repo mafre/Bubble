@@ -7,7 +7,7 @@ import flash.display.Sprite;
 
 import common.EventType;
 import game.entity.Entity;
-import game.emitter.EmitterType;
+import game.entity.EntityType;
 
 import box2D.dynamics.B2World;
 
@@ -116,7 +116,7 @@ class EntityHandler
             {
                 switch(entity.type)
                 {
-                    case EmitterType.BUBBLE:
+                    case EntityType.PROJECTILE:
                         removeEntity(entity);
                 }
             }

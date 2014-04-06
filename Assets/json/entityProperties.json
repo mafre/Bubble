@@ -1,0 +1,28 @@
+{
+	"entity":
+	{
+		"projectile":
+		{
+			"axe":
+			{
+				"speed":30
+			},
+			"cannonball":
+			{
+				"speed":30
+			}
+		},
+		"boat":
+		{
+			"viking":
+			{
+				"fire_rate":40
+			},
+			
+			"pirate":
+			{
+				"fire_rate":40
+			}
+		}
+	}
+}

@@ -9,7 +9,7 @@ import common.Image;
 import common.StageInfo;
 import common.EventType;
 import utils.SoundHandler;
-import game.emitter.EmitterType;
+import game.entity.EntityType;
 import game.entity.EntityHandler;
 import game.entity.Entity;
 

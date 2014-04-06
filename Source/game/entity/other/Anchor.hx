@@ -6,7 +6,7 @@ import flash.display.Sprite;
 import common.Image;
 
 import game.entity.Entity;
-import game.emitter.EmitterType;
+import game.entity.EntityType;
 import common.StageInfo;
 
 class Anchor extends Entity
@@ -14,7 +14,7 @@ class Anchor extends Entity
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
 		super(xSpeed, ySpeed);
-		type = EmitterType.OTHER;
+		type = EntityType.OTHER;
 		layer = 1;
 		addBody = false;
 	};

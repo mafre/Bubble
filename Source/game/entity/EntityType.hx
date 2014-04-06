@@ -1,9 +1,9 @@
-package game.emitter;
+package game.entity;
 
-class EmitterType
+class EntityType
 {	
 	static public inline var PLAYER:String				= "Player";
-	static public inline var BUBBLE:String				= "Bubble";
+	static public inline var PROJECTILE:String			= "Projectile";
 	static public inline var ENEMY:String				= "Enemy";
 	static public inline var SATELLITE:String			= "Satellite";
 	static public inline var VEGETATION:String			= "Vegetation";

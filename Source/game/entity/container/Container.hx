@@ -23,7 +23,7 @@ class Container extends Entity
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
 		super(xSpeed, ySpeed);
-		type = EmitterType.CONTAINER;
+		type = EntityType.CONTAINER;
 		layer = 1;
 		health = 1;
 		addBody = false;

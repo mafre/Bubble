@@ -6,7 +6,7 @@ import flash.display.Sprite;
 import common.Image;
 
 import game.entity.Entity;
-import game.emitter.EmitterType;
+import game.entity.EntityType;
 import common.StageInfo;
 import game.score.ScoreHandler;
 
@@ -17,7 +17,7 @@ class Score extends Entity
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
 		super(xSpeed, ySpeed);
-		type = EmitterType.SCORE;
+		type = EntityType.SCORE;
 		layer = 3;
 		points = 1;
 	};
@@ -31,7 +31,7 @@ class Score extends Entity
 		
 		switch (entity.type)
 		{
-			case EmitterType.PLAYER:
+			case EntityType.PLAYER:
 				ScoreHandler.getInstance().addScore(points);
 				dispose = true;
 		}

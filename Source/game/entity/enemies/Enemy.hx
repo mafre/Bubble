@@ -13,7 +13,7 @@ import utils.SoundHandler;
 import flash.geom.Point;
 
 import game.entity.Entity;
-import game.emitter.EmitterType;
+import game.entity.EntityType;
 import game.score.ScoreHandler;
 
 class Enemy extends Entity
@@ -27,13 +27,13 @@ class Enemy extends Entity
 
 		health = 1;
 		score = 5;
-		type = EmitterType.ENEMY;
+		type = EntityType.ENEMY;
 		layer = 5;
 	};
 
-	public function takeDamage():Void
+	public function takeDamage(damage:Int = 1):Void
 	{
-		health--;
+		health -= damage;
 
 		if(health <= 0)
 		{

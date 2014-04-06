@@ -6,7 +6,7 @@ import flash.display.Sprite;
 import common.Image;
 
 import game.entity.Entity;
-import game.emitter.EmitterType;
+import game.entity.EntityType;
 import common.StageInfo;
 import utils.SoundHandler;
 
@@ -17,7 +17,7 @@ class Bubble extends Entity
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
 		super(xSpeed, ySpeed);
-		type = EmitterType.BUBBLE;
+		type = EntityType.PROJECTILE;
 		layer = 6;
 	};
 
@@ -33,7 +33,7 @@ class Bubble extends Entity
 	{
 		switch (entity.type)
 		{
-			case EmitterType.ENEMY:
+			case EntityType.ENEMY:
 				var enemy:Enemy = cast(entity, Enemy);
                 enemy.takeDamage();
                 SoundHandler.playEffect("pop");

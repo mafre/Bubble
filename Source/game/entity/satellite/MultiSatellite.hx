@@ -10,7 +10,7 @@ import common.EventType;
 import common.StageInfo;
 import game.emitter.*;
 import utils.SoundHandler;
-import game.emitter.EmitterType;
+import game.entity.EntityType;
 import game.entity.satellite.Satellite;
 import game.entity.projectile.Bubble;
 import game.entity.player.Player;
