@@ -3,53 +3,14 @@
 	{
 		"world1":
 		{
-			"Surface1Sequence":
+			"AnchorSequence":
 			{
-				"time":11,
-				"duration": 10000,
-				"x":"width",
-				"y":"height*0.1",
-				"angle":"PI"
-			},
-			"Surface2Sequence":
-			{
-				"time":12,
-				"duration": 10000,
-				"x":"width",
-				"y":"height*0.1+25",
-				"angle":"PI"
-			},
-			"SandSequence":
-			{
-				"time":1,
-				"duration": 10000,
+				"time":20,
+				"duration": 1000,
 				"x":"width",
 				"y":"height-80",
-				"angle":"PI"
-			},
-			"Vegetation1Sequence":
-			{
-				"time":101,
-				"duration": 10001,
-				"x":"width",
-				"y":"height-80",
-				"angle":"PI"
-			},
-			"Vegetation2Sequence":
-			{
-				"time":102,
-				"duration": 10000,
-				"x":"width",
-				"y":"height-80",
-				"angle":"PI"
-			},
-			"BoatSequence":
-			{
-				"time":10,
-				"duration": 30,
-				"x":"width",
-				"y":"height*0.1+40",
-				"angle":"PI"
+				"angle":"PI",
+				"speed":3
 			},
 			"AnglerSequence":
 			{
@@ -57,23 +18,19 @@
 				"duration": 100,
 				"x":"width",
 				"y":"300",
-				"angle":"PI"
+				"angle":"PI",
+				"timeLimit":50,
+				"speed":4
 			},
-			"JellyfishSequence":
+			"BoatSequence":
 			{
-				"time":400,
-				"duration": 50,
+				"time":10,
+				"duration": 30,
 				"x":"width",
-				"y":"100",
-				"angle":"PI-0.2"
-			},
-			"AnchorSequence":
-			{
-				"time":20,
-				"duration": 1000,
-				"x":"width",
-				"y":"height-80",
-				"angle":"PI"
+				"y":"height*0.1+40",
+				"angle":"PI",
+				"timeLimit":100,
+				"speed":5
 			},
 			"ContainerSequence":
 			{
@@ -81,7 +38,28 @@
 				"duration": 100,
 				"x":"width",
 				"y":"height-80",
-				"angle":"PI"
+				"angle":"PI",
+				"speed":3
+			},
+			"JellyfishSequence":
+			{
+				"time":400,
+				"duration": 50,
+				"x":"width",
+				"y":"100",
+				"angle":"PI-0.2",
+				"timeLimit":20,
+				"speed":5
+			},
+			"SandSequence":
+			{
+				"time":1,
+				"duration": 10000,
+				"x":"width",
+				"y":"height-80",
+				"angle":"PI",
+				"timeLimit":12,
+				"speed":3
 			},
 			"SatelliteSequence":
 			{
@@ -89,7 +67,46 @@
 				"duration": 100,
 				"x":"width",
 				"y":"height/2",
-				"angle":"PI"
+				"angle":"PI",
+				"speed":4
+			},
+			"Surface1Sequence":
+			{
+				"time":11,
+				"duration": 10000,
+				"x":"width",
+				"y":"height*0.1",
+				"angle":"PI",
+				"timeLimit":25,
+				"speed":4
+			},
+			"Surface2Sequence":
+			{
+				"time":12,
+				"duration": 10000,
+				"x":"width",
+				"y":"height*0.1+25",
+				"angle":"PI",
+				"timeLimit":25,
+				"speed":4
+			},
+			"Vegetation1Sequence":
+			{
+				"time":101,
+				"duration": 10001,
+				"x":"width",
+				"y":"height-80",
+				"angle":"PI",
+				"speed":3
+			},
+			"Vegetation2Sequence":
+			{
+				"time":102,
+				"duration": 10001,
+				"x":"width",
+				"y":"height-80",
+				"angle":"PI",
+				"speed":3
 			}
 		}
 	}

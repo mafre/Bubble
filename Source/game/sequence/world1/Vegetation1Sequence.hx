@@ -19,7 +19,7 @@ class Vegetation1Sequence extends Sequence implements ISequence
 			function():Int{return Math.floor(Math.random()*30+15);},
 			function():Int{return Math.floor(Math.random()*5)+1;},
 			14,
-			3,
+			vo.speed,
 			true);
 	}
 }

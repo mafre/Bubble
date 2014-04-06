@@ -18,7 +18,7 @@ import common.Slider;
 
 class Slider extends Sprite
 {	
-	private var track:Image;
+	private var track:GridSprite;
 	private var handle:Image;
 	private var startX:Int;
 	private var startHandleX:Int;
@@ -27,7 +27,7 @@ class Slider extends Sprite
 	public function new():Void
 	{
 		super();
-		track = new Image("images/slider/track.png");
+		track = new GridSprite("images/slider/track/", 250, 50, true);
 		handle = new Image("images/slider/handle.png");
 		addChild(track);
 		addChild(handle);

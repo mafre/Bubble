@@ -19,7 +19,7 @@ class ContainerSequence extends Sequence implements ISequence
 			function():Int{return Math.floor(Math.random()*200+200);},
 			function():Int{return Math.floor(Math.random()*5)+1;},
 			14,
-			3,
+			vo.speed,
 			true);
 	}
 }

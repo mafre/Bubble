@@ -19,7 +19,7 @@ class AnchorSequence extends Sequence implements ISequence
 			function():Int{return Math.floor(Math.random()*1000+1000);},
 			function():Int{return Math.floor(Math.random()*5)+1;},
 			14,
-			3,
+			vo.speed,
 			true);
 	}
 }

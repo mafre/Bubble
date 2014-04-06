@@ -19,13 +19,13 @@ class Pirate extends Boat
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
 		super(xSpeed, ySpeed);
-		emitPosition = new Point(50, 70);
+		emitPosition = new Point(40, 90);
 		EntityProperties.getInstance().addEventListener(EventType.ENTITY_PROPERTIES_LOADED, reload);
 	};
 
 	private override function getPath():String
 	{
-		return "images/game/boat/viking.png";
+		return "images/game/boat/pirate2.png";
 	}
 
 	private override function setEmitter():Void

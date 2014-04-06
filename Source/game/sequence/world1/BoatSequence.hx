@@ -16,10 +16,10 @@ class BoatSequence extends Sequence implements ISequence
 	public override function setEmitter():Void
 	{
 		emitter = new RandomEmitter(
-		[Viking, Pirate],
-		function():Int{return 100;},
-		function():Int{return 0;},
-		2,
-		true);
+			[Viking, Pirate],
+			function():Int{return 100;},
+			function():Int{return 0;},
+			vo.speed,
+			true);
 	}
 }

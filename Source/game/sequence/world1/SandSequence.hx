@@ -14,6 +14,6 @@ class SandSequence extends Sequence implements ISequence
 
 	public override function setEmitter():Void
 	{
-		emitter = new Emitter(Sand2, 12, 3);
+		emitter = new Emitter(Sand2, vo.timeLimit, vo.speed);
 	}
 }

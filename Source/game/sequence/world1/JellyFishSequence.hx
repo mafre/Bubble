@@ -14,6 +14,6 @@ class JellyfishSequence extends Sequence implements ISequence
 
 	public override function setEmitter():Void
 	{
-		emitter = new Emitter(Jellyfish, 20, 5);
+		emitter = new Emitter(Jellyfish, vo.timeLimit, vo.speed);
 	}
 }

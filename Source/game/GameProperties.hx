@@ -17,7 +17,7 @@ class GameProperties
 	public function new():Void
     {
         dispatcher = new EventDispatcher();
-        debug = true;
+        debug = false;
     }
 
     public function addEventListener(type:String, listener:Function):Void

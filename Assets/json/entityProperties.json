@@ -16,12 +16,11 @@
 		{
 			"viking":
 			{
-				"fireRate":40
+				"fireRate":20
 			},
-			
 			"pirate":
 			{
-				"fireRate":40
+				"fireRate":20
 			}
 		}
 	}

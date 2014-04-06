@@ -19,6 +19,6 @@ class SatelliteSequence extends Sequence implements ISequence
 			[Dolphin, Seahorse],
 			function():Int{return 200;},
 			function():Int{return Math.floor(Math.random()*StageInfo.stageHeight*0.6-StageInfo.stageHeight*0.3);},
-			4);
+			vo.speed);
 	}
 }

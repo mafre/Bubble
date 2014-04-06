@@ -11,6 +11,7 @@ import common.StageInfo;
 import common.GridSprite;
 import common.Button;
 import common.LabelButton;
+import common.ImageButton;
 import common.EventType;
 import common.Image;
 import game.Game;
@@ -31,8 +32,8 @@ class Menu extends Sprite
 	private var multiShotButton:LabelButton;
 	private var sprayShotButton:LabelButton;
 	private var resetButton:LabelButton;
-	private var settingsButton:LabelButton;
-	private var propertiesButton:LabelButton;
+	private var settingsButton:ImageButton;
+	private var propertiesButton:ImageButton;
 	private var score:TextField;
 	private var health:TextField;
 	private var settings:Settings;
@@ -41,27 +42,27 @@ class Menu extends Sprite
 	{
 		super();
 
-		settingsButton = new LabelButton("images/buttons/button1/", "Settings");
+		settingsButton = new ImageButton("images/buttons/image/settings2.png");
 		settingsButton.addEventListener(EventType.BUTTON_PRESSED, settingsSelected);
 		addChild(settingsButton);
-		settingsButton.x = settingsButton.y = 5;
+		settingsButton.x = settingsButton.y = 10;
 
-		propertiesButton = new LabelButton("images/buttons/button1/", "Load properties");
+		propertiesButton = new ImageButton("images/buttons/image/reload.png");
 		propertiesButton.addEventListener(EventType.BUTTON_PRESSED, loadProperties);
 		addChild(propertiesButton);
-		propertiesButton.x = 5;
-		propertiesButton.y = settingsButton.x + settingsButton.height + 5;
+		propertiesButton.x = settingsButton.x + settingsButton.width + 10;
+		propertiesButton.y = 10;
 
 		score = TextfieldFactory.getDefault();
 		addChild(score);
-		score.y = 5;
-		score.x = settingsButton.x + settingsButton.width + 5;
+		score.y = 10;
+		score.x = propertiesButton.x + propertiesButton.width + 10;
 		updateScore();
 
 		health = TextfieldFactory.getDefault();
 		addChild(health);
-		health.x = score.x + score.width + 25;
-		health.y = 5;
+		health.x = score.x + score.width + 30;
+		health.y = 10;
 		updateHealth();
 
 		settings = new Settings();
