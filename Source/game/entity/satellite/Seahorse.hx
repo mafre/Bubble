@@ -31,7 +31,7 @@ class Seahorse extends Satellite
 
 	private override function setEmitter():Void
 	{
-		emitter = new SprayEmitter(Bubble, 2, 10);
+		emitter = new SprayEmitter(Bubble, 5, 10);
 		var e:SprayEmitter = cast(emitter, SprayEmitter);
 		e.setAmount(1, Math.PI/5);
 	}

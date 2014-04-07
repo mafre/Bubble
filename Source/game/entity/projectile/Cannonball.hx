@@ -19,7 +19,7 @@ class Cannonball extends Entity
 	{
 		super(xSpeed, ySpeed);
 		type = EntityType.PROJECTILE;
-		layer = 3;
+		layer = 6;
 	};
 
 	private override function addImage():Void

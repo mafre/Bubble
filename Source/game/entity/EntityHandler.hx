@@ -89,8 +89,9 @@ class EntityHandler
 
     public function update():Void
     {
-        world.step (1 / 30, 10, 10);
+        world.step(1/30, 10, 10);
         world.clearForces();
+        world.drawDebugData();
 
         remove = new Array<Dynamic>();
 

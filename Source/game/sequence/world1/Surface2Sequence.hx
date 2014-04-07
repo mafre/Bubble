@@ -2,7 +2,7 @@ package game.sequence.world1;
 
 import game.sequence.ISequence;
 import game.sequence.Sequence;
-import game.emitter.Emitter;
+import game.emitter.ContinuousEmitter;
 import game.entity.background.Surface1;
 
 class Surface2Sequence extends Sequence implements ISequence
@@ -14,6 +14,6 @@ class Surface2Sequence extends Sequence implements ISequence
 
 	public override function setEmitter():Void
 	{
-		emitter = new Emitter(Surface1, vo.timeLimit, vo.speed);
+		emitter = new ContinuousEmitter(Surface1, vo.timeLimit, vo.speed);
 	}
 }

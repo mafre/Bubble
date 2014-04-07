@@ -31,7 +31,7 @@ class Dolphin extends Satellite
 
 	private override function setEmitter():Void
 	{
-		emitter = new MultiEmitter(Bubble, 10, 10);
+		emitter = new MultiEmitter(Bubble, 20, 10);
 		var e:MultiEmitter = cast(emitter, MultiEmitter);
 		e.setAmount(3, Math.PI/5);
 	}

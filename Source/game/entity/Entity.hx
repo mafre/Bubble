@@ -8,6 +8,7 @@ import common.Image;
 import common.EventType;
 import common.StageInfo;
 import game.entity.EntityHandler;
+import game.entity.EntityProperties;
 import utils.SoundHandler;
 import flash.geom.Point;
 
@@ -156,7 +157,7 @@ class Entity extends Sprite
 
 	public function setXPosition(xPos:Float):Void
 	{
-		this.x += Math.round(xPos);
+		this.x += Math.round(xPos) - EntityProperties.globalSpeed;
 	}
 
 	public function setYPosition(yPos:Float):Void

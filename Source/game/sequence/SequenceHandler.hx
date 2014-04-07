@@ -21,6 +21,7 @@ import game.sequence.world1.Surface1Sequence;
 import game.sequence.world1.Surface2Sequence;
 import game.sequence.world1.Vegetation1Sequence;
 import game.sequence.world1.Vegetation2Sequence;
+import game.sequence.world1.SpeedSequence;
 
 class SequenceHandler
 {
