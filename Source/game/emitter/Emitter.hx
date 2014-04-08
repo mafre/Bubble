@@ -11,22 +11,23 @@ import utils.SoundHandler;
 import game.entity.EntityType;
 import game.entity.EntityHandler;
 import game.entity.Entity;
+import game.GameProperties;
 
 class Emitter
 {
 	private var classType:Class<Dynamic>;
-	public var time:Int;
-	public var timeLimit:Int;
+	public var distance:Int;
+	private var previousEmitDistance:Float;
 	private var speedMod:Float;
 	private var duration:Int;
 
-	public function new(classType:Class<Dynamic>, timeLimit:Int, speedMod:Float)
+	public function new(classType:Class<Dynamic>, distance:Int, speedMod:Float)
 	{
 		this.classType = classType;
-		this.timeLimit = timeLimit;
+		this.distance = distance;
 		this.speedMod = speedMod;
 
-		time = 0;
+		previousEmitDistance = 0;
 	}
 
 	public function setDuration(aDuration:Int):Void
@@ -36,11 +37,10 @@ class Emitter
 
 	public function update(startX:Float, startY:Float, angle:Float):Bool
 	{
-		time++;
-		if(time == timeLimit)
+		if(previousEmitDistance+distance < GameProperties.distanceTravelled)
 		{
 			emit(startX, startY, angle);
-			time = 0;
+			previousEmitDistance = GameProperties.distanceTravelled;
 			return true;
 		};
 

@@ -19,7 +19,7 @@
 				"x":"width",
 				"y":"300",
 				"angle":"PI",
-				"timeLimit":50,
+				"distance":100,
 				"speed":1
 			},
 			"BoatSequence":
@@ -29,7 +29,7 @@
 				"x":"width",
 				"y":"height*0.1+40",
 				"angle":"PI",
-				"timeLimit":400,
+				"distance":300,
 				"speed":2
 			},
 			"ContainerSequence":
@@ -48,7 +48,7 @@
 				"x":"width",
 				"y":"100",
 				"angle":"PI-0.2",
-				"timeLimit":20,
+				"distance":20,
 				"speed":3
 			},
 			"SandSequence":
@@ -58,7 +58,7 @@
 				"x":"width",
 				"y":"height-80",
 				"angle":"PI",
-				"timeLimit":12,
+				"distance":12,
 				"speed":2
 			},
 			"SatelliteSequence":
@@ -73,7 +73,7 @@
 			"SpeedSequence":
 			{
 				"time":200,
-				"duration": 20,
+				"duration": 10,
 				"speed":-0.1
 			},
 			"Surface1Sequence":
@@ -83,7 +83,7 @@
 				"x":"width",
 				"y":"height*0.1",
 				"angle":"PI",
-				"timeLimit":25,
+				"distance":25,
 				"speed":2
 			},
 			"Surface2Sequence":
@@ -93,7 +93,7 @@
 				"x":"width",
 				"y":"height*0.1+25",
 				"angle":"PI",
-				"timeLimit":25,
+				"distance":25,
 				"speed":2
 			},
 			"Vegetation1Sequence":

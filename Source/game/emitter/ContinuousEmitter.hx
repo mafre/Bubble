@@ -17,9 +17,9 @@ class ContinuousEmitter extends Emitter
 {
 	private var previousEntity:Entity;
 
-	public function new(classType:Class<Dynamic>, timeLimit:Int, speedMod:Float)
+	public function new(classType:Class<Dynamic>, distance:Int, speedMod:Float)
 	{
-		super(classType, timeLimit, speedMod);
+		super(classType, distance, speedMod);
 	};
 
 	public override function update(startX:Float, startY:Float, angle:Float):Bool

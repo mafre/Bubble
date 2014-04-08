@@ -117,6 +117,7 @@ class Game extends Sprite
 		player = new Player(0, 0);
 		player.setEmitter(new Emitter(Bubble, 10, 15));
 		entityHandler.addEntity(player);
+		entityHandler.player = player;
 	};
 
 	public function init():Void

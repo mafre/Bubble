@@ -8,6 +8,7 @@ import flash.utils.Function;
 
 import common.EventType;
 import common.StageInfo;
+import game.GameProperties;
 
 import hscript.Parser;
 import hscript.Interp;
@@ -25,6 +26,7 @@ class ScriptParser
         interp = new Interp();
         interp.variables.set("PI", Math.PI);
         interp.variables.set("Math", Math);
+        interp.variables.set("height", GameProperties.height);
         StageInfo.addEventListener(EventType.STAGE_RESIZED, stageResized);
         stageResized();
     }
@@ -32,7 +34,6 @@ class ScriptParser
     private function stageResized(?e:Event):Void
     {
         interp.variables.set("width", StageInfo.stageWidth);
-        interp.variables.set("height", StageInfo.stageHeight);
     }
 
     public function parse(value:String):Dynamic

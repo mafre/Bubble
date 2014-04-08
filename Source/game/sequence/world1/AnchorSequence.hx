@@ -16,7 +16,7 @@ class AnchorSequence extends Sequence implements ISequence
 	{
 		emitter = new LayerEmitter(
 			[Anchor],
-			function():Int{return Math.floor(Math.random()*1000+1000);},
+			function():Int{return Math.floor(Math.random()*200+200);},
 			function():Int{return Math.floor(Math.random()*5)+1;},
 			14,
 			vo.speed,

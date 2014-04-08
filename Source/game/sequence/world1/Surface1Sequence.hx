@@ -14,6 +14,6 @@ class Surface1Sequence extends Sequence implements ISequence
 
 	public override function setEmitter():Void
 	{
-		emitter = new ContinuousEmitter(Surface0, vo.timeLimit, vo.speed);
+		emitter = new ContinuousEmitter(Surface0, vo.distance, vo.speed);
 	}
 }

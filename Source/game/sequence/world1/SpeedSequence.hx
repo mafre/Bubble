@@ -28,7 +28,6 @@ class SpeedSequence extends Sequence implements ISequence
 
 		if(duration == 0)
 		{
-			trace("nu");
 			return true;
 		}
 		

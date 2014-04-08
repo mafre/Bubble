@@ -7,6 +7,7 @@ import flash.display.Sprite;
 import common.Image;
 import common.EventType;
 import common.StageInfo;
+import game.GameProperties;
 import game.entity.EntityHandler;
 import game.entity.EntityProperties;
 import utils.SoundHandler;
@@ -141,7 +142,7 @@ class Entity extends Sprite
 
 	public function checkBoundaries():Bool
 	{
-		if(this.x < -image.width || this.y < -image.height || this.y > StageInfo.stageHeight)
+		if(this.x < -image.width || this.y < -image.height || this.y > GameProperties.height)
 		{
 			dispose = true;
 		}

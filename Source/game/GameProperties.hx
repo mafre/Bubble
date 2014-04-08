@@ -11,6 +11,9 @@ import common.EventType;
 class GameProperties
 {
 	static public var __instance:GameProperties;
+    static public var distanceTravelled:Float;
+    static public var height:Float;
+
 	public var dispatcher:EventDispatcher;
 	public var debug:Bool;
 
@@ -18,6 +21,7 @@ class GameProperties
     {
         dispatcher = new EventDispatcher();
         debug = false;
+        height = 1000;
     }
 
     public function addEventListener(type:String, listener:Function):Void

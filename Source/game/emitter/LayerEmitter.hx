@@ -17,22 +17,23 @@ class LayerEmitter
 {
 	private var classes:Array<Class<Dynamic>>;
 	private var time:Int;
-	private var timeLimit:Int;
-	private var timeLimitFunction:Function;
+	private var distance:Int;
+	private var previousEmitDistance:Float;
+	private var distanceFunction:Function;
 	private var layerFunction:Function;
 	private var layerHeight:Float;
 	private var speedMod:Float;
 	private var duration:Int;
 	private var alignBottom:Bool;
 
-	public function new(classes:Array<Class<Dynamic>>, timeLimitFunction:Function, layerFunction:Function, layerHeight:Float, speedMod:Float, ?alignBottom:Bool)
+	public function new(classes:Array<Class<Dynamic>>, distanceFunction:Function, layerFunction:Function, layerHeight:Float, speedMod:Float, ?alignBottom:Bool)
 	{
 		this.classes = classes;
-		this.timeLimitFunction = timeLimitFunction;
+		this.distanceFunction = distanceFunction;
 		this.layerFunction = layerFunction;
 		this.layerHeight = layerHeight;
 		this.speedMod = speedMod;
-		timeLimit = timeLimitFunction();
+		distance = distanceFunction();
 
 		if(alignBottom != null)
 		{
@@ -43,7 +44,7 @@ class LayerEmitter
 			this.alignBottom = false;
 		}
 
-		time = 0;
+		previousEmitDistance = 0;
 	}
 
 	public function setDuration(aDuration:Int):Void
@@ -53,12 +54,11 @@ class LayerEmitter
 
 	public function update(startX:Float, startY:Float, angle:Float):Bool
 	{
-		time++;
-		if(time == timeLimit)
+		if(previousEmitDistance+distance < GameProperties.distanceTravelled)
 		{
 			emit(startX, startY, angle);
-			time = 0;
-			timeLimit = timeLimitFunction();
+			previousEmitDistance = GameProperties.distanceTravelled;
+			distance = distanceFunction();
 			return true;
 		};
 

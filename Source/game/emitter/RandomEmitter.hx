@@ -17,20 +17,21 @@ class RandomEmitter
 {
 	private var classes:Array<Class<Dynamic>>;
 	private var time:Int;
-	private var timeLimit:Int;
-	private var timeLimitFunction:Function;
+	private var distance:Int;
+	private var previousEmitDistance:Float;
+	private var distanceFunction:Function;
 	private var yFunction:Function;
 	private var speedMod:Float;
 	private var duration:Int;
 	private var alignBottom:Bool;
 
-	public function new(classes:Array<Class<Dynamic>>, timeLimitFunction:Function, yFunction:Function, speedMod:Float, ?alignBottom:Bool)
+	public function new(classes:Array<Class<Dynamic>>, distanceFunction:Function, yFunction:Function, speedMod:Float, ?alignBottom:Bool)
 	{
 		this.classes = classes;
-		this.timeLimitFunction = timeLimitFunction;
+		this.distanceFunction = distanceFunction;
 		this.yFunction = yFunction;
 		this.speedMod = speedMod;
-		timeLimit = timeLimitFunction();
+		distance = distanceFunction();
 
 		if(alignBottom != null)
 		{
@@ -41,7 +42,7 @@ class RandomEmitter
 			this.alignBottom = false;
 		}
 
-		time = 0;
+		previousEmitDistance = 0;
 	}
 
 	public function setDuration(aDuration:Int):Void
@@ -51,12 +52,11 @@ class RandomEmitter
 
 	public function update(startX:Float, startY:Float, angle:Float):Bool
 	{
-		time++;
-		if(time == timeLimit)
+		if(previousEmitDistance+distance < GameProperties.distanceTravelled)
 		{
 			emit(startX, startY, angle);
-			time = 0;
-			timeLimit = timeLimitFunction();
+			previousEmitDistance = GameProperties.distanceTravelled;
+			distance = distanceFunction();
 			return true;
 		};
 

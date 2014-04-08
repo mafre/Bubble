@@ -10,7 +10,7 @@ class SequenceVO
 	public var xPosition:Float;
 	public var yPosition:Float;
 	public var angle:Float;
-	public var timeLimit:Int;
+	public var distance:Int;
 	public var speed:Float;
 
 	public function new():Void

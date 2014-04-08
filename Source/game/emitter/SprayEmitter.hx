@@ -18,9 +18,9 @@ class SprayEmitter extends Emitter
 	private var amount:Int;
 	private var spread:Float;
 
-	public function new(classType:Class<Dynamic>, timeLimit:Int, speedMod:Float)
+	public function new(classType:Class<Dynamic>, distance:Int, speedMod:Float)
 	{
-		super(classType, timeLimit, speedMod);
+		super(classType, distance, speedMod);
 		amount = 3;
 		spread = Math.PI/4;
 	};
