@@ -6,6 +6,7 @@ import flash.display.Sprite;
 import common.Image;
 import flash.geom.Point;
 
+import game.GameProperties;
 import game.entity.Entity;
 import game.entity.EntityType;
 import common.StageInfo;
@@ -26,6 +27,7 @@ class Star extends Score
 	{
 		image = new Image("images/game/score/star.png");
 		addChild(image);
+		image.center();
 	}
 
 	public override function update():Void
@@ -61,7 +63,7 @@ class Star extends Score
 				setXPosition(xSpeed - 3);
 			}
 
-			if(this.x < 0 || this.y < 0 || this.x > StageInfo.stageWidth || this.y > StageInfo.stageHeight)
+			if(this.x < 0 || this.y < 0 || this.x > StageInfo.stageWidth || this.y > GameProperties.height)
 			{
 				dispose = true;
 				return;

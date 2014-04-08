@@ -7,8 +7,8 @@
 			{
 				"time":20,
 				"duration": 1000,
-				"x":"width",
-				"y":"height-80",
+				"x":"stageWidth",
+				"y":"worldBottom",
 				"angle":"PI",
 				"speed":2
 			},
@@ -16,7 +16,7 @@
 			{
 				"time":1000,
 				"duration": 100,
-				"x":"width",
+				"x":"stageWidth",
 				"y":"300",
 				"angle":"PI",
 				"distance":100,
@@ -26,8 +26,9 @@
 			{
 				"time":10,
 				"duration": 30,
-				"x":"width",
-				"y":"height*0.1+40",
+				"delay": 200,
+				"x":"stageWidth",
+				"y":"worldTop+25",
 				"angle":"PI",
 				"distance":300,
 				"speed":2
@@ -36,8 +37,8 @@
 			{
 				"time":103,
 				"duration": 100,
-				"x":"width",
-				"y":"height-80",
+				"x":"stageWidth",
+				"y":"worldBottom",
 				"angle":"PI",
 				"speed":2
 			},
@@ -45,8 +46,8 @@
 			{
 				"time":400,
 				"duration": 50,
-				"x":"width",
-				"y":"100",
+				"x":"stageWidth",
+				"y":"200",
 				"angle":"PI-0.2",
 				"distance":20,
 				"speed":3
@@ -55,8 +56,8 @@
 			{
 				"time":1,
 				"duration": 10000,
-				"x":"width",
-				"y":"height-80",
+				"x":"stageWidth",
+				"y":"worldBottom",
 				"angle":"PI",
 				"distance":12,
 				"speed":2
@@ -65,7 +66,7 @@
 			{
 				"time":100,
 				"duration": 100,
-				"x":"width",
+				"x":"stageWidth",
 				"y":"height/2",
 				"angle":"PI",
 				"speed":2
@@ -80,8 +81,8 @@
 			{
 				"time":11,
 				"duration": 10000,
-				"x":"width",
-				"y":"height*0.1",
+				"x":"stageWidth",
+				"y":"worldTop",
 				"angle":"PI",
 				"distance":25,
 				"speed":2
@@ -90,8 +91,8 @@
 			{
 				"time":12,
 				"duration": 10000,
-				"x":"width",
-				"y":"height*0.1+25",
+				"x":"stageWidth",
+				"y":"worldTop+25",
 				"angle":"PI",
 				"distance":25,
 				"speed":2
@@ -100,8 +101,8 @@
 			{
 				"time":101,
 				"duration": 10001,
-				"x":"width",
-				"y":"height-80",
+				"x":"stageWidth",
+				"y":"worldBottom",
 				"angle":"PI",
 				"speed":2
 			},
@@ -109,8 +110,8 @@
 			{
 				"time":102,
 				"duration": 10001,
-				"x":"width",
-				"y":"height-80",
+				"x":"stageWidth",
+				"y":"worldBottom",
 				"angle":"PI",
 				"speed":2
 			}

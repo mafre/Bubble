@@ -37,13 +37,15 @@ import game.entity.EntityType;
 import game.entity.EntityHandler;
 import game.entity.projectile.Bubble;
 import game.score.ScoreHandler;
+import game.GameEngine;
+import game.GameProperties;
 
 class Game extends Sprite
 {
 	static public inline var delay:Int = 20;
 
 	private var sky:GridSprite;
-	private var background:GridSprite;
+	private var water:GridSprite;
 	private var container:Sprite;
 	private var menu:Menu;
 	private var player:Player;
@@ -69,9 +71,6 @@ class Game extends Sprite
 
 		SoundHandler.playMusic("lake", true);
 
-		background = new GridSprite("images/background/bg1/", 200, 200, true);
-		addChild(background);
-
 		sky = new GridSprite("images/background/bg1/", 200, 200, true);
 		sky.alpha = 0.3;
 		addChild(sky);
@@ -79,11 +78,14 @@ class Game extends Sprite
 		container = new Sprite();
 		addChild(container);
 
+		water = new GridSprite("images/background/bg1/", 200, 200, true);
+		container.addChild(water);
+		water.y = GameProperties.worldTop;
+
 		pickups = new Array<Sprite>();
 		add = new Array<Sprite>();
 
 		StageInfo.addEventListener(EventType.STAGE_RESIZED, resize);
-		StageInfo.addEventListener(EventType.STAGE_INITIALIZED, stageInitialized);
 
 		touches = new IntMap<Sprite>();
 		
@@ -112,26 +114,26 @@ class Game extends Sprite
 		entityHandler.world = World;
 		entityHandler.setContainer(container);
 
+		GameEngine.getInstance().setContainer(container);
+
 		var score:ScoreHandler = ScoreHandler.getInstance();
 
 		player = new Player(0, 0);
 		player.setEmitter(new Emitter(Bubble, 10, 15));
 		entityHandler.addEntity(player);
-		entityHandler.player = player;
+
+		resize();
 	};
 
 	public function init():Void
 	{
-		player.addEventListener(TouchEvent.TOUCH_BEGIN, onTouchPlayerBegin);
 		stage.addEventListener(TouchEvent.TOUCH_BEGIN, onTouchStageBegin);
 		stage.addEventListener(TouchEvent.TOUCH_MOVE, onTouchMove);
 		stage.addEventListener(TouchEvent.TOUCH_END, onTouchEnd);
 		stage.addEventListener(Event.ACTIVATE, resume);
 		stage.addEventListener(Event.DEACTIVATE, pause);
-	};
 
-	private function stageInitialized(e:Event):Void
-	{
+		player.y = StageInfo.stageHeight/2;
 		level = new Level();
 		level.init(player, this);
 
@@ -142,7 +144,7 @@ class Game extends Sprite
 		addChild(menu);
 		menu.init(player, this);
 		menu.y = 20;
-	}
+	};
 
 	private function pause(?e:Dynamic):Void
 	{
@@ -157,11 +159,6 @@ class Game extends Sprite
 
 	private function onTouchStageBegin(e:TouchEvent):Void 
 	{
-		if(!touches.exists(e.touchPointID))
-		{
-			//trace(e.relatedObject);
-		}
-
 		if(dragging)
 		{
 			return;
@@ -174,57 +171,31 @@ class Game extends Sprite
 		dragging = true;
 	};
 
-	private function onTouchPlayerBegin(e:TouchEvent):Void 
-	{
-		//touches.set(e.touchPointID, player);
-	};
-
 	private function onTouchMove(e:TouchEvent):Void 
 	{
-		player.x = playerStartX + (e.stageX-touchStartX);
-		player.y = playerStartY + (e.stageY-touchStartY);
-
-		return;
-		if(touches.exists(e.touchPointID))
-		{
-			var touchSprite : Sprite = touches.get(e.touchPointID);
-
-			if(touchSprite == player)
-			{
-				player.dragToPosition(e.stageX, e.stageY);
-			}
-		}
+		player.dragToPosition(playerStartX + (e.stageX-touchStartX), playerStartY + (e.stageY-touchStartY));
 	};
 	
 	private function onTouchEnd(e:TouchEvent):Void 
 	{	
 		dragging = false;
-		return;
-
-		if(touches.exists(e.touchPointID))
-		{
-			var touchSprite : Sprite = touches.get(e.touchPointID);
-			touches.remove(e.touchPointID);
-		}
 	};
 
 	public function reset(?e:Event):Void
 	{
-		player.setPosition(StageInfo.stageWidth/2-player.width/2, StageInfo.stageHeight*0.7-player.height/2);
+		player.setPosition(StageInfo.stageWidth/2-player.width/2, StageInfo.stageHeight/2-player.height/2);
 		player.disposePlayer();
 	};
 
-	public function resize(e:Event):Void
+	public function resize(?e:Event):Void
 	{	
-		sky.setSize(StageInfo.stageWidth, StageInfo.stageHeight*0.1);
-		background.setSize(StageInfo.stageWidth, StageInfo.stageHeight*0.9);
-		background.y = StageInfo.stageHeight*0.1;
+		sky.setSize(StageInfo.stageWidth, StageInfo.stageHeight);
+		water.setSize(StageInfo.stageWidth, GameProperties.height);
 		reset();
 	};
 
 	private function update():Void
 	{
 		level.update();
-		entityHandler.update();
 	};
 }

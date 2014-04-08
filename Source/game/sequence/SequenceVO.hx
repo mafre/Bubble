@@ -11,6 +11,7 @@ class SequenceVO
 	public var yPosition:Float;
 	public var angle:Float;
 	public var distance:Int;
+	public var delay:Int;
 	public var speed:Float;
 
 	public function new():Void

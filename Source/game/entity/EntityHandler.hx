@@ -11,7 +11,6 @@ import game.entity.EntityProperties;
 import game.entity.Entity;
 import game.entity.EntityType;
 import game.GameProperties;
-import game.entity.player.Player;
 
 import box2D.dynamics.B2World;
 
@@ -25,13 +24,11 @@ class EntityHandler
     public var remove:Array<Dynamic>;
 	public var world:B2World;
     public var layers:Array<Sprite>;
-    public var player:Player;
 
     public function new():Void
     {
         dispatcher = new EventDispatcher();
         items = new Array<Dynamic>();
-        GameProperties.distanceTravelled = 0;
     }
 
     public function setContainer(container:Sprite):Void
@@ -98,10 +95,6 @@ class EntityHandler
         world.step(1/30, 10, 10);
         world.clearForces();
         //world.drawDebugData();
-
-        GameProperties.distanceTravelled += EntityProperties.globalSpeed;
-
-        container.y = -((GameProperties.height - StageInfo.stageHeight) * (player.y / GameProperties.height));
 
         remove = new Array<Dynamic>();
 

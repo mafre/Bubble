@@ -26,14 +26,20 @@ class ScriptParser
         interp = new Interp();
         interp.variables.set("PI", Math.PI);
         interp.variables.set("Math", Math);
-        interp.variables.set("height", GameProperties.height);
+        
         StageInfo.addEventListener(EventType.STAGE_RESIZED, stageResized);
-        stageResized();
     }
 
-    private function stageResized(?e:Event):Void
+    public function stageResized(?e:Event):Void
     {
-        interp.variables.set("width", StageInfo.stageWidth);
+        interp.variables.set("stageWidth", StageInfo.stageWidth);
+    }
+
+    public function gamePropertiesLoaded():Void
+    {
+        interp.variables.set("height", GameProperties.height);
+        interp.variables.set("worldTop", GameProperties.worldTop);
+        interp.variables.set("worldBottom", GameProperties.worldBottom);
     }
 
     public function parse(value:String):Dynamic

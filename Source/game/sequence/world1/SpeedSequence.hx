@@ -5,6 +5,7 @@ import game.sequence.Sequence;
 import game.emitter.LayerEmitter;
 import game.entity.other.Anchor;
 import game.entity.EntityProperties;
+import game.GameProperties;
 
 class SpeedSequence extends Sequence implements ISequence
 { 
@@ -24,7 +25,7 @@ class SpeedSequence extends Sequence implements ISequence
 	{
 		duration--;
 
-		EntityProperties.globalSpeed += vo.speed;
+		GameProperties.globalSpeed += vo.speed;
 
 		if(duration == 0)
 		{

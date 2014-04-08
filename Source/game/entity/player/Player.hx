@@ -14,6 +14,7 @@ import game.entity.satellite.Satellite;
 import game.emitter.*;
 import game.score.ScoreHandler;
 import common.StageInfo;
+import game.GameProperties;
 
 class Player extends Entity
 {
@@ -30,7 +31,7 @@ class Player extends Entity
 		health = 100;
 
 		type = EntityType.PLAYER;
-		layer = 8;
+		layer = 4;
 
 		mouseEnabled = true;
 
@@ -117,13 +118,34 @@ class Player extends Entity
 
 	public function dragToPosition(xPos:Float, yPos:Float):Void
 	{
+		if(yPos < GameProperties.worldTop + image.height/2)
+		{
+			yPos = GameProperties.worldTop + image.height/2;
+		}
+
+		if(yPos > GameProperties.worldBottom)
+		{
+			yPos = GameProperties.worldBottom;
+		}
+
+		if(xPos < 0)
+		{
+			xPos = 0;
+		}
+
+		if(xPos > (StageInfo.stageWidth-image.width/2))
+		{
+			xPos = StageInfo.stageWidth-image.width/2;
+		}
+
 		this.x = xPos;
 		this.y = yPos;
+		GameProperties.getInstance().setPlayerYPosition(this.y - StageInfo.stageHeight/2);
 	}
 
 	public override function update():Void
 	{
-		emitter.update(getEmitPosition().x, getEmitPosition().y, 0);
+		emitter.update(getEmitPosition().x, getEmitPosition().y - GameProperties.cameraYOffset, 0);
 
 		for (i in 0...satellites.length)
 		{

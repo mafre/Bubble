@@ -18,8 +18,6 @@ class EntityProperties
 	static public var __instance:EntityProperties;
 	public var dispatcher:EventDispatcher;
 
-	static public var globalSpeed:Float;
-
 	static public var Boat_viking_fireRate:Int;
 	static public var Boat_pirate_fireRate:Int;
 
@@ -29,7 +27,6 @@ class EntityProperties
 	public function new():Void
     {
         dispatcher = new EventDispatcher();
-        globalSpeed = 2;
     }
 
     public function addEventListener(type:String, listener:Function):Void

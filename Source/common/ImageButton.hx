@@ -35,6 +35,7 @@ class ImageButton extends Sprite
 		};
 
 		image = new Image(path);
+		image.scaleX = image.scaleY = 1.5;
 
 		up = new GridSprite("images/buttons/button1/button1up_", image.width+10, image.height+10, true);
 		addChild(up);

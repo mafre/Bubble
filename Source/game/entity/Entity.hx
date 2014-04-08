@@ -126,7 +126,7 @@ class Entity extends Sprite
 	{
 		if(addBody)
 		{
-			b2t = new B2Transform(new B2Vec2(this.x, this.y), new B2Mat22());
+			b2t = new B2Transform(new B2Vec2(this.x, (this.y + GameProperties.cameraYOffset)), new B2Mat22());
 			body.setTransform(b2t);
 		}
 	}
@@ -158,7 +158,7 @@ class Entity extends Sprite
 
 	public function setXPosition(xPos:Float):Void
 	{
-		this.x += Math.round(xPos) - EntityProperties.globalSpeed;
+		this.x += Math.round(xPos) - GameProperties.globalSpeed;
 	}
 
 	public function setYPosition(yPos:Float):Void

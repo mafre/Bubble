@@ -21,6 +21,7 @@ import game.entity.player.Player;
 import game.score.ScoreHandler;
 import game.entity.EntityProperties;
 import game.sequence.SequenceHandler;
+import game.GameProperties;
 
 class Menu extends Sprite
 {
@@ -129,6 +130,7 @@ class Menu extends Sprite
 	{
 		SequenceHandler.getInstance().reloadProperties();
 		EntityProperties.getInstance().load();
+		GameProperties.getInstance().load();
 	};
 
 	public function shotNormalSelected(e:Event):Void

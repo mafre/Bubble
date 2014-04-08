@@ -28,6 +28,7 @@ import game.entity.other.*;
 import game.entity.boat.*;
 import game.sequence.SequenceProperties;
 import game.sequence.SequenceHandler;
+import game.GameEngine;
 
 class Level implements ILevel
 {
@@ -48,7 +49,7 @@ class Level implements ILevel
 
 	public function update():Void
 	{
-		SequenceHandler.getInstance().update();
+		GameEngine.getInstance().update();
 	}
 
 	public function exit():Void

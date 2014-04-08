@@ -14,6 +14,7 @@ import game.entity.EntityType;
 import game.entity.satellite.Satellite;
 import game.entity.projectile.Bubble;
 import game.entity.player.Player;
+import game.GameProperties;
 
 class Satellite extends Entity
 {
@@ -102,13 +103,13 @@ class Satellite extends Entity
 
 	public function updateEmitter(angle:Float, satellitePosition:Point):Void
 	{
-		if(emitter.update(getEmitPosition().x, getEmitPosition().y, angle))
+		if(emitter.update(getEmitPosition().x, getEmitPosition().y - GameProperties.cameraYOffset, angle))
 		{
 			duration--;
 		}
 
 		this.x += 0.08*(satellitePosition.x - this.x);
-		this.y += 0.08*(satellitePosition.y - this.y);
+		this.y += 0.08*(satellitePosition.y - this.y - GameProperties.cameraYOffset);
 	}
 
 	public function duplicate():Satellite

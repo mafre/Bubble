@@ -6,6 +6,7 @@ import flash.display.Sprite;
 import common.Image;
 import flash.geom.Point;
 
+import game.GameProperties;
 import game.entity.Entity;
 import game.emitter.*;
 import common.StageInfo;
@@ -82,7 +83,7 @@ class Container extends Entity
 		if(health == 0)
 		{
 			setState(State_Open);
-			emitter.update(getEmitPosition().x, getEmitPosition().y, Math.PI*1.5);
+			emitter.update(getEmitPosition().x, (getEmitPosition().y-GameProperties.cameraYOffset), Math.PI*1.5);
 			removeEventListener(MouseEvent.MOUSE_DOWN, open);
 		}
 	}

@@ -36,7 +36,7 @@ class Angler extends Enemy
 		if(addToStage)
 		{
 			setXPosition(xSpeed);
-			setYPosition(ySpeed + 3.5*Math.sin(this.x/100));
+			setYPosition(ySpeed + Math.sin(this.x/100));
 			super.checkBoundaries();
 		}
 

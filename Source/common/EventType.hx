@@ -16,4 +16,5 @@ class EventType
 
 	static public inline var ENTITY_PROPERTIES_LOADED:String		= "EntityPropertiesLoaded";
 	static public inline var SEQUENCE_PROPERTIES_LOADED:String		= "SequencePropertiesLoaded";
+	static public inline var GAME_PROPERTIES_LOADED:String			= "GamePropertiesLoaded";
 }
