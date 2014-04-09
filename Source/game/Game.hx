@@ -46,6 +46,7 @@ class Game extends Sprite
 
 	private var sky:GridSprite;
 	private var water:GridSprite;
+	private var sun:Image;
 	private var container:Sprite;
 	private var menu:Menu;
 	private var player:Player;
@@ -81,6 +82,9 @@ class Game extends Sprite
 		water = new GridSprite("images/background/bg1/", 200, 200, true);
 		container.addChild(water);
 		water.y = GameProperties.worldTop;
+
+		sun = new Image("images/game/background/sun.png");
+		container.addChild(sun);
 
 		pickups = new Array<Sprite>();
 		add = new Array<Sprite>();
@@ -136,7 +140,6 @@ class Game extends Sprite
 		stage.addEventListener(Event.ACTIVATE, resume);
 		stage.addEventListener(Event.DEACTIVATE, pause);
 
-		player.y = StageInfo.stageHeight/2;
 		level = new Level();
 		level.init(player, this);
 
@@ -194,6 +197,8 @@ class Game extends Sprite
 	{	
 		sky.setSize(StageInfo.stageWidth, StageInfo.stageHeight);
 		water.setSize(StageInfo.stageWidth, GameProperties.height);
+		sun.x = StageInfo.stageWidth - sun.width - 50;
+		sun.y = -GameProperties.worldTop + 10;
 		reset();
 	};
 

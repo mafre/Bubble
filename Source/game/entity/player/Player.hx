@@ -23,6 +23,8 @@ class Player extends Entity
 	private var satellitePositions:Array<Point>;
 	private var emitter:Emitter;
 	private var satellites:Array<Satellite>;
+	private var targetX:Float;
+	private var targetY:Float;
 
 	public function new(xSpeed:Float, ySpeed:Float):Void
 	{
@@ -32,6 +34,9 @@ class Player extends Entity
 
 		type = EntityType.PLAYER;
 		layer = 4;
+
+		targetY = StageInfo.stageHeight/2;
+		targetX = 100;
 
 		mouseEnabled = true;
 
@@ -128,9 +133,9 @@ class Player extends Entity
 			yPos = GameProperties.worldBottom;
 		}
 
-		if(xPos < 0)
+		if(xPos < image.width/2)
 		{
-			xPos = 0;
+			xPos = image.width/2;
 		}
 
 		if(xPos > (StageInfo.stageWidth-image.width/2))
@@ -138,11 +143,8 @@ class Player extends Entity
 			xPos = StageInfo.stageWidth-image.width/2;
 		}
 
-		this.x = xPos;
-		this.y = yPos;
-
-		GameProperties.getInstance().setPlayerYPosition(this.y - StageInfo.stageHeight/2);
-		GameProperties.getInstance().setPlayerXPosition(this.x);
+		targetX = xPos;
+		targetY = yPos;
 	}
 
 	public override function update():Void
@@ -166,6 +168,12 @@ class Player extends Entity
 				satellites.remove(satellite);
 			}
 		}
+
+		this.x += 0.09*(targetX - this.x);
+		this.y += 0.09*(targetY - this.y);
+
+		GameProperties.getInstance().setPlayerYPosition(this.y - StageInfo.stageHeight/2);
+		GameProperties.getInstance().setPlayerXPosition(this.x);
 
 		super.update();
 	}

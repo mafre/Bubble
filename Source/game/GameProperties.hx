@@ -84,19 +84,13 @@ class GameProperties
     {
         playerY = playerYPos;
 
-        if(playerYPos <= 0)
-        {
-            cameraYOffset = 0;
-            return;
-        }
-
         if(playerYPos >= (GameProperties.height - StageInfo.stageHeight))
         {
             cameraYOffset = -(GameProperties.height - StageInfo.stageHeight);
             return;
         }
 
-        cameraYOffset = -playerYPos;
+        cameraYOffset = Math.round(-playerYPos);
     }
 
     public function setPlayerXPosition(playerXPos:Float):Void
