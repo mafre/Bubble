@@ -158,12 +158,12 @@ class Entity extends Sprite
 
 	public function setXPosition(xPos:Float):Void
 	{
-		this.x += Math.round(xPos) - GameProperties.globalSpeed;
+		this.x += xPos - GameProperties.globalSpeed;
 	}
 
 	public function setYPosition(yPos:Float):Void
 	{
-		this.y += Math.round(yPos);
+		this.y += yPos;
 	}
 
 	public function update():Void

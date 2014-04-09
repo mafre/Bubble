@@ -49,7 +49,7 @@ class Player extends Entity
 
 	private override function addImage():Void
 	{
-		image = new Image("images/game/player/player.png");
+		image = new Image("images/game/player/player6.png");
 		addChild(image);
 		image.center();
 	}

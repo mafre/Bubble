@@ -32,8 +32,20 @@ class Star extends Score
 
 	private function getDistanceToPlayer(xPos:Float, yPos:Float):Float
 	{
-		var d:Float = Math.sqrt((GameProperties.playerX-xPos)*(GameProperties.playerX-xPos)+(GameProperties.playerY-(yPos+GameProperties.cameraYOffset))*(GameProperties.playerY-(yPos+GameProperties.cameraYOffset)));
+		var xDelta:Float = getXDelta(xPos);
+		var yDelta:Float = getYDelta(yPos);
+		var d:Float = Math.sqrt(xDelta*xDelta+yDelta*yDelta);
 		return d;
+	}
+
+	private function getXDelta(xPos:Float):Float
+	{
+		return GameProperties.playerX-xPos;
+	}
+
+	private function getYDelta(yPos:Float):Float
+	{
+		return GameProperties.playerY-(yPos+GameProperties.cameraYOffset);
 	}
 
 	public override function update():Void
@@ -66,11 +78,16 @@ class Star extends Score
 			else
 			{
 				xSpeed *= 0.9;
-				setXPosition(xSpeed - 3);
+				setXPosition(xSpeed - GameProperties.globalSpeed);
 			}
 
-			//var d:Float = getDistanceToPlayer(this.x, this.y);
-			//trace(d);
+			var d:Float = getDistanceToPlayer(this.x, this.y);
+
+			if(d < 300)
+			{
+				setXPosition((getXDelta(this.x)/d)*2+GameProperties.globalSpeed*2);
+				setYPosition((getYDelta(this.y)/d)*2);
+			}
 
 			if(this.x < 0 || this.y < 0 || this.x > StageInfo.stageWidth || this.y > GameProperties.height)
 			{

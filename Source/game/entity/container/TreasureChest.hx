@@ -25,7 +25,7 @@ class TreasureChest extends Container
 	{
 		emitter = new MultiEmitter(Star, 1, 15);
 		var e:MultiEmitter = cast(emitter, MultiEmitter);
-		e.setAmount(5, Math.PI/1.5);
+		e.setAmount(6, Math.PI/1.5);
 	}
 
 	private override function getPath():String

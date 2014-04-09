@@ -42,7 +42,7 @@ import game.GameProperties;
 
 class Game extends Sprite
 {
-	static public inline var delay:Int = 20;
+	static public inline var delay:Int = 25;
 
 	private var sky:GridSprite;
 	private var water:GridSprite;
@@ -121,6 +121,9 @@ class Game extends Sprite
 		player = new Player(0, 0);
 		player.setEmitter(new Emitter(Bubble, 10, 15));
 		entityHandler.addEntity(player);
+
+		GameProperties.playerWidht = player.width;
+		GameProperties.playerHeight = player.height;
 
 		resize();
 	};

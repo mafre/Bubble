@@ -26,6 +26,8 @@ class GameProperties
     static public var worldBottom:Float;
     static public var playerX:Float;
     static public var playerY:Float;
+    static public var playerWidht:Float;
+    static public var playerHeight:Float;
 
 	public var dispatcher:EventDispatcher;
 	public var debug:Bool;
@@ -33,7 +35,7 @@ class GameProperties
 	public function new():Void
     {
         dispatcher = new EventDispatcher();
-        debug = true;
+        debug = false;
         cameraYOffset = 0;
         StageInfo.addEventListener(EventType.STAGE_RESIZED, stageResized);
     }

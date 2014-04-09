@@ -18,7 +18,7 @@ class Safe extends Container
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
 		super(xSpeed, ySpeed);
-		health = 5;
+		health = 3;
 		emitPosition = new Point(15, 0);
 	}
 
