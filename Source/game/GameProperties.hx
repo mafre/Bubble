@@ -24,6 +24,8 @@ class GameProperties
     static public var maxYOffset:Float;
     static public var worldTop:Float;
     static public var worldBottom:Float;
+    static public var playerX:Float;
+    static public var playerY:Float;
 
 	public var dispatcher:EventDispatcher;
 	public var debug:Bool;
@@ -31,7 +33,7 @@ class GameProperties
 	public function new():Void
     {
         dispatcher = new EventDispatcher();
-        debug = false;
+        debug = true;
         cameraYOffset = 0;
         StageInfo.addEventListener(EventType.STAGE_RESIZED, stageResized);
     }
@@ -78,6 +80,8 @@ class GameProperties
 
     public function setPlayerYPosition(playerYPos:Float):Void
     {
+        playerY = playerYPos;
+
         if(playerYPos <= 0)
         {
             cameraYOffset = 0;
@@ -91,6 +95,11 @@ class GameProperties
         }
 
         cameraYOffset = -playerYPos;
+    }
+
+    public function setPlayerXPosition(playerXPos:Float):Void
+    {
+        playerX = playerXPos;
     }
 
     private function stageResized(e:Event):Void

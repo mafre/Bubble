@@ -5,6 +5,7 @@ import game.sequence.Sequence;
 import game.emitter.TimedEmitter;
 import game.entity.boat.Viking;
 import game.entity.boat.Pirate;
+import game.GameProperties;
 
 class BoatSequence extends Sequence implements ISequence
 { 
@@ -15,10 +16,11 @@ class BoatSequence extends Sequence implements ISequence
 
 	public override function setEmitter():Void
 	{
+		trace(vo.delay);
 		emitter = new TimedEmitter(
 			[Viking, Pirate],
-			function():Int{return 100;},
-			function():Int{return 0;},
+			function():Int{return vo.delay;},
+			function():Int{return 14;},
 			vo.speed,
 			true);
 	}

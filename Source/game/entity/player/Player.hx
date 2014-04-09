@@ -140,7 +140,9 @@ class Player extends Entity
 
 		this.x = xPos;
 		this.y = yPos;
+
 		GameProperties.getInstance().setPlayerYPosition(this.y - StageInfo.stageHeight/2);
+		GameProperties.getInstance().setPlayerXPosition(this.x);
 	}
 
 	public override function update():Void

@@ -30,6 +30,12 @@ class Star extends Score
 		image.center();
 	}
 
+	private function getDistanceToPlayer(xPos:Float, yPos:Float):Float
+	{
+		var d:Float = Math.sqrt((GameProperties.playerX-xPos)*(GameProperties.playerX-xPos)+(GameProperties.playerY-(yPos+GameProperties.cameraYOffset))*(GameProperties.playerY-(yPos+GameProperties.cameraYOffset)));
+		return d;
+	}
+
 	public override function update():Void
 	{
 		if(dispose)
@@ -62,6 +68,9 @@ class Star extends Score
 				xSpeed *= 0.9;
 				setXPosition(xSpeed - 3);
 			}
+
+			//var d:Float = getDistanceToPlayer(this.x, this.y);
+			//trace(d);
 
 			if(this.x < 0 || this.y < 0 || this.x > StageInfo.stageWidth || this.y > GameProperties.height)
 			{

@@ -56,6 +56,7 @@ class SequenceProperties
             vo.id = Std.string(n);
             vo.time = Std.parseInt(sequence.time);
             vo.duration = Std.parseInt(sequence.duration);
+            vo.delay = Std.parseInt(sequence.delay);
             vo.xPosition = parseProperty(Std.string(sequence.x));
             vo.yPosition = parseProperty(Std.string(sequence.y));
             vo.angle = parseProperty(Std.string(sequence.angle));

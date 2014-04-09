@@ -40,4 +40,14 @@ class Bubble extends Entity
                 dispose = true;
 		}
 	}
+
+	public override function checkBoundaries():Bool
+	{
+		if(this.x < -image.width || this.y < GameProperties.worldTop+25 || this.y > GameProperties.worldBottom-image.height)
+		{
+			dispose = true;
+		}
+
+		return dispose;
+	}
 }
