@@ -21,7 +21,7 @@ class Surface0 extends Entity
 
 	private override function addImage():Void
 	{
-		image = new Image("images/game/background/floor1/surface.png");
+		image = new Image("images/game/background/surface.png");
 		addChild(image);
 		image.alpha = 0.5;
 	}
