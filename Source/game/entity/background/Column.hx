@@ -9,20 +9,19 @@ import game.entity.Entity;
 import game.entity.EntityType;
 import common.StageInfo;
 
-class Surface0 extends Entity
+class Column extends Entity
 {
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
 		super(xSpeed, ySpeed);
 		type = EntityType.BACKGROUND;
-		layer = 3;
+		layer = 1;
 		addBody = false;
 	};
 
 	private override function addImage():Void
 	{
-		image = new Image("images/game/background/surface.png");
+		image = new Image("images/game/background/column.png");
 		addChild(image);
-		image.alpha = 0.5;
 	}
 }

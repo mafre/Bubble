@@ -14,7 +14,7 @@ class Kelp3 extends Entity
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
 		super(xSpeed, ySpeed);
-		type = EntityType.VEGETATION;
+		type = EntityType.BACKGROUND;
 		layer = 1;
 		addBody = false;
 	};

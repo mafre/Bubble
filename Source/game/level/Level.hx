@@ -24,7 +24,6 @@ import game.entity.player.Player;
 import game.entity.enemies.*;
 import game.entity.background.*;
 import game.entity.container.*;
-import game.entity.other.*;
 import game.entity.boat.*;
 import game.sequence.SequenceProperties;
 import game.sequence.SequenceHandler;

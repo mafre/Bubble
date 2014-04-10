@@ -14,7 +14,7 @@ class Sand2 extends Entity
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
 		super(xSpeed, ySpeed);
-		type = EntityType.VEGETATION;
+		type = EntityType.BACKGROUND;
 		layer = 0;
 		addBody = false;
 	};

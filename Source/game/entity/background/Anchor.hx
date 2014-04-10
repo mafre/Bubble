@@ -1,4 +1,4 @@
-package game.entity.other;
+package game.entity.background;
 
 import flash.events.MouseEvent;
 import flash.events.Event;
@@ -14,7 +14,7 @@ class Anchor extends Entity
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
 		super(xSpeed, ySpeed);
-		type = EntityType.OTHER;
+		type = EntityType.BACKGROUND;
 		layer = 1;
 		addBody = false;
 	};

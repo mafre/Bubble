@@ -3,7 +3,6 @@ package game.sequence.world1;
 import game.sequence.ISequence;
 import game.sequence.Sequence;
 import game.emitter.LayerEmitter;
-import game.entity.other.Anchor;
 import game.entity.EntityProperties;
 import game.GameProperties;
 
