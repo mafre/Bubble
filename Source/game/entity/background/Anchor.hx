@@ -21,7 +21,7 @@ class Anchor extends Entity
 
 	private override function addImage():Void
 	{
-		image = new Image("images/game/other/anchor.png");
+		image = new Image("images/game/background/floor1/anchor.png");
 		addChild(image);
 	}
 }

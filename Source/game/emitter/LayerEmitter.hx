@@ -71,8 +71,8 @@ class LayerEmitter
 		var ySpeed:Float = Math.sin(angle);
 		var i:Int = Math.floor(Math.random()*classes.length);
 		var entity:Entity = Type.createInstance(classes[i], [xSpeed*speedMod, ySpeed*speedMod]);
-
 		var layer:Int = layerFunction();
+		
 		entity.x = startX;
 		entity.y = startY+layer*layerHeight+entity.offsetY;
 		entity.layer = layer;

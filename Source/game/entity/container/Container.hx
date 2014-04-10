@@ -34,7 +34,7 @@ class Container extends Entity
 		emitPosition = new Point(0, 0);
 		setEmitter();
 
-		addEventListener(MouseEvent.MOUSE_DOWN, open);
+		addEventListener(MouseEvent.MOUSE_DOWN, mouseDown);
 	};
 
 	private function setEmitter():Void
@@ -58,6 +58,26 @@ class Container extends Entity
 		addChild(image);
 	}
 
+	public function mouseDown(e:MouseEvent):Void
+	{
+		health--;
+
+		if(health == 0)
+		{
+			toggle();
+			emitter.update(getEmitPosition().x, (getEmitPosition().y-GameProperties.cameraYOffset), Math.PI*1.5);
+		}
+		else if(health < 0)
+		{
+			toggle();
+		}
+	}
+
+	private function toggle():Void
+	{
+		setState((state == State_Closed) ? State_Open : State_Closed);
+	}
+
 	public function setState(aState:String):Void
 	{
 		state = aState;
@@ -73,18 +93,6 @@ class Container extends Entity
 				image.parent.removeChild(image);
 				image = new Image(getPath()+"_Closed.png");
 				addChild(image);
-		}
-	}
-
-	public function open(e:MouseEvent):Void
-	{
-		health--;
-
-		if(health == 0)
-		{
-			setState(State_Open);
-			emitter.update(getEmitPosition().x, (getEmitPosition().y-GameProperties.cameraYOffset), Math.PI*1.5);
-			removeEventListener(MouseEvent.MOUSE_DOWN, open);
 		}
 	}
 }

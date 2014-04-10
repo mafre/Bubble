@@ -30,6 +30,17 @@ class Bottle extends Container
 
 	private override function getPath():String
 	{
-		return "images/game/container/shoe";
+		return "images/game/container/bottle";
+	}
+
+	public override function mouseDown(e:MouseEvent):Void
+	{
+		health--;
+
+		if(health == 0)
+		{
+			toggle();
+			emitter.update(getEmitPosition().x, (getEmitPosition().y-GameProperties.cameraYOffset), Math.PI*1.5);
+		}
 	}
 }

@@ -21,7 +21,7 @@ class Kelp1 extends Entity
 
 	private override function addImage():Void
 	{
-		image = new Image("images/game/background/kelp1.png");
+		image = new Image("images/game/background/floor1/kelp1.png");
 		addChild(image);
 	}
 }

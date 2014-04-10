@@ -48,6 +48,11 @@ class Star extends Score
 		return GameProperties.playerY-(yPos+GameProperties.cameraYOffset);
 	}
 
+	private function getAttractionSpeed(distance:Float):Float
+	{
+		return 3*(3.5-(distance/100+0.5));
+	}
+
 	public override function update():Void
 	{
 		if(dispose)
@@ -67,7 +72,7 @@ class Star extends Score
 				else
 				{
 					yComplete = true;
-					xSpeed = -3;
+					xSpeed = -GameProperties.globalSpeed*2;
 				}
 			}
 
@@ -78,15 +83,15 @@ class Star extends Score
 			else
 			{
 				xSpeed *= 0.9;
-				setXPosition(xSpeed - GameProperties.globalSpeed);
+				setXPosition(xSpeed - 2*GameProperties.globalSpeed);
 			}
 
 			var d:Float = getDistanceToPlayer(this.x, this.y);
 
 			if(d < 300)
 			{
-				setXPosition((getXDelta(this.x)/d)*2+GameProperties.globalSpeed*2);
-				setYPosition((getYDelta(this.y)/d)*2);
+				setXPosition((getXDelta(this.x)/d)*getAttractionSpeed(d)+GameProperties.globalSpeed*2);
+				setYPosition((getYDelta(this.y)/d)*getAttractionSpeed(d));
 			}
 
 			if(this.x < 0 || this.y < 0 || this.x > StageInfo.stageWidth || this.y > GameProperties.height)

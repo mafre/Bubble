@@ -25,6 +25,7 @@ class Player extends Entity
 	private var satellites:Array<Satellite>;
 	private var targetX:Float;
 	private var targetY:Float;
+	private var maxSatelliteCount:Int;
 
 	public function new(xSpeed:Float, ySpeed:Float):Void
 	{
@@ -40,6 +41,7 @@ class Player extends Entity
 
 		mouseEnabled = true;
 
+		maxSatelliteCount = 1;
 		satellites = new Array<Satellite>();
 		emitPosition = new Point(50, 0);
 
@@ -91,6 +93,17 @@ class Player extends Entity
 		satellite.addBody = false;
 		satellite.setState(Satellite.State_Added);
 		EntityHandler.getInstance().addEntity(satellite);
+
+		if(satellites.length == maxSatelliteCount)
+		{
+			var removed:Satellite = satellites.shift();
+			removed.addToItems = true;
+			removed.addToStage = true;
+			removed.addBody = false;
+			removed.setState(Satellite.State_Exit);
+			EntityHandler.getInstance().addEntity(removed);
+		}
+
 		satellites.push(satellite);
 	}
 
@@ -169,8 +182,9 @@ class Player extends Entity
 			}
 		}
 
-		this.x += 0.09*(targetX - this.x);
-		this.y += 0.09*(targetY - this.y);
+		this.x += 0.1*(targetX - this.x);
+		this.y += 0.1*(targetY - this.y);
+		this.rotation = (targetY - this.y)/10;
 
 		GameProperties.getInstance().setPlayerYPosition(this.y - StageInfo.stageHeight/2);
 		GameProperties.getInstance().setPlayerXPosition(this.x);

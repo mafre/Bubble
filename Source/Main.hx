@@ -71,7 +71,18 @@ class Main extends Sprite
 
 	private function stageResize(event:Event = null):Void
 	{
-		StageInfo.resize(this.stage.stageWidth, this.stage.stageHeight);
+		var v1:Int = this.stage.stageWidth;
+		var v2:Int = this.stage.stageHeight;
+
+		if(v1 > v2)
+		{
+			StageInfo.resize(v1, v2);
+		}
+		else
+		{
+			StageInfo.resize(v2, v1);
+		}
+		
 		stageResized = true;
 		checkLoaded();
 	};

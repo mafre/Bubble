@@ -16,7 +16,6 @@ class BoatSequence extends Sequence implements ISequence
 
 	public override function setEmitter():Void
 	{
-		trace(vo.delay);
 		emitter = new TimedEmitter(
 			[Viking, Pirate],
 			function():Int{return vo.delay;},
