@@ -14,6 +14,8 @@ import game.sequence.world1.AnchorSequence;
 import game.sequence.world1.AnglerSequence;
 import game.sequence.world1.BoatSequence;
 import game.sequence.world1.ContainerSequence;
+import game.sequence.world1.Coral1Sequence;
+import game.sequence.world1.Coral2Sequence;
 import game.sequence.world1.JellyFishSequence;
 import game.sequence.world1.SandSequence;
 import game.sequence.world1.SatelliteSequence;

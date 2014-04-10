@@ -19,7 +19,7 @@ class Axe extends Entity
 	{
 		super(xSpeed, ySpeed);
 		type = EntityType.PROJECTILE;
-		layer = 6;
+		layer = 8;
 	};
 
 	private override function addImage():Void

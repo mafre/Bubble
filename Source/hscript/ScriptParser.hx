@@ -40,6 +40,7 @@ class ScriptParser
         interp.variables.set("height", GameProperties.height);
         interp.variables.set("worldTop", GameProperties.worldTop);
         interp.variables.set("worldBottom", GameProperties.worldBottom);
+        interp.variables.set("globalSpeed", GameProperties.globalSpeed);
     }
 
     public function parse(value:String):Dynamic

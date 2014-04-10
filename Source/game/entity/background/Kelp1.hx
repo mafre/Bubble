@@ -15,7 +15,7 @@ class Kelp1 extends Entity
 	{
 		super(xSpeed, ySpeed);
 		type = EntityType.BACKGROUND;
-		layer = 1;
+		layer = 3;
 		addBody = false;
 	};
 

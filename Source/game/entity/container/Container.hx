@@ -25,7 +25,7 @@ class Container extends Entity
 	{
 		super(xSpeed, ySpeed);
 		type = EntityType.CONTAINER;
-		layer = 1;
+		layer = 3;
 		health = 1;
 		addBody = false;
 		state = State_Closed;

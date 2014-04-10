@@ -17,7 +17,7 @@ class Vegetation1Sequence extends Sequence implements ISequence
 		emitter = new LayerEmitter(
 			[Shell1, Shell2, Kelp1, Kelp2, Kelp3, Kelp1, Kelp2, Kelp3],
 			function():Int{return Math.floor(Math.random()*30+15);},
-			function():Int{return Math.floor(Math.random()*5)+1;},
+			function():Int{return Math.floor(Math.random()*5)+3;},
 			14,
 			vo.speed,
 			true);

@@ -34,7 +34,7 @@ class Player extends Entity
 		health = 100;
 
 		type = EntityType.PLAYER;
-		layer = 4;
+		layer = 5;
 
 		targetY = StageInfo.stageHeight/2;
 		targetX = 100;
