@@ -10,7 +10,7 @@
 				"x":"stageWidth",
 				"y":"worldBottom",
 				"angle":"PI",
-				"speed":2
+				"speed":"globalSpeed"
 			},
 			"AnglerSequence":
 			{
@@ -20,18 +20,18 @@
 				"y":"300",
 				"angle":"PI",
 				"distance":100,
-				"speed":1
+				"speed":"globalSpeed"
 			},
 			"BoatSequence":
 			{
 				"time":10,
 				"duration": 30,
-				"delay": 200,
+				"delay": 500,
 				"x":"stageWidth",
 				"y":"worldTop+25",
 				"angle":"PI",
-				"distance":300,
-				"speed":2
+				"distance":0,
+				"speed":"globalSpeed"
 			},
 			"ContainerSequence":
 			{
@@ -40,7 +40,23 @@
 				"x":"stageWidth",
 				"y":"worldBottom",
 				"angle":"PI",
-				"speed":2
+				"speed":"globalSpeed"
+			},
+			"Coral1Sequence":
+			{
+				"time":120,
+				"x":"stageWidth",
+				"y":"worldBottom",
+				"angle":"PI",
+				"speed":"globalSpeed-0.5"
+			},
+			"Coral2Sequence":
+			{
+				"time":121,
+				"x":"stageWidth",
+				"y":"worldBottom",
+				"angle":"PI",
+				"speed":"globalSpeed-0.5"
 			},
 			"JellyfishSequence":
 			{
@@ -50,7 +66,7 @@
 				"y":"200",
 				"angle":"PI-0.2",
 				"distance":20,
-				"speed":3
+				"speed":"globalSpeed"
 			},
 			"SandSequence":
 			{
@@ -60,7 +76,7 @@
 				"y":"worldBottom",
 				"angle":"PI",
 				"distance":12,
-				"speed":2
+				"speed":"globalSpeed"
 			},
 			"SatelliteSequence":
 			{
@@ -69,7 +85,7 @@
 				"x":"stageWidth",
 				"y":"height/2",
 				"angle":"PI",
-				"speed":2
+				"speed":"globalSpeed"
 			},
 			"SpeedSequence":
 			{
@@ -85,7 +101,7 @@
 				"y":"worldTop",
 				"angle":"PI",
 				"distance":25,
-				"speed":2
+				"speed":"globalSpeed"
 			},
 			"Surface2Sequence":
 			{
@@ -95,7 +111,7 @@
 				"y":"worldTop+25",
 				"angle":"PI",
 				"distance":25,
-				"speed":2
+				"speed":"globalSpeed"
 			},
 			"Vegetation1Sequence":
 			{
@@ -104,7 +120,7 @@
 				"x":"stageWidth",
 				"y":"worldBottom",
 				"angle":"PI",
-				"speed":2
+				"speed":"globalSpeed"
 			},
 			"Vegetation2Sequence":
 			{
@@ -113,7 +129,7 @@
 				"x":"stageWidth",
 				"y":"worldBottom",
 				"angle":"PI",
-				"speed":2
+				"speed":"globalSpeed"
 			}
 		}
 	}
