@@ -15,13 +15,13 @@ class Anchor extends Entity
 	{
 		super(xSpeed, ySpeed);
 		type = EntityType.BACKGROUND;
-		layer = 3;
+		layer = 4;
 		addBody = false;
 	};
 
 	private override function addImage():Void
 	{
-		image = new Image("images/game/background/floor1/anchor.png");
+		image = new Image("images/game/background/floor2/anchor.png");
 		addChild(image);
 	}
 }

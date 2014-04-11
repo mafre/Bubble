@@ -17,7 +17,7 @@ class ContainerSequence extends Sequence implements ISequence
 		emitter = new LayerEmitter(
 			[Shoe, TreasureChest, Safe, Bottle],
 			function():Int{return Math.floor(Math.random()*200+200);},
-			function():Int{return Math.floor(Math.random()*5)+1;},
+			function():Int{return Math.floor(Math.random()*5)+3;},
 			14,
 			vo.speed,
 			true);

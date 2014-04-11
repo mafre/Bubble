@@ -1,4 +1,3 @@
-
 package game.entity.background;
 
 import flash.events.MouseEvent;
@@ -16,13 +15,13 @@ class Coral2 extends Entity
 	{
 		super(xSpeed, ySpeed);
 		type = EntityType.BACKGROUND;
-		layer = 1;
+		layer = 2;
 		addBody = false;
 	};
 
 	private override function addImage():Void
 	{
-		image = new Image("images/game/background/floor0/coral2.png");
+		image = new Image("images/game/background/floor1/coral2.png");
 		addChild(image);
 		image.scaleX = image.scaleY = 2;
 	}

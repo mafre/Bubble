@@ -15,8 +15,8 @@ class Vegetation1Sequence extends Sequence implements ISequence
 	public override function setEmitter():Void
 	{
 		emitter = new LayerEmitter(
-			[Shell1, Shell2, Kelp1, Kelp2, Kelp3, Kelp1, Kelp2, Kelp3],
-			function():Int{return Math.floor(Math.random()*30+15);},
+			[Shell1, Shell2, Coral1, Coral2, Coral3, Coral4, Coral5, Kelp1, Kelp2, Kelp3],
+			function():Int{return Math.floor(Math.random()*70+70);},
 			function():Int{return Math.floor(Math.random()*5)+3;},
 			14,
 			vo.speed,

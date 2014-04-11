@@ -6,7 +6,7 @@ import game.sequence.Sequence;
 import game.emitter.RandomEmitter;
 import game.entity.background.*;
 
-class CoralFishSequence extends Sequence implements ISequence
+class Silhouette3Sequence extends Sequence implements ISequence
 { 
 	public function new():Void
 	{

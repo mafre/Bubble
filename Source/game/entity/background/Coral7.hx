@@ -9,7 +9,7 @@ import game.entity.Entity;
 import game.entity.EntityType;
 import common.StageInfo;
 
-class Coral1 extends Entity
+class Coral7 extends Entity
 {
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
@@ -21,7 +21,7 @@ class Coral1 extends Entity
 
 	private override function addImage():Void
 	{
-		image = new Image("images/game/background/floor1/coral1.png");
+		image = new Image("images/game/background/floor1/coral7.png");
 		addChild(image);
 		image.scaleX = image.scaleY = 2;
 	}

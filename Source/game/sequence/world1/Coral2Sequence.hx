@@ -2,7 +2,7 @@ package game.sequence.world1;
 
 import game.sequence.ISequence;
 import game.sequence.Sequence;
-import game.emitter.ContinuousRandomEmitter;
+import game.emitter.RandomEmitter;
 import game.entity.background.*;
 
 class Coral2Sequence extends Sequence implements ISequence
@@ -14,6 +14,11 @@ class Coral2Sequence extends Sequence implements ISequence
 
 	public override function setEmitter():Void
 	{
-		emitter = new ContinuousRandomEmitter([Coral1, Coral2, Coral3, Coral4, Coral5], vo.speed, true);
+		emitter = new RandomEmitter(
+			[Coral1, Coral2, Coral3, Coral4, Coral5],
+			function():Float{return Math.random()*60+60;},
+			function():Float{return 15+Math.random()*5;},
+			vo.speed,
+			true);
 	}
 }

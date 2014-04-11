@@ -21,7 +21,7 @@ class Shell1 extends Entity
 
 	private override function addImage():Void
 	{
-		image = new Image("images/game/background/floor1/shell1.png");
+		image = new Image("images/game/background/floor2/shell1.png");
 		addChild(image);
 	}
 }

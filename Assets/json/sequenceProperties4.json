@@ -1,0 +1,160 @@
+{
+	"sequences":
+	{
+		"world1":
+		{
+			"AnchorSequence":
+			{
+				"time":20,
+				"duration": 1000,
+				"x":"stageWidth",
+				"y":"worldBottom",
+				"angle":"PI",
+				"speed":"globalSpeed"
+			},
+			"AnglerSequence":
+			{
+				"time":1000,
+				"duration": 100,
+				"x":"stageWidth",
+				"y":"300",
+				"angle":"PI",
+				"distance":100,
+				"speed":"globalSpeed"
+			},
+			"BoatSequence":
+			{
+				"time":10,
+				"duration": 30,
+				"delay": 500,
+				"x":"stageWidth",
+				"y":"worldTop+25",
+				"angle":"PI",
+				"distance":0,
+				"speed":"globalSpeed"
+			},
+			"ContainerSequence":
+			{
+				"time":103,
+				"duration": 100,
+				"x":"stageWidth",
+				"y":"worldBottom",
+				"angle":"PI",
+				"speed":"globalSpeed"
+			},
+			"Coral1Sequence":
+			{
+				"time":120,
+				"x":"stageWidth",
+				"y":"worldBottom",
+				"angle":"PI",
+				"speed":"globalSpeed"
+			},
+			"Coral2Sequence":
+			{
+				"time":121,
+				"x":"stageWidth",
+				"y":"worldBottom",
+				"angle":"PI",
+				"speed":"globalSpeed"
+			},
+			"JellyfishSequence":
+			{
+				"time":400,
+				"duration": 50,
+				"x":"stageWidth",
+				"y":"200",
+				"angle":"PI-0.2",
+				"distance":20,
+				"speed":"globalSpeed"
+			},
+			"SandSequence":
+			{
+				"time":1,
+				"duration": 10000,
+				"x":"stageWidth",
+				"y":"worldBottom",
+				"angle":"PI",
+				"distance":12,
+				"speed":"globalSpeed"
+			},
+			"SatelliteSequence":
+			{
+				"time":100,
+				"duration": 100,
+				"x":"stageWidth",
+				"y":"height/2",
+				"angle":"PI",
+				"speed":"globalSpeed"
+			},
+			"Silhouette1Sequence":
+			{
+				"time":140,
+				"x":"stageWidth",
+				"y":"worldBottom",
+				"angle":"PI",
+				"speed":"globalSpeed-0.7"
+			},
+			"Silhouette2Sequence":
+			{
+				"time":141,
+				"x":"stageWidth",
+				"y":"worldBottom",
+				"angle":"PI",
+				"speed":"globalSpeed-0.7"
+			},
+			"Silhouette3Sequence":
+			{
+				"time":142,
+				"x":"stageWidth",
+				"y":"worldTop",
+				"angle":"PI",
+				"speed":"globalSpeed+0.5"
+			},
+			"SpeedSequence":
+			{
+				"time":200,
+				"duration": 10,
+				"speed":-0.1
+			},
+			"Surface1Sequence":
+			{
+				"time":11,
+				"duration": 10000,
+				"x":"stageWidth",
+				"y":"worldTop",
+				"angle":"PI",
+				"distance":25,
+				"speed":"globalSpeed"
+			},
+			"Surface2Sequence":
+			{
+				"time":12,
+				"duration": 10000,
+				"x":"stageWidth",
+				"y":"worldTop+25",
+				"angle":"PI",
+				"distance":25,
+				"speed":"globalSpeed"
+			},
+			"Vegetation1Sequence":
+			{
+				"time":101,
+				"duration": 10001,
+				"x":"stageWidth",
+				"y":"worldBottom",
+				"angle":"PI",
+				"speed":"globalSpeed"
+			},
+			"Vegetation2Sequence":
+			{
+				"time":102,
+				"duration": 10001,
+				"x":"stageWidth",
+				"y":"worldBottom",
+				"angle":"PI",
+				"speed":"globalSpeed"
+			}
+		}
+	}
+}
