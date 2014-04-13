@@ -22,6 +22,7 @@ import game.score.ScoreHandler;
 import game.entity.EntityProperties;
 import game.sequence.SequenceHandler;
 import game.GameProperties;
+import game.entity.player.PlayerProperties;
 
 class Menu extends Sprite
 {
@@ -39,6 +40,7 @@ class Menu extends Sprite
 	private var health:TextField;
 	private var distance:TextField;
 	private var multiplier:TextField;
+	private var stars:TextField;
 	private var settings:Settings;
 
 	public function new()
@@ -80,6 +82,12 @@ class Menu extends Sprite
 		multiplier.x = StageInfo.stageWidth - 120;
 		updateMultiplier();
 
+		stars = TextfieldFactory.getDefault();
+		addChild(stars);
+		stars.y = distance.y + distance.height + 10;
+		stars.x = StageInfo.stageWidth - 200;
+		updatePlayerProperties();
+
 		settings = new Settings();
 		addChild(settings);
 		settings.visible = false;
@@ -88,6 +96,7 @@ class Menu extends Sprite
 		ScoreHandler.getInstance().addEventListener(EventType.UPDATE_HEALTH, updateHealth);
 		GameProperties.getInstance().dispatcher.addEventListener(EventType.UPDATE_DISTANCE, updateDistance);
 		GameProperties.getInstance().dispatcher.addEventListener(EventType.UPDATE_MULTIPLIER, updateMultiplier);
+		PlayerProperties.getInstance().dispatcher.addEventListener(EventType.PLAYER_PROPERTIES_LOADED, updatePlayerProperties);
 
 		/*
 		normalShotButton = new LabelButton("images/buttons/button1/", "Normal");
@@ -147,6 +156,11 @@ class Menu extends Sprite
 		multiplier.text = Std.string(GameProperties.multiplier);
 	}
 
+	public function updatePlayerProperties(?e:Event):Void
+	{
+		stars.text = Std.string(PlayerProperties.stars);
+	}
+
 	public function settingsSelected(e:Event):Void
 	{
 		settings.visible = true;
@@ -157,6 +171,7 @@ class Menu extends Sprite
 		SequenceHandler.getInstance().reloadProperties();
 		EntityProperties.getInstance().load();
 		GameProperties.getInstance().load();
+		PlayerProperties.getInstance().load();
 	};
 
 	public function shotNormalSelected(e:Event):Void

@@ -25,7 +25,7 @@ class Star extends Score
 
 	private override function addImage():Void
 	{
-		image = new Image("images/game/score/star.png");
+		image = new Image("images/game/score/star2.png");
 		addChild(image);
 		image.center();
 	}

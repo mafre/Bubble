@@ -9,6 +9,7 @@ import game.entity.Entity;
 import game.entity.EntityType;
 import common.StageInfo;
 import game.score.ScoreHandler;
+import game.entity.player.PlayerProperties;
 
 class Score extends Entity
 {
@@ -33,6 +34,7 @@ class Score extends Entity
 		{
 			case EntityType.PLAYER:
 				ScoreHandler.getInstance().addScore(points);
+				PlayerProperties.getInstance().addStar();
 				dispose = true;
 		}
 	}

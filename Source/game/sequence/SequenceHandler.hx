@@ -61,6 +61,7 @@ class SequenceHandler
 
     public function reloadProperties():Void
     {
+        time = 0;
         SequenceProperties.getInstance().load(worldId);
 
         for (vo in SequenceProperties.getInstance().sequences)
