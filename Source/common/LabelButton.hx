@@ -17,6 +17,7 @@ class LabelButton extends Sprite
 	private var down:GridSprite;
 	private var labelTF:TextField;
 	private var event:String;
+	public var index:Int;
 
 	public function new(path:String, label:String, ?aWidth:Float, ?event:String)
 	{

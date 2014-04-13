@@ -9,6 +9,7 @@ import game.entity.Entity;
 import game.entity.EntityType;
 import common.StageInfo;
 import utils.SoundHandler;
+import game.entity.player.PlayerProperties;
 
 import game.entity.enemies.Enemy;
 
@@ -35,7 +36,7 @@ class Bubble extends Entity
 		{
 			case EntityType.ENEMY:
 				var enemy:Enemy = cast(entity, Enemy);
-                enemy.takeDamage();
+                enemy.takeDamage(PlayerProperties.damage);
                 SoundHandler.playEffect("pop");
                 dispose = true;
 		}

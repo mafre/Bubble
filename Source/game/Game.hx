@@ -123,7 +123,6 @@ class Game extends Sprite
 		var score:ScoreHandler = ScoreHandler.getInstance();
 
 		player = new Player(0, 0);
-		player.setEmitter(new Emitter(Bubble, 5, 15));
 		entityHandler.addEntity(player);
 
 		GameProperties.playerWidht = player.width;

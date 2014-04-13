@@ -19,7 +19,7 @@ import game.GameProperties;
 
 class Enemy extends Entity
 {
-	private var health:Int;
+	private var health:Float;
 	private var score:Int;
 
 	public function new(xSpeed:Float, ySpeed:Float)
@@ -32,7 +32,7 @@ class Enemy extends Entity
 		layer = 5;
 	};
 
-	public function takeDamage(damage:Int = 1):Void
+	public function takeDamage(damage:Float = 1):Void
 	{
 		health -= damage;
 

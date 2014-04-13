@@ -11,7 +11,7 @@ import game.entity.EntityType;
 import common.StageInfo;
 import game.entity.container.Container;
 import game.emitter.MultiEmitter;
-import game.entity.score.Star;
+import game.entity.score.Coin;
 
 class Safe extends Container
 {
@@ -24,9 +24,9 @@ class Safe extends Container
 
 	private override function setEmitter():Void
 	{
-		emitter = new MultiEmitter(Star, 1, 15);
+		emitter = new MultiEmitter(Coin, 1, 10);
 		var e:MultiEmitter = cast(emitter, MultiEmitter);
-		e.setAmount(5, Math.PI/1.5);
+		e.setAmount(6, Math.PI/1.5);
 	}
 
 	private override function getPath():String

@@ -11,10 +11,8 @@ import game.entity.Entity;
 import game.entity.EntityType;
 import common.StageInfo;
 import game.entity.score.Score;
-import game.score.ScoreHandler;
-import game.entity.player.PlayerProperties;
 
-class Star extends Score
+class Coin extends Score
 {
 	private var yComplete:Bool;
 
@@ -27,25 +25,9 @@ class Star extends Score
 
 	private override function addImage():Void
 	{
-		image = new Image("images/game/score/star2.png");
+		image = new Image("images/game/score/coin.png");
 		addChild(image);
 		image.center();
-	}
-
-	public override function handleCollision(entity:Entity):Void
-	{
-		if(dispose)
-		{
-			return;
-		}
-		
-		switch (entity.type)
-		{
-			case EntityType.PLAYER:
-				ScoreHandler.getInstance().addScore(points);
-				PlayerProperties.getInstance().addStar();
-				dispose = true;
-		}
 	}
 
 	private function getDistanceToPlayer(xPos:Float, yPos:Float):Float

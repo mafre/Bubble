@@ -18,10 +18,12 @@ import game.emitter.*;
 import game.score.ScoreHandler;
 import common.StageInfo;
 import game.GameProperties;
+import game.entity.player.PlayerProperties;
+import game.entity.projectile.Bubble;
 
 class Player extends Entity
 {
-	private var health:Int;
+	private var health:Float;
 	private var emitPosition:Point;
 	private var satellitePositions:Array<Point>;
 	private var emitter:Emitter;
@@ -57,6 +59,16 @@ class Player extends Entity
 		satellitePositions.push(new Point(0, -120));
 		satellitePositions.push(new Point(-50, 100));
 		satellitePositions.push(new Point(-50, -100));
+
+		setEmitter(new Emitter(Bubble, 5, 15));
+
+		PlayerProperties.getInstance().dispatcher.addEventListener(EventType.PLAYER_PROPERTIES_LOADED, setProperties);
+	}
+
+	private function setProperties(e:Event):Void
+	{
+		health = PlayerProperties.health;
+		setEmitter(new Emitter(Bubble, PlayerProperties.fireRate, PlayerProperties.fireSpeed));
 	}
 
 	private override function addImage():Void
@@ -233,8 +245,8 @@ class Player extends Entity
 			}
 		}
 
-		this.x += 0.1*(targetX - this.x);
-		this.y += 0.1*(targetY - this.y);
+		this.x += PlayerProperties.speedMod*(targetX - this.x);
+		this.y += PlayerProperties.speedMod*(targetY - this.y);
 		this.rotation = (targetY - this.y)/7;
 
 		GameProperties.getInstance().setPlayerYPosition(this.y - StageInfo.stageHeight/2);

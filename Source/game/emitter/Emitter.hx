@@ -16,12 +16,12 @@ import game.GameProperties;
 class Emitter
 {
 	private var classType:Class<Dynamic>;
-	public var distance:Int;
+	public var distance:Float;
 	private var previousEmitDistance:Float;
 	public var speedMod:Float;
 	private var duration:Int;
 
-	public function new(classType:Class<Dynamic>, distance:Int, speedMod:Float)
+	public function new(classType:Class<Dynamic>, distance:Float, speedMod:Float)
 	{
 		this.classType = classType;
 		this.distance = distance;

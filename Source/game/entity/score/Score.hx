@@ -34,7 +34,6 @@ class Score extends Entity
 		{
 			case EntityType.PLAYER:
 				ScoreHandler.getInstance().addScore(points);
-				PlayerProperties.getInstance().addStar();
 				dispose = true;
 		}
 	}

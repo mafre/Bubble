@@ -12,7 +12,7 @@ class ScoreHandler
 
 	public var dispatcher:EventDispatcher;
     public var score:Int;
-    public var health:Int;
+    public var health:Float;
 
     public function new():Void
     {
@@ -27,7 +27,7 @@ class ScoreHandler
         dispatcher.dispatchEvent(new Event(EventType.UPDATE_SCORE));
     }
 
-    public function setHealth(health:Int):Void
+    public function setHealth(health:Float):Void
     {
         this.health = health;
         dispatcher.dispatchEvent(new Event(EventType.UPDATE_HEALTH));
