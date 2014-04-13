@@ -1,12 +1,12 @@
 package game.sequence.world1;
 
-import common.StageInfo;
 import game.sequence.ISequence;
 import game.sequence.Sequence;
 import game.emitter.RandomEmitter;
 import game.entity.background.*;
+import common.StageInfo;
 
-class Silhouette3Sequence extends Sequence implements ISequence
+class GodRay1Sequence extends Sequence implements ISequence
 { 
 	public function new():Void
 	{
@@ -16,10 +16,10 @@ class Silhouette3Sequence extends Sequence implements ISequence
 	public override function setEmitter():Void
 	{
 		emitter = new RandomEmitter(
-			[BigFish],
-			function():Int{return 500;},
-			function():Float{return 0;},
-			function():Int{return Math.floor(Math.random()*StageInfo.stageHeight*0.6);},
+			[GodRay1, GodRay2],
+			function():Float{return Math.random()*10+10;},
+			function():Float{return Math.random()*StageInfo.stageWidth;},
+			function():Float{return Math.random()*50;},
 			vo.speed);
 	}
 }

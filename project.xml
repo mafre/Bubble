@@ -9,8 +9,8 @@
 	
 	<source path="Source" />
 	
+	<haxelib name="actuate" />
 	<haxelib name="openfl" />
-
 	<haxelib name="box2d" />
 	
 	<assets path="Assets" rename="assets" exclude="openfl.svg" />

@@ -29,6 +29,6 @@ class Viking extends Boat
 
 	private override function setEmitter():Void
 	{
-		emitter = new Emitter(Axe, EntityProperties.Boat_viking_fireRate, EntityProperties.Projectile_axe_speed);
+		emitter = new RotationEmitter(Axe, EntityProperties.Boat_viking_fireRate, EntityProperties.Projectile_axe_speed);
 	}
 }

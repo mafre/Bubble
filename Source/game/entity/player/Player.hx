@@ -5,6 +5,9 @@ import flash.events.Event;
 import flash.display.Sprite;
 import flash.geom.Point;
 
+import motion.Actuate;
+import motion.easing.Quad;
+
 import common.Image;
 import common.EventType;
 import utils.SoundHandler;
@@ -26,12 +29,14 @@ class Player extends Entity
 	private var targetX:Float;
 	private var targetY:Float;
 	private var maxSatelliteCount:Int;
+	private var invunerable:Bool;
 
 	public function new(xSpeed:Float, ySpeed:Float):Void
 	{
 		super(xSpeed, ySpeed);
 
 		health = 100;
+		invunerable = false;
 
 		type = EntityType.PLAYER;
 		layer = 5;
@@ -66,7 +71,10 @@ class Player extends Entity
 		switch (entity.type)
 		{
 			case EntityType.ENEMY:
-				takeDamage();
+				if(!invunerable)
+				{
+					takeDamage();
+				}
 
 			case EntityType.SATELLITE:
 				var satellite:Satellite = cast(entity, Satellite);
@@ -77,12 +85,55 @@ class Player extends Entity
 	public function takeDamage(damage:Int = 1):Void
 	{
 		health -= damage;
+		invunerable = true;
 		ScoreHandler.getInstance().setHealth(health);
+		GameProperties.getInstance().resetMultiplier();
 
 		if(health <= 0)
 		{
 			//dispose = true;
 		}
+
+		var blinkDelay:Float = 0.04;
+		image.alpha = 0;
+
+		Actuate.timer(blinkDelay).onComplete(function()
+		{
+			image.alpha = 1;
+			Actuate.timer(blinkDelay).onComplete(function()
+			{
+				image.alpha = 0;
+				Actuate.timer(blinkDelay).onComplete(function()
+				{
+					image.alpha = 1;
+					Actuate.timer(blinkDelay).onComplete(function()
+					{
+						image.alpha = 0;
+						Actuate.timer(blinkDelay).onComplete(function()
+						{
+							image.alpha = 1;
+							Actuate.timer(blinkDelay).onComplete(function()
+							{
+								image.alpha = 0;
+								Actuate.timer(blinkDelay).onComplete(function()
+								{
+									image.alpha = 1;
+									Actuate.timer(blinkDelay).onComplete(function()
+									{
+										image.alpha = 0;
+										Actuate.timer(blinkDelay).onComplete(function()
+										{
+											image.alpha = 1;
+											invunerable = false;
+										});
+									});
+								});
+							});
+						});
+					});
+				});
+			});
+		});
 	}
 
 	public function addSatellite(aSatellite:Satellite):Void
@@ -162,7 +213,7 @@ class Player extends Entity
 
 	public override function update():Void
 	{
-		emitter.update(getEmitPosition().x, getEmitPosition().y - GameProperties.cameraYOffset, 0);
+		emitter.update(getEmitPosition().x, getEmitPosition().y - GameProperties.cameraYOffset, this.rotation/45);
 
 		for (i in 0...satellites.length)
 		{
@@ -184,7 +235,7 @@ class Player extends Entity
 
 		this.x += 0.1*(targetX - this.x);
 		this.y += 0.1*(targetY - this.y);
-		this.rotation = (targetY - this.y)/10;
+		this.rotation = (targetY - this.y)/7;
 
 		GameProperties.getInstance().setPlayerYPosition(this.y - StageInfo.stageHeight/2);
 		GameProperties.getInstance().setPlayerXPosition(this.x);

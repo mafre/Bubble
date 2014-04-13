@@ -7,6 +7,7 @@ import common.Image;
 import flash.geom.Point;
 
 import game.entity.Entity;
+import game.GameProperties;
 import game.emitter.*;
 import common.EventType;
 import common.StageInfo;
@@ -27,7 +28,7 @@ class Boat extends Entity
 		layer = 4;
 		addBody = false;
 		state = State_Default;
-		emitPosition = new Point(40, 70);
+		emitPosition = new Point(40, 0);
 		setEmitter();
 		EntityProperties.getInstance().addEventListener(EventType.ENTITY_PROPERTIES_LOADED, reloadEmitter);
 	};
@@ -55,7 +56,7 @@ class Boat extends Entity
 
 	private function setEmitter():Void
 	{
-		emitter = new Emitter(Bubble, 5, 30);
+		emitter = new Emitter(Bubble, 5, 5);
 	}
 
 	public function getEmitPosition():Point
@@ -65,12 +66,30 @@ class Boat extends Entity
 
 	private function getAngle():Float
 	{
-		return Math.PI*1.3;
+		var g:Float = 0.98;
+		var dx:Float = -Math.abs(GameProperties.playerX - getEmitPosition().x);
+		var dy:Float = GameProperties.playerY - getEmitPosition().y-GameProperties.cameraYOffset;
+		var v1:Float = Math.pow(emitter.speedMod, 2);
+		var v2:Float = Math.pow(emitter.speedMod, 4);
+		var v3:Float = g*Math.pow(dx, 2);
+		var v4:Float = 2*dy*Math.pow(emitter.speedMod, 2);
+		var v5:Float = g*dx;
+		var s1:Float = g * ( v3 + v4 );
+		var s2:Float = v2 - s1;
+		var s3:Float = Math.sqrt(Math.abs(s2));
+
+		var a:Float = Math.atan((v1 + s3)/v5);
+		if((GameProperties.playerX - getEmitPosition().x) <= 0)
+		{
+			a = Math.PI - a;
+		}
+
+		return a;
 	}
 
 	public override function update():Void
 	{
 		super.update();
-		emitter.update(getEmitPosition().x, getEmitPosition().y, getAngle());
+		emitter.update(getEmitPosition().x, getEmitPosition().y-GameProperties.cameraYOffset, getAngle());
 	}
 }

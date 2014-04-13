@@ -67,15 +67,6 @@
 				"angle":"0",
 				"speed":"0"
 			},
-			"GodRay1Sequence":
-			{
-				"time":171,
-				"duration":10000,
-				"x":"0",
-				"y":"worldTop",
-				"angle":"0",
-				"speed":"0"
-			},
 			"JellyfishSequence":
 			{
 				"time":400,

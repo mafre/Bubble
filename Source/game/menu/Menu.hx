@@ -37,6 +37,8 @@ class Menu extends Sprite
 	private var propertiesButton:ImageButton;
 	private var score:TextField;
 	private var health:TextField;
+	private var distance:TextField;
+	private var multiplier:TextField;
 	private var settings:Settings;
 
 	public function new()
@@ -62,9 +64,21 @@ class Menu extends Sprite
 
 		health = TextfieldFactory.getDefault();
 		addChild(health);
-		health.x = score.x + score.width + 30;
+		health.x = score.x + score.width + 60;
 		health.y = 10;
 		updateHealth();
+
+		distance = TextfieldFactory.getDefault();
+		addChild(distance);
+		distance.y = 10;
+		distance.x = StageInfo.stageWidth - 120;
+		updateDistance();
+
+		multiplier = TextfieldFactory.getDefault();
+		addChild(multiplier);
+		multiplier.y = distance.y + distance.height + 10;
+		multiplier.x = StageInfo.stageWidth - 120;
+		updateMultiplier();
 
 		settings = new Settings();
 		addChild(settings);
@@ -72,6 +86,8 @@ class Menu extends Sprite
 
 		ScoreHandler.getInstance().addEventListener(EventType.UPDATE_SCORE, updateScore);
 		ScoreHandler.getInstance().addEventListener(EventType.UPDATE_HEALTH, updateHealth);
+		GameProperties.getInstance().dispatcher.addEventListener(EventType.UPDATE_DISTANCE, updateDistance);
+		GameProperties.getInstance().dispatcher.addEventListener(EventType.UPDATE_MULTIPLIER, updateMultiplier);
 
 		/*
 		normalShotButton = new LabelButton("images/buttons/button1/", "Normal");
@@ -119,6 +135,16 @@ class Menu extends Sprite
 	public function updateHealth(?e:Event):Void
 	{
 		health.text = ScoreHandler.getInstance().health + " hp";
+	}
+
+	public function updateDistance(?e:Event):Void
+	{
+		distance.text = Std.string(GameProperties.distanceTravelled);
+	}
+
+	public function updateMultiplier(?e:Event):Void
+	{
+		multiplier.text = Std.string(GameProperties.multiplier);
 	}
 
 	public function settingsSelected(e:Event):Void

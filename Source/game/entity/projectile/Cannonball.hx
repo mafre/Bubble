@@ -49,7 +49,7 @@ class Cannonball extends Entity
 
 	public override function update():Void
 	{
-		ySpeed += 1;
+		ySpeed += 0.98;
 		super.update();
 	}
 }

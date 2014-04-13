@@ -21,15 +21,17 @@ class RandomEmitter
 	private var previousEmitDistance:Float;
 	private var distanceFunction:Function;
 	private var yFunction:Function;
+	private var xFunction:Function;
 	private var speedMod:Float;
 	private var duration:Int;
 	private var alignBottom:Bool;
 
-	public function new(classes:Array<Class<Dynamic>>, distanceFunction:Function, yFunction:Function, speedMod:Float, ?alignBottom:Bool)
+	public function new(classes:Array<Class<Dynamic>>, distanceFunction:Function, xFunction:Function, yFunction:Function, speedMod:Float, ?alignBottom:Bool)
 	{
 		this.classes = classes;
 		this.distanceFunction = distanceFunction;
 		this.yFunction = yFunction;
+		this.xFunction = xFunction;
 		this.speedMod = speedMod;
 		distance = distanceFunction();
 
@@ -69,7 +71,7 @@ class RandomEmitter
 		var ySpeed:Float = Math.sin(angle);
 		var i:Int = Math.floor(Math.random()*classes.length);
 		var entity:Entity = Type.createInstance(classes[i], [xSpeed*speedMod, ySpeed*speedMod]);
-		entity.x = startX;
+		entity.x = startX+xFunction();
 		entity.y = startY+yFunction()+entity.offsetY;
 
 		if(alignBottom)

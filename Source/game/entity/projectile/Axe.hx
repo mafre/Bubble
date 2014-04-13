@@ -15,9 +15,12 @@ import game.entity.enemies.Enemy;
 
 class Axe extends Entity
 {
-	public function new(xSpeed:Float, ySpeed:Float)
+	public var rotateSpeed:Int; //false = left;
+
+	public function new(xSpeed:Float, ySpeed:Float, direction:Int)
 	{
 		super(xSpeed, ySpeed);
+		this.rotateSpeed = 30*direction;
 		type = EntityType.PROJECTILE;
 		layer = 8;
 	};
@@ -49,8 +52,8 @@ class Axe extends Entity
 
 	public override function update():Void
 	{
-		ySpeed += 1;
-		this.rotation -= 30;
+		ySpeed += 0.98;
+		this.rotation += rotateSpeed;
 		super.update();
 	}
 }

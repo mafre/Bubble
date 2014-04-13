@@ -18,6 +18,7 @@ class SatelliteSequence extends Sequence implements ISequence
 		emitter = new RandomEmitter(
 			[Dolphin, Seahorse],
 			function():Int{return 200;},
+			function():Float{return 0;},
 			function():Int{return Math.floor(Math.random()*StageInfo.stageHeight*0.6-StageInfo.stageHeight*0.3);},
 			vo.speed);
 	}

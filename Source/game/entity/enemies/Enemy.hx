@@ -15,6 +15,7 @@ import flash.geom.Point;
 import game.entity.Entity;
 import game.entity.EntityType;
 import game.score.ScoreHandler;
+import game.GameProperties;
 
 class Enemy extends Entity
 {
@@ -38,6 +39,7 @@ class Enemy extends Entity
 		if(health <= 0)
 		{
 			ScoreHandler.getInstance().addScore(score);
+			GameProperties.getInstance().increaseMultiplier();
 			dispose = true;
 		}
 	}

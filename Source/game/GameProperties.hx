@@ -28,6 +28,7 @@ class GameProperties
     static public var playerY:Float;
     static public var playerWidht:Float;
     static public var playerHeight:Float;
+    static public var multiplier:Float;
 
 	public var dispatcher:EventDispatcher;
 	public var debug:Bool;
@@ -37,6 +38,7 @@ class GameProperties
         dispatcher = new EventDispatcher();
         debug = false;
         cameraYOffset = 0;
+        multiplier = 0;
         StageInfo.addEventListener(EventType.STAGE_RESIZED, stageResized);
     }
 
@@ -98,6 +100,18 @@ class GameProperties
         playerX = playerXPos;
     }
 
+    public function increaseMultiplier():Void
+    {
+        multiplier++;
+        dispatcher.dispatchEvent(new Event(EventType.UPDATE_MULTIPLIER));
+    }
+
+    public function resetMultiplier():Void
+    {
+        multiplier = 0;
+        dispatcher.dispatchEvent(new Event(EventType.UPDATE_MULTIPLIER));
+    }
+
     private function stageResized(e:Event):Void
     {
         minYOffset = setMinYOffset();
@@ -107,6 +121,7 @@ class GameProperties
     public function update():Void
     {
         distanceTravelled += globalSpeed;
+        dispatcher.dispatchEvent(new Event(EventType.UPDATE_DISTANCE));
     }
 
     public function addEventListener(type:String, listener:Function):Void

@@ -22,7 +22,7 @@ class BigFish extends Entity
 
 	private override function addImage():Void
 	{
-		image = new Image("images/game/background/floor0/bigFish.png");
+		image = new Image("images/game/background/water0/bigFish.png");
 		addChild(image);
 		image.scaleX = image.scaleY = 2;
 	}

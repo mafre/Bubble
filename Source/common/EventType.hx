@@ -13,6 +13,8 @@ class EventType
 
 	static public inline var UPDATE_SCORE:String					= "UpdateScore";
 	static public inline var UPDATE_HEALTH:String					= "UpdateHealth";
+	static public inline var UPDATE_DISTANCE:String					= "UpdateDistance";
+	static public inline var UPDATE_MULTIPLIER:String				= "UpdateMultiplier";
 
 	static public inline var ENTITY_PROPERTIES_LOADED:String		= "EntityPropertiesLoaded";
 	static public inline var SEQUENCE_PROPERTIES_LOADED:String		= "SequencePropertiesLoaded";
