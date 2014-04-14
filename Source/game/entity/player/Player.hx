@@ -19,7 +19,8 @@ import game.score.ScoreHandler;
 import common.StageInfo;
 import game.GameProperties;
 import game.entity.player.PlayerProperties;
-import game.entity.projectile.Bubble;
+import game.entity.projectile.Orb1;
+import common.Animation;
 
 class Player extends Entity
 {
@@ -32,6 +33,7 @@ class Player extends Entity
 	private var targetY:Float;
 	private var maxSatelliteCount:Int;
 	private var invunerable:Bool;
+	private var animation:Animation;
 
 	public function new(xSpeed:Float, ySpeed:Float):Void
 	{
@@ -60,7 +62,14 @@ class Player extends Entity
 		satellitePositions.push(new Point(-50, 100));
 		satellitePositions.push(new Point(-50, -100));
 
-		setEmitter(new Emitter(Bubble, 5, 15));
+		setEmitter(new Emitter(Orb1, 5, 15));
+
+		animation = new Animation("images/game/player/turtle/turtle", [0, 1, 2, 3], true);
+		addChild(animation);
+		animation.setDelay(6);
+		animation.startAnimation();
+		animation.x = -image.width/2;
+		animation.y = -image.height/2;
 
 		PlayerProperties.getInstance().dispatcher.addEventListener(EventType.PLAYER_PROPERTIES_LOADED, setProperties);
 	}
@@ -68,13 +77,14 @@ class Player extends Entity
 	private function setProperties(e:Event):Void
 	{
 		health = PlayerProperties.health;
-		setEmitter(new Emitter(Bubble, PlayerProperties.fireRate, PlayerProperties.fireSpeed));
+		setEmitter(new Emitter(Orb1, PlayerProperties.fireRate, PlayerProperties.fireSpeed));
 	}
 
 	private override function addImage():Void
 	{
-		image = new Image("images/game/player/turtle1.png");
+		image = new Image("images/game/player/turtle/turtle.png");
 		addChild(image);
+		image.visible = false;
 		image.center();
 	}
 
@@ -107,35 +117,35 @@ class Player extends Entity
 		}
 
 		var blinkDelay:Float = 0.04;
-		image.alpha = 0;
+		this.alpha = 0;
 
 		Actuate.timer(blinkDelay).onComplete(function()
 		{
-			image.alpha = 1;
+			this.alpha = 1;
 			Actuate.timer(blinkDelay).onComplete(function()
 			{
-				image.alpha = 0;
+				this.alpha = 0;
 				Actuate.timer(blinkDelay).onComplete(function()
 				{
-					image.alpha = 1;
+					this.alpha = 1;
 					Actuate.timer(blinkDelay).onComplete(function()
 					{
-						image.alpha = 0;
+						this.alpha = 0;
 						Actuate.timer(blinkDelay).onComplete(function()
 						{
-							image.alpha = 1;
+							this.alpha = 1;
 							Actuate.timer(blinkDelay).onComplete(function()
 							{
-								image.alpha = 0;
+								this.alpha = 0;
 								Actuate.timer(blinkDelay).onComplete(function()
 								{
-									image.alpha = 1;
+									this.alpha = 1;
 									Actuate.timer(blinkDelay).onComplete(function()
 									{
-										image.alpha = 0;
+										this.alpha = 0;
 										Actuate.timer(blinkDelay).onComplete(function()
 										{
-											image.alpha = 1;
+											this.alpha = 1;
 											invunerable = false;
 										});
 									});
@@ -225,6 +235,7 @@ class Player extends Entity
 
 	public override function update():Void
 	{
+		animation.update();
 		emitter.update(getEmitPosition().x, getEmitPosition().y - GameProperties.cameraYOffset, this.rotation/45);
 
 		for (i in 0...satellites.length)

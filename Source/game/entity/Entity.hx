@@ -97,7 +97,7 @@ class Entity extends Sprite
 		bodyDefinition.type = B2Body.b2_dynamicBody;
 
 		var polygon = new B2PolygonShape();
-		polygon.setAsBox((image.width / 2), (image.height / 2));
+		polygon.setAsBox((image.height / 2), (image.width / 2));
 		
 		var fixtureDefinition = new B2FixtureDef();
 		fixtureDefinition.shape = polygon;

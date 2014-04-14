@@ -12,7 +12,7 @@ import game.emitter.*;
 import utils.SoundHandler;
 import game.entity.EntityType;
 import game.entity.satellite.Satellite;
-import game.entity.projectile.Bubble;
+import game.entity.projectile.Orb1;
 import game.entity.player.Player;
 
 class SineSatellite extends Satellite
@@ -25,7 +25,7 @@ class SineSatellite extends Satellite
 
 	private override function setEmitter():Void
 	{
-		emitter = new SineEmitter(Bubble, 10, 10);
+		emitter = new SineEmitter(Orb1, 10, 10);
 	}
 
 	private override function addImage():Void

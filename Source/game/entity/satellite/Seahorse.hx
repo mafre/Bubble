@@ -12,7 +12,7 @@ import game.emitter.*;
 import utils.SoundHandler;
 import game.entity.EntityType;
 import game.entity.satellite.Satellite;
-import game.entity.projectile.Bubble;
+import game.entity.projectile.Orb1;
 import game.entity.player.Player;
 
 class Seahorse extends Satellite
@@ -31,7 +31,7 @@ class Seahorse extends Satellite
 
 	private override function setEmitter():Void
 	{
-		emitter = new SprayEmitter(Bubble, 5, 10);
+		emitter = new SprayEmitter(Orb1, 5, 10);
 		var e:SprayEmitter = cast(emitter, SprayEmitter);
 		e.setAmount(1, Math.PI/5);
 	}

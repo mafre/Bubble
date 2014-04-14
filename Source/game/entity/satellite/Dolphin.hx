@@ -12,7 +12,7 @@ import game.emitter.*;
 import utils.SoundHandler;
 import game.entity.EntityType;
 import game.entity.satellite.Satellite;
-import game.entity.projectile.Bubble;
+import game.entity.projectile.Orb1;
 import game.entity.player.Player;
 
 class Dolphin extends Satellite
@@ -31,7 +31,7 @@ class Dolphin extends Satellite
 
 	private override function setEmitter():Void
 	{
-		emitter = new MultiEmitter(Bubble, 20, 10);
+		emitter = new MultiEmitter(Orb1, 20, 10);
 		var e:MultiEmitter = cast(emitter, MultiEmitter);
 		e.setAmount(3, Math.PI/5);
 	}

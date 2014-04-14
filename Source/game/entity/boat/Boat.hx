@@ -11,7 +11,7 @@ import game.GameProperties;
 import game.emitter.*;
 import common.EventType;
 import common.StageInfo;
-import game.entity.projectile.Bubble;
+import game.entity.projectile.Orb1;
 
 class Boat extends Entity
 {
@@ -56,7 +56,7 @@ class Boat extends Entity
 
 	private function setEmitter():Void
 	{
-		emitter = new Emitter(Bubble, 5, 5);
+		emitter = new Emitter(Orb1, 5, 5);
 	}
 
 	public function getEmitPosition():Point

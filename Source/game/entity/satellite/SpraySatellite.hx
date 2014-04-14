@@ -12,7 +12,7 @@ import game.emitter.*;
 import utils.SoundHandler;
 import game.entity.EntityType;
 import game.entity.satellite.Satellite;
-import game.entity.projectile.Bubble;
+import game.entity.projectile.Orb1;
 import game.entity.player.Player;
 
 class SpraySatellite extends Satellite
@@ -25,7 +25,7 @@ class SpraySatellite extends Satellite
 
 	private override function setEmitter():Void
 	{
-		emitter = new SprayEmitter(Bubble, 5, 15);
+		emitter = new SprayEmitter(Orb1, 5, 15);
 	}
 
 	private override function addImage():Void

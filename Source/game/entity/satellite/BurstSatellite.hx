@@ -12,7 +12,7 @@ import game.emitter.*;
 import utils.SoundHandler;
 import game.entity.EntityType;
 import game.entity.satellite.Satellite;
-import game.entity.projectile.Bubble;
+import game.entity.projectile.Orb1;
 import game.entity.player.Player;
 
 class BurstSatellite extends Satellite
@@ -25,7 +25,7 @@ class BurstSatellite extends Satellite
 
 	private override function setEmitter():Void
 	{
-		emitter = new BurstEmitter(Bubble, 50, 10);
+		emitter = new BurstEmitter(Orb1, 50, 10);
 		var e:BurstEmitter = cast(emitter, BurstEmitter);
 		e.setBurst(30, 3);
 	}

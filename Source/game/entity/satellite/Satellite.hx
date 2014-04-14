@@ -12,7 +12,7 @@ import game.emitter.*;
 import utils.SoundHandler;
 import game.entity.EntityType;
 import game.entity.satellite.Satellite;
-import game.entity.projectile.Bubble;
+import game.entity.projectile.Orb1;
 import game.entity.player.Player;
 import game.GameProperties;
 
@@ -56,7 +56,7 @@ class Satellite extends Entity
 
 	private function setEmitter():Void
 	{
-		emitter = new Emitter(Bubble, 5, 15);
+		emitter = new Emitter(Orb1, 5, 15);
 	}
 
 	public function getEmitPosition():Point

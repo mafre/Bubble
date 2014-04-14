@@ -2,7 +2,7 @@ package game.sequence;
 
 import game.sequence.ISequence;
 import game.emitter.Emitter;
-import game.entity.projectile.Bubble;
+import game.entity.projectile.Orb1;
 import game.sequence.SequenceVO;
 
 class Sequence implements ISequence
@@ -36,7 +36,7 @@ class Sequence implements ISequence
 
 	public function setEmitter():Void
 	{
-		this.emitter = new Emitter(Bubble, 10, vo.speed);
+		this.emitter = new Emitter(Orb1, 10, vo.speed);
 	}
 
 	public function update():Bool

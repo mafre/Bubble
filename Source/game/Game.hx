@@ -35,7 +35,7 @@ import game.ContactListener;
 import game.level.Level;
 import game.entity.EntityType;
 import game.entity.EntityHandler;
-import game.entity.projectile.Bubble;
+import game.entity.projectile.Orb1;
 import game.score.ScoreHandler;
 import game.GameEngine;
 import game.GameProperties;
