@@ -21,6 +21,8 @@ class Enemy extends Entity
 {
 	private var health:Float;
 	private var score:Int;
+	public var id:String;
+	public var info:String;
 
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
@@ -31,6 +33,40 @@ class Enemy extends Entity
 		type = EntityType.ENEMY;
 		layer = 5;
 	};
+
+	private function getXDelta(xPos:Float):Float
+	{
+		return GameProperties.playerX-xPos;
+	}
+
+	private function getYDelta(yPos:Float):Float
+	{
+		return GameProperties.playerY-(yPos+GameProperties.cameraYOffset);
+	}
+
+	private function getDistance(xPos:Float, yPos:Float):Float
+	{
+		var xDelta:Float = getXDelta(xPos);
+		var yDelta:Float = getYDelta(yPos);
+		var d:Float = Math.sqrt(xDelta*xDelta+yDelta*yDelta);
+		return d;
+	}
+
+	private function getAttractionSpeed(distance:Float):Float
+	{
+		return 3*(3.5-(distance/100+0.5));
+	}
+
+	private function attractToPlayer():Void
+	{
+		var d:Float = getDistance(this.x, this.y);
+
+		if(d < 400)
+		{
+			setXPosition((getXDelta(this.x)/d)*getAttractionSpeed(d)+GameProperties.globalSpeed);
+			setYPosition((getYDelta(this.y)/d)*getAttractionSpeed(d));
+		}
+	}
 
 	public function takeDamage(damage:Float = 1):Void
 	{

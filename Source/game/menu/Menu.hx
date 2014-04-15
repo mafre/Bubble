@@ -7,6 +7,7 @@ import flash.text.TextField;
 
 import game.menu.Settings;
 import game.menu.Stats;
+import game.menu.Log;
 import utils.TextfieldFactory;
 import common.StageInfo;
 import common.GridSprite;
@@ -38,6 +39,7 @@ class Menu extends Sprite
 	private var settingsButton:ImageButton;
 	private var propertiesButton:ImageButton;
 	private var statsButton:ImageButton;
+	private var logButton:ImageButton;
 	private var score:TextField;
 	private var health:TextField;
 	private var distance:TextField;
@@ -45,6 +47,7 @@ class Menu extends Sprite
 	private var stars:TextField;
 	private var settings:Settings;
 	private var stats:Stats;
+	private var log:Log;
 
 	public function new()
 	{
@@ -67,10 +70,16 @@ class Menu extends Sprite
 		statsButton.x = propertiesButton.x + propertiesButton.width + 10;
 		statsButton.y = 10;
 
+		logButton = new ImageButton("images/buttons/image/settings2.png");
+		logButton.addEventListener(EventType.BUTTON_PRESSED, logSelected);
+		addChild(logButton);
+		logButton.x = statsButton.x + statsButton.width + 10;
+		logButton.y = 10;
+
 		score = TextfieldFactory.getDefault();
 		addChild(score);
 		score.y = 10;
-		score.x = statsButton.x + statsButton.width + 10;
+		score.x = logButton.x + logButton.width + 10;
 		updateScore();
 
 		health = TextfieldFactory.getDefault();
@@ -104,6 +113,10 @@ class Menu extends Sprite
 		stats = new Stats();
 		addChild(stats);
 		stats.visible = false;
+
+		log = new Log();
+		addChild(log);
+		log.visible = false;
 
 		ScoreHandler.getInstance().addEventListener(EventType.UPDATE_SCORE, updateScore);
 		ScoreHandler.getInstance().addEventListener(EventType.UPDATE_HEALTH, updateHealth);
@@ -151,6 +164,11 @@ class Menu extends Sprite
 	public function statsSelected(e:Event):Void
 	{
 		stats.visible = true;
+	};
+
+	public function logSelected(e:Event):Void
+	{
+		log.visible = true;
 	};
 
 	public function loadProperties(e:Event):Void

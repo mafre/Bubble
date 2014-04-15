@@ -16,11 +16,14 @@ class Jellyfish extends Enemy
 	{
 		super(xSpeed, ySpeed);
 		health = 5;
+		id = "Jellyfish";
+		info = "Will burn if touched";
 	}
 
 	private override function addImage():Void
 	{
-		image = new Image("images/game/enemy/jellyfish.png");
+		path = "images/game/enemy/jellyfish.png";
+		image = new Image(path, true);
 		addChild(image);
 		image.center();
 	}

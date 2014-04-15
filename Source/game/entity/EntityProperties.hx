@@ -3,6 +3,7 @@ package game.entity;
 import openfl.Assets;
 import haxe.Json;
 import sys.io.File;
+import haxe.ds.StringMap;
 
 import flash.events.EventDispatcher;
 import flash.media.*;
@@ -11,7 +12,9 @@ import flash.net.SharedObject;
 import flash.utils.Function;
 
 import common.EventType;
+import common.DataEvent;
 import game.GameProperties;
+import game.entity.enemies.Enemy;
 
 class EntityProperties
 {
@@ -24,9 +27,16 @@ class EntityProperties
 	static public var Projectile_axe_speed:Float;
 	static public var Projectile_cannonball_speed:Float;
 
+	static public var enemySpawnCount:StringMap<Int>;
+
+	private var so:SharedObject;
+
 	public function new():Void
     {
         dispatcher = new EventDispatcher();
+		so = SharedObject.getLocal("entity");
+
+		enemySpawnCount = new StringMap<Int>();
     }
 
     public function addEventListener(type:String, listener:Function):Void
@@ -54,7 +64,41 @@ class EntityProperties
 
 		setProperties(properties);
 
+		if(so.data.enemySpawnCount != null)
+		{
+			enemySpawnCount = so.data.enemySpawnCount;
+			trace(enemySpawnCount);
+		}
+		else
+		{
+			so.data.enemySpawnCount = enemySpawnCount;
+			so.flush();
+		}
+
 		dispatcher.dispatchEvent(new Event(EventType.ENTITY_PROPERTIES_LOADED));
+	}
+
+	public function enemySpawned(enemy:Enemy):Void
+	{
+		if(enemySpawnCount.exists(enemy.id))
+		{
+			var count:Int = enemySpawnCount.get(enemy.id);
+			count++;
+			enemySpawnCount.set(enemy.id, count);
+		}
+		else
+		{
+			enemySpawnCount.set(enemy.id, 1);
+			dispatcher.dispatchEvent(new DataEvent(EventType.NEW_ENEMY_ENCOUNTER, enemy));
+
+			so.data.enemySpawnCount = enemySpawnCount;
+			so.flush();
+		}
+	}
+
+	public function hasEnemySpawned(id:String):Bool
+	{
+		return enemySpawnCount.exists(id);
 	}
 
 	private function setProperties(properties:Dynamic):Void

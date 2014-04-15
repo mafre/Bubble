@@ -52,4 +52,18 @@ class PositionHelper
 			}
 		}
 	}
+
+	public static inline function alignTiled(items:Array<Dynamic>, position:Point, gap:Float, maxWidth:Float):Void
+	{
+		var posX:Float = position.x;
+		var posY:Float = position.y;
+
+		for (item in items)
+		{
+			item.x = posX;
+			item.y = posY;
+
+			posX += item.width + gap;
+		}
+	}
 }

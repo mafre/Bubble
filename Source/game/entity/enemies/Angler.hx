@@ -17,11 +17,14 @@ class Angler extends Enemy
 		super(xSpeed, ySpeed);
 		health = 10;
 		score = 10;
+		id = "Angler";
+		info = "Will chase pray in proximity";
 	}
 
 	private override function addImage():Void
 	{
-		image = new Image("images/game/enemy/angler.png", true);
+		path = "images/game/enemy/angler.png";
+		image = new Image(path, true);
 		addChild(image);
 		image.center();
 	}
@@ -37,6 +40,9 @@ class Angler extends Enemy
 		{
 			setXPosition(xSpeed);
 			setYPosition(ySpeed + Math.sin(this.x/100));
+
+			//attractToPlayer();
+
 			super.checkBoundaries();
 		}
 

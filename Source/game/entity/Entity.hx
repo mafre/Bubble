@@ -29,7 +29,7 @@ class Entity extends Sprite
 	private var image:Image;
 	public var xSpeed:Float;
 	public var ySpeed:Float;
-	private var path:String;
+	public var path:String;
 	public var layer:Int;
 	public var offsetY:Float;
 

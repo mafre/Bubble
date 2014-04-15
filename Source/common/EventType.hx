@@ -24,4 +24,6 @@ class EventType
 	static public inline var SEQUENCE_PROPERTIES_LOADED:String		= "SequencePropertiesLoaded";
 	static public inline var GAME_PROPERTIES_LOADED:String			= "GamePropertiesLoaded";
 	static public inline var PLAYER_PROPERTIES_LOADED:String		= "PlayerPropertiesLoaded";
+
+	static public inline var NEW_ENEMY_ENCOUNTER:String				= "NewEnemyEncounter";
 }

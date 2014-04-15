@@ -11,6 +11,7 @@ import game.entity.EntityProperties;
 import game.entity.Entity;
 import game.entity.EntityType;
 import game.GameProperties;
+import game.entity.enemies.Enemy;
 
 import box2D.dynamics.B2World;
 
@@ -69,6 +70,13 @@ class EntityHandler
         if(entity.addToStage)
         {
             layers[entity.layer].addChild(entity);
+        }
+
+        switch (entity.type)
+        {
+            case EntityType.ENEMY:
+                var enemy:Enemy = cast(entity, Enemy);
+                EntityProperties.getInstance().enemySpawned(enemy);
         }
     }
 
