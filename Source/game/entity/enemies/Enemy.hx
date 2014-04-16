@@ -22,8 +22,6 @@ class Enemy extends Entity
 {
 	private var health:Float;
 	private var score:Int;
-	public var id:String;
-	public var info:String;
 
 	public function new(xSpeed:Float, ySpeed:Float)
 	{

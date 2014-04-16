@@ -40,6 +40,8 @@ class Satellite extends Entity
 
 		emitPosition = new Point(0, -15);
 		setEmitter();
+
+		path = getPath();
 	};
 
 	private function getPath():String

@@ -40,7 +40,7 @@ class SequenceProperties
         }
         else
         {
-            properties = Json.parse(Assets.getText("assets/json/sequenceProperties8.json"));
+            properties = Json.parse(Assets.getText("assets/json/sequenceProperties9.json"));
         }
 
         setProperties(Reflect.field(properties.sequences, id));

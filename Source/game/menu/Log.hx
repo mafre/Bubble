@@ -23,6 +23,8 @@ import common.Slider;
 import game.entity.EntityProperties;
 import game.entity.enemies.Enemy;
 import game.entity.enemies.*;
+import game.entity.Entity;
+import game.entity.satellite.*;
 
 class Log extends Sprite
 {
@@ -30,7 +32,8 @@ class Log extends Sprite
 	private var container:Sprite;
 	private var closeButton:LabelButton;
 
-	private var enemyItems:Array<EnemyItem>;
+	private var enemyIcons:Array<Icon>;
+	private var satelliteIcons:Array<Icon>;
 
 	public function new():Void
 	{
@@ -46,23 +49,35 @@ class Log extends Sprite
 		closeButton.addEventListener(EventType.BUTTON_PRESSED, closeSelected);
 		container.addChild(closeButton);
 
-		enemyItems = new Array<EnemyItem>();
+		enemyIcons = new Array<Icon>();
+		satelliteIcons = new Array<Icon>();
 
 		var angler:Angler = new Angler(0, 0);
-		addEnemyItem(angler);
+		addEnemyIcon(angler);
 
 		var jellyfish:Jellyfish = new Jellyfish(0, 0);
-		addEnemyItem(jellyfish);
+		addEnemyIcon(jellyfish);
 
-		PositionHelper.alignTiled(enemyItems, new Point(closeButton.x + closeButton.width + 10, closeButton.y), 10, StageInfo.stageWidth - closeButton.x - closeButton.width - 10);
+		var narwhal:Narwhal = new Narwhal(0, 0);
+		addEnemyIcon(narwhal);
+
+		var seahorse:Seahorse = new Seahorse(0, 0);
+		addSatelliteIcon(seahorse);
+
+		var dolphin:Dolphin = new Dolphin(0, 0);
+		addSatelliteIcon(dolphin);
+
+		PositionHelper.alignTiled(enemyIcons, new Point(closeButton.x + closeButton.width + 10, closeButton.y), 10, StageInfo.stageWidth - closeButton.x - closeButton.width - 10);
+
+		PositionHelper.alignTiled(satelliteIcons, new Point(closeButton.x + closeButton.width + 10, enemyIcons[enemyIcons.length-1].y + enemyIcons[enemyIcons.length-1].height + 20), 10, StageInfo.stageWidth - closeButton.x - closeButton.width - 10);
 
 		EntityProperties.getInstance().dispatcher.addEventListener(EventType.NEW_ENEMY_ENCOUNTER, unlockEnemy);
 
-		for (item in enemyItems)
+		for (icon in enemyIcons)
 		{
-			if(EntityProperties.getInstance().hasEnemySpawned(item.id))
+			if(EntityProperties.getInstance().hasEnemySpawned(icon.id))
 			{
-				item.unlock();
+				icon.unlock();
 			}
 		}
 
@@ -70,24 +85,31 @@ class Log extends Sprite
 		resize();
 	};
 
-	private function addEnemyItem(enemy:Enemy):Void
+	private function addEnemyIcon(enemy:Enemy):Void
 	{
-		var item:EnemyItem = new EnemyItem(enemy);
-		container.addChild(item);
-		enemyItems.push(item);
+		var icon:Icon = new Icon(enemy);
+		container.addChild(icon);
+		enemyIcons.push(icon);
 	}
 
 	private function unlockEnemy(e:DataEvent):Void
 	{
 		var enemy:Enemy = cast(e.data, Enemy);
 
-		for (item in enemyItems)
+		for (icon in enemyIcons)
 		{
-			if(item.id == enemy.id)
+			if(icon.id == enemy.id)
 			{
-				item.unlock();
+				icon.unlock();
 			}
 		}
+	}
+
+	private function addSatelliteIcon(satellite:Satellite):Void
+	{
+		var icon:Icon = new Icon(satellite);
+		container.addChild(icon);
+		satelliteIcons.push(icon);
 	}
 
 	public function closeSelected(e:Event):Void
@@ -103,7 +125,7 @@ class Log extends Sprite
 	};
 }
 
-class EnemyItem extends Sprite
+class Icon extends Sprite
 {
 	public var id:String;
 	private var index:Int;
@@ -111,18 +133,18 @@ class EnemyItem extends Sprite
 	private var image:Image;
 	private var unlocked:Bool;
 
-	public function new(enemy:Enemy):Void
+	public function new(entity:Entity):Void
 	{
 		super();
 
-		id = enemy.id;
+		id = entity.id;
 		unlocked = false;
 
 		titleText = TextfieldFactory.getDefault();
-		titleText.text = enemy.id;
+		titleText.text = entity.id;
 		addChild(titleText);
 
-		image = new Image(enemy.path);
+		image = new Image(entity.path);
 		addChild(image);
 		image.alpha = 0.5;
 

@@ -22,6 +22,8 @@ class Seahorse extends Satellite
 		super(xSpeed, ySpeed);
 		duration = 120;
 		emitPosition = new Point(20, -25);
+		id = "Seahorse";
+		info = "Sprays bullets";
 	};
 
 	private override function getPath():String

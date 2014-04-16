@@ -32,6 +32,9 @@ class Entity extends Sprite
 	public var path:String;
 	public var layer:Int;
 	public var offsetY:Float;
+	
+	public var id:String;
+	public var info:String;
 
 	private var bodyDefinition:B2BodyDef;
 	public var body:B2Body;

@@ -22,6 +22,8 @@ class Dolphin extends Satellite
 		super(xSpeed, ySpeed);
 		duration = 30;
 		emitPosition = new Point(20, 0);
+		id = "Dolphin";
+		info = "Shoots multiple shots at once";
 	};
 
 	private override function getPath():String
