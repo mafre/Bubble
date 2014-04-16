@@ -12,6 +12,7 @@ import game.entity.Entity;
 import game.entity.EntityType;
 import game.GameProperties;
 import game.entity.enemies.Enemy;
+import game.entity.satellite.Satellite;
 
 import box2D.dynamics.B2World;
 
@@ -77,6 +78,10 @@ class EntityHandler
             case EntityType.ENEMY:
                 var enemy:Enemy = cast(entity, Enemy);
                 EntityProperties.getInstance().enemySpawned(enemy);
+
+            case EntityType.SATELLITE:
+                var satellite:Satellite = cast(entity, Satellite);
+                EntityProperties.getInstance().satelliteSpawned(satellite);
         }
     }
 

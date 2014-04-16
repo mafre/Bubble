@@ -26,4 +26,5 @@ class EventType
 	static public inline var PLAYER_PROPERTIES_LOADED:String		= "PlayerPropertiesLoaded";
 
 	static public inline var NEW_ENEMY_ENCOUNTER:String				= "NewEnemyEncounter";
+	static public inline var NEW_SATELLITE_ENCOUNTER:String			= "NewSatelliteEncounter";
 }

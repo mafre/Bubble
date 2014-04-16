@@ -14,6 +14,7 @@ import utils.SoundHandler;
 import game.entity.EntityHandler;
 import game.entity.Entity;
 import game.entity.satellite.Satellite;
+import game.entity.EntityProperties;
 import game.emitter.*;
 import game.score.ScoreHandler;
 import common.StageInfo;
@@ -166,6 +167,7 @@ class Player extends Entity
 		satellite.addBody = false;
 		satellite.setState(Satellite.State_Added);
 		EntityHandler.getInstance().addEntity(satellite);
+		EntityProperties.getInstance().satelliteUsed(satellite);
 
 		if(satellites.length == maxSatelliteCount)
 		{

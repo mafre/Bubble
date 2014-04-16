@@ -15,6 +15,7 @@ import common.EventType;
 import common.DataEvent;
 import game.GameProperties;
 import game.entity.enemies.Enemy;
+import game.entity.satellite.Satellite;
 
 class EntityProperties
 {
@@ -30,6 +31,9 @@ class EntityProperties
 	static public var enemySpawnCount:StringMap<Int>;
 	static public var enemyKillCount:StringMap<Int>;
 
+	static public var satelliteSpawnCount:StringMap<Int>;
+	static public var satelliteUseCount:StringMap<Int>;
+
 	private var so:SharedObject;
 
 	public function new():Void
@@ -39,6 +43,8 @@ class EntityProperties
 
 		enemySpawnCount = new StringMap<Int>();
 		enemyKillCount = new StringMap<Int>();
+		satelliteSpawnCount = new StringMap<Int>();
+		satelliteUseCount = new StringMap<Int>();
     }
 
     public function addEventListener(type:String, listener:Function):Void
@@ -86,6 +92,26 @@ class EntityProperties
 			so.flush();
 		}
 
+		if(so.data.satelliteSpawnCount != null)
+		{
+			satelliteSpawnCount = so.data.satelliteSpawnCount;
+		}
+		else
+		{
+			so.data.satelliteSpawnCount = satelliteSpawnCount;
+			so.flush();
+		}
+
+		if(so.data.satelliteUseCount != null)
+		{
+			satelliteUseCount = so.data.satelliteUseCount;
+		}
+		else
+		{
+			so.data.satelliteUseCount = satelliteUseCount;
+			so.flush();
+		}
+
 		dispatcher.dispatchEvent(new Event(EventType.ENTITY_PROPERTIES_LOADED));
 	}
 
@@ -127,6 +153,46 @@ class EntityProperties
 	public function hasEnemySpawned(id:String):Bool
 	{
 		return enemySpawnCount.exists(id);
+	}
+
+	public function satelliteSpawned(satellite:Satellite):Void
+	{
+		if(satelliteSpawnCount.exists(satellite.id))
+		{
+			var count:Int = satelliteSpawnCount.get(satellite.id);
+			count++;
+			satelliteSpawnCount.set(satellite.id, count);
+		}
+		else
+		{
+			satelliteSpawnCount.set(satellite.id, 1);
+			dispatcher.dispatchEvent(new DataEvent(EventType.NEW_SATELLITE_ENCOUNTER, satellite));
+
+			so.data.satelliteSpawnCount = satelliteSpawnCount;
+			so.flush();
+		}
+	}
+
+	public function satelliteUsed(satellite:Satellite):Void
+	{
+		if(satelliteUseCount.exists(satellite.id))
+		{
+			var count:Int = satelliteUseCount.get(satellite.id);
+			count++;
+			satelliteUseCount.set(satellite.id, count);
+		}
+		else
+		{
+			satelliteUseCount.set(satellite.id, 1);
+
+			so.data.satelliteUseCount = satelliteUseCount;
+			so.flush();
+		}
+	}
+
+	public function hasSatelliteSpawned(id:String):Bool
+	{
+		return satelliteSpawnCount.exists(id);
 	}
 
 	private function setProperties(properties:Dynamic):Void

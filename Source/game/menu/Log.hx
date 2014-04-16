@@ -72,10 +72,19 @@ class Log extends Sprite
 		PositionHelper.alignTiled(satelliteIcons, new Point(closeButton.x + closeButton.width + 10, enemyIcons[enemyIcons.length-1].y + enemyIcons[enemyIcons.length-1].height + 20), 10, StageInfo.stageWidth - closeButton.x - closeButton.width - 10);
 
 		EntityProperties.getInstance().dispatcher.addEventListener(EventType.NEW_ENEMY_ENCOUNTER, unlockEnemy);
+		EntityProperties.getInstance().dispatcher.addEventListener(EventType.NEW_SATELLITE_ENCOUNTER, unlockSatellite);
 
 		for (icon in enemyIcons)
 		{
 			if(EntityProperties.getInstance().hasEnemySpawned(icon.id))
+			{
+				icon.unlock();
+			}
+		}
+
+		for (icon in satelliteIcons)
+		{
+			if(EntityProperties.getInstance().hasSatelliteSpawned(icon.id))
 			{
 				icon.unlock();
 			}
@@ -99,6 +108,19 @@ class Log extends Sprite
 		for (icon in enemyIcons)
 		{
 			if(icon.id == enemy.id)
+			{
+				icon.unlock();
+			}
+		}
+	}
+
+	private function unlockSatellite(e:DataEvent):Void
+	{
+		var satellite:Satellite = cast(e.data, Satellite);
+
+		for (icon in satelliteIcons)
+		{
+			if(icon.id == satellite.id)
 			{
 				icon.unlock();
 			}
