@@ -28,6 +28,7 @@ class EntityProperties
 	static public var Projectile_cannonball_speed:Float;
 
 	static public var enemySpawnCount:StringMap<Int>;
+	static public var enemyKillCount:StringMap<Int>;
 
 	private var so:SharedObject;
 
@@ -37,6 +38,7 @@ class EntityProperties
 		so = SharedObject.getLocal("entity");
 
 		enemySpawnCount = new StringMap<Int>();
+		enemyKillCount = new StringMap<Int>();
     }
 
     public function addEventListener(type:String, listener:Function):Void
@@ -67,11 +69,20 @@ class EntityProperties
 		if(so.data.enemySpawnCount != null)
 		{
 			enemySpawnCount = so.data.enemySpawnCount;
-			trace(enemySpawnCount);
 		}
 		else
 		{
 			so.data.enemySpawnCount = enemySpawnCount;
+			so.flush();
+		}
+
+		if(so.data.enemyKillCount != null)
+		{
+			enemyKillCount = so.data.enemyKillCount;
+		}
+		else
+		{
+			so.data.enemyKillCount = enemyKillCount;
 			so.flush();
 		}
 
@@ -92,6 +103,23 @@ class EntityProperties
 			dispatcher.dispatchEvent(new DataEvent(EventType.NEW_ENEMY_ENCOUNTER, enemy));
 
 			so.data.enemySpawnCount = enemySpawnCount;
+			so.flush();
+		}
+	}
+
+	public function enemyKilled(enemy:Enemy):Void
+	{
+		if(enemyKillCount.exists(enemy.id))
+		{
+			var count:Int = enemyKillCount.get(enemy.id);
+			count++;
+			enemyKillCount.set(enemy.id, count);
+		}
+		else
+		{
+			enemyKillCount.set(enemy.id, 1);
+
+			so.data.enemyKillCount = enemyKillCount;
 			so.flush();
 		}
 	}

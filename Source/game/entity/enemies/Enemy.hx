@@ -13,6 +13,7 @@ import utils.SoundHandler;
 import flash.geom.Point;
 
 import game.entity.Entity;
+import game.entity.EntityProperties;
 import game.entity.EntityType;
 import game.score.ScoreHandler;
 import game.GameProperties;
@@ -76,6 +77,7 @@ class Enemy extends Entity
 		{
 			ScoreHandler.getInstance().addScore(score);
 			GameProperties.getInstance().increaseMultiplier();
+			EntityProperties.getInstance().enemyKilled(this);
 			dispose = true;
 		}
 	}

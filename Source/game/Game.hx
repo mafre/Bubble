@@ -103,7 +103,7 @@ class Game extends Sprite
 		World = new B2World (new B2Vec2 (0, 10.0), true);
 		contactListener = new ContactListener();
 		World.setContactListener(contactListener);
-		World.setGravity(new B2Vec2(0, 0));
+		World.setGravity(new B2Vec2(0, -5));
  	
  		PhysicsDebug = new Sprite();
 		addChild(PhysicsDebug);
