@@ -10,6 +10,7 @@ import game.entity.EntityType;
 import common.StageInfo;
 import utils.SoundHandler;
 import game.entity.player.PlayerProperties;
+import utils.SWFHandler;
 
 import game.entity.enemies.Enemy;
 
@@ -17,17 +18,10 @@ class Orb1 extends Entity
 {
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super("orb", xSpeed, ySpeed);
 		type = EntityType.PROJECTILE;
 		layer = 8;
 	};
-
-	private override function addImage():Void
-	{
-		image = new Image("images/game/projectile/orb/orb2.png");
-		addChild(image);
-		image.center();
-	}
 	
 	public override function handleCollision(entity:Entity):Void
 	{
@@ -43,7 +37,7 @@ class Orb1 extends Entity
 
 	public override function checkBoundaries():Bool
 	{
-		if(this.x < -image.width || this.y < GameProperties.worldTop+25 || this.y > GameProperties.worldBottom-image.height)
+		if(this.x < -mc.width || this.y < GameProperties.worldTop+25 || this.y > GameProperties.worldBottom-mc.height)
 		{
 			dispose = true;
 		}

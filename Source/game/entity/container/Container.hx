@@ -10,6 +10,7 @@ import game.GameProperties;
 import game.entity.Entity;
 import game.emitter.*;
 import common.StageInfo;
+import utils.SWFHandler;
 
 class Container extends Entity
 {
@@ -21,9 +22,9 @@ class Container extends Entity
 	private var emitPosition:Point;
 	private var health:Int;
 
-	public function new(xSpeed:Float, ySpeed:Float)
+	public function new(id:String, xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super(id, xSpeed, ySpeed);
 		type = EntityType.CONTAINER;
 		layer = 3;
 		health = 1;
@@ -46,17 +47,6 @@ class Container extends Entity
 	{
 		return this.localToGlobal(emitPosition);
 	};
-
-	private function getPath():String
-	{
-		return "";
-	}
-
-	private override function addImage():Void
-	{
-		image = new Image(getPath()+"_Closed.png");
-		addChild(image);
-	}
 
 	public function mouseDown(e:MouseEvent):Void
 	{
@@ -85,14 +75,16 @@ class Container extends Entity
 		switch (state)
 		{
 			case State_Open:
-				image.parent.removeChild(image);
-				image = new Image(getPath()+"_Open.png");
-				addChild(image);
+				mc.parent.removeChild(mc);
+				trace(id);
+				trace(id+"_Open");
+				mc = SWFHandler.getMovieclip(id+"_Open");
+				addChild(mc);
 
 			case State_Closed:
-				image.parent.removeChild(image);
-				image = new Image(getPath()+"_Closed.png");
-				addChild(image);
+				mc.parent.removeChild(mc);
+				mc = SWFHandler.getMovieclip(id+"_Closed");
+				addChild(mc);
 		}
 	}
 }

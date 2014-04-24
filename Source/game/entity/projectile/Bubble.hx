@@ -10,6 +10,7 @@ import game.entity.EntityType;
 import common.StageInfo;
 import utils.SoundHandler;
 import game.entity.player.PlayerProperties;
+import utils.SWFHandler;
 
 import game.entity.enemies.Enemy;
 

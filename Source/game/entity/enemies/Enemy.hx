@@ -11,6 +11,7 @@ import common.EventType;
 import common.StageInfo;
 import utils.SoundHandler;
 import flash.geom.Point;
+import utils.SWFHandler;
 
 import game.entity.Entity;
 import game.entity.EntityProperties;
@@ -23,9 +24,9 @@ class Enemy extends Entity
 	private var health:Float;
 	private var score:Int;
 
-	public function new(xSpeed:Float, ySpeed:Float)
+	public function new(id:String, xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super(id, xSpeed, ySpeed);
 
 		health = 1;
 		score = 5;

@@ -8,21 +8,15 @@ import common.Image;
 import game.entity.Entity;
 import game.entity.EntityType;
 import common.StageInfo;
+import utils.SWFHandler;
 
 class Surface0 extends Entity
 {
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super("surface", xSpeed, ySpeed);
 		type = EntityType.BACKGROUND;
 		layer = 3;
 		addBody = false;
 	};
-
-	private override function addImage():Void
-	{
-		image = new Image("images/game/background/surface.png");
-		addChild(image);
-		image.alpha = 0.5;
-	}
 }

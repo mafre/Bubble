@@ -12,12 +12,13 @@ import common.StageInfo;
 import game.entity.container.Container;
 import game.emitter.MultiEmitter;
 import game.entity.score.Coin;
+import utils.SWFHandler;
 
 class Safe extends Container
 {
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super("safe", xSpeed, ySpeed);
 		health = 3;
 		emitPosition = new Point(15, 0);
 	}
@@ -27,10 +28,5 @@ class Safe extends Container
 		emitter = new MultiEmitter(Coin, 1, 10);
 		var e:MultiEmitter = cast(emitter, MultiEmitter);
 		e.setAmount(6, Math.PI/1.5);
-	}
-
-	private override function getPath():String
-	{
-		return "images/game/container/safe";
 	}
 }

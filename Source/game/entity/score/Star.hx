@@ -13,6 +13,7 @@ import common.StageInfo;
 import game.entity.score.Score;
 import game.score.ScoreHandler;
 import game.entity.player.PlayerProperties;
+import utils.SWFHandler;
 
 class Star extends Score
 {
@@ -20,17 +21,10 @@ class Star extends Score
 
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super("star", xSpeed, ySpeed);
 		yComplete = false;
 		points = 5;
 	};
-
-	private override function addImage():Void
-	{
-		image = new Image("images/game/score/star2.png");
-		addChild(image);
-		image.center();
-	}
 
 	public override function handleCollision(entity:Entity):Void
 	{

@@ -13,20 +13,16 @@ import game.emitter.*;
 import game.entity.boat.Boat;
 import game.entity.projectile.Cannonball;
 import game.entity.EntityProperties;
+import utils.SWFHandler;
 
 class Pirate extends Boat
 {
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super("pirate", xSpeed, ySpeed);
 		emitPosition = new Point(40, 90);
 		EntityProperties.getInstance().addEventListener(EventType.ENTITY_PROPERTIES_LOADED, reload);
 	};
-
-	private override function getPath():String
-	{
-		return "images/game/boat/pirate2.png";
-	}
 
 	private override function setEmitter():Void
 	{

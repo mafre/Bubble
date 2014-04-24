@@ -13,6 +13,7 @@ import game.addon.Addon;
 import utils.SoundHandler;
 import utils.TextfieldFactory;
 import common.StageInfo;
+import utils.SWFHandler;
 
 import box2D.collision.shapes.B2CircleShape;
 import box2D.collision.shapes.B2PolygonShape;

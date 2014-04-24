@@ -19,6 +19,7 @@ import game.GameEngine;
 import game.sequence.SequenceProperties;
 import game.entity.player.PlayerProperties;
 import utils.SoundHandler;
+import utils.SWFHandler;
 
 @:font("F.ttf") class DefaultFont extends Font {}
 @:font("OpenSans-Regular.ttf") class OpenSansFont extends Font {}
@@ -42,6 +43,7 @@ class Main extends Sprite
 		Font.registerFont(OpenSansFont);
 
 		var soundHandler:SoundHandler = new SoundHandler();
+		var swfHandler:SWFHandler = new SWFHandler();
 		var entityProperties:EntityProperties = new EntityProperties();
 		var gameProperties:GameProperties = new GameProperties();
 		var gameEngine:GameEngine = new GameEngine();

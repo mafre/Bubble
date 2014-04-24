@@ -12,6 +12,7 @@ import game.emitter.*;
 import common.EventType;
 import common.StageInfo;
 import game.entity.projectile.Orb1;
+import utils.SWFHandler;
 
 class Boat extends Entity
 {
@@ -21,9 +22,9 @@ class Boat extends Entity
 	private var emitPosition:Point;
 	private var emitter:Emitter;
 
-	public function new(xSpeed:Float, ySpeed:Float)
+	public function new(id:String, xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super(id, xSpeed, ySpeed);
 		type = EntityType.BOAT;
 		layer = 4;
 		addBody = false;
@@ -36,17 +37,6 @@ class Boat extends Entity
 	private function reloadEmitter(e:Event):Void
 	{
 		setEmitter();
-	}
-
-	private function getPath():String
-	{
-		return "";
-	}
-
-	private override function addImage():Void
-	{
-		image = new Image(getPath());
-		addChild(image);
 	}
 
 	public function setState(aState:String):Void

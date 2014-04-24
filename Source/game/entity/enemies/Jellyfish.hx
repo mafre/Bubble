@@ -3,6 +3,7 @@ package game.entity.enemies;
 import game.entity.enemies.Enemy;
 
 import common.Image;
+import utils.SWFHandler;
 
 import box2D.common.math.B2Vec2;
 import box2D.common.math.B2Mat22;
@@ -14,18 +15,9 @@ class Jellyfish extends Enemy
 {
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super("jellyfish", xSpeed, ySpeed);
 		health = 5;
-		id = "Jellyfish";
 		info = "Will burn if touched";
-	}
-
-	private override function addImage():Void
-	{
-		path = "images/game/enemy/jellyfish.png";
-		image = new Image(path, true);
-		addChild(image);
-		image.center();
 	}
 
 	public override function update():Void

@@ -12,9 +12,12 @@
 	<haxelib name="actuate" />
 	<haxelib name="openfl" />
 	<haxelib name="box2d" />
+	<haxelib name="format" />
+	<haxelib name="swf" />
 	
 	<assets path="Assets" rename="assets" exclude="openfl.svg" />
 	<assets path="Assets/images" rename="images" include="*" exclude="icon.svg" />
+	<assets path="Assets/swf" rename="swf" include="*" />
 
 	<source path="Assets/fonts" />
 	

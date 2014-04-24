@@ -14,6 +14,7 @@ import game.entity.EntityType;
 import game.entity.satellite.Satellite;
 import game.entity.projectile.Orb1;
 import game.entity.player.Player;
+import utils.SWFHandler;
 
 class SineSatellite extends Satellite
 {
@@ -26,13 +27,6 @@ class SineSatellite extends Satellite
 	private override function setEmitter():Void
 	{
 		emitter = new SineEmitter(Orb1, 10, 10);
-	}
-
-	private override function addImage():Void
-	{
-		image = new Image("images/game/satellite/sineSatellite.png");
-		addChild(image);
-		image.center();
 	}
 
 	public override function duplicate():SineSatellite

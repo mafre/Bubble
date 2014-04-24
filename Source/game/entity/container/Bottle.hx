@@ -12,12 +12,13 @@ import common.StageInfo;
 import game.entity.container.Container;
 import game.emitter.MultiEmitter;
 import game.entity.score.Star;
+import utils.SWFHandler;
 
 class Bottle extends Container
 {
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super("bottle", xSpeed, ySpeed);
 		emitPosition = new Point(-10, -35);
 	}
 
@@ -26,11 +27,6 @@ class Bottle extends Container
 		emitter = new MultiEmitter(Star, 1, 15);
 		var e:MultiEmitter = cast(emitter, MultiEmitter);
 		e.setAmount(3, Math.PI/1.5);
-	}
-
-	private override function getPath():String
-	{
-		return "images/game/container/bottle";
 	}
 
 	public override function mouseDown(e:MouseEvent):Void

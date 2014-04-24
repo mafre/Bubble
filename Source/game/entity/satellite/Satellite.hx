@@ -15,6 +15,7 @@ import game.entity.satellite.Satellite;
 import game.entity.projectile.Orb1;
 import game.entity.player.Player;
 import game.GameProperties;
+import utils.SWFHandler;
 
 class Satellite extends Entity
 {
@@ -29,9 +30,9 @@ class Satellite extends Entity
 
 	private var exitDirection:Int;
 
-	public function new(xSpeed:Float, ySpeed:Float):Void
+	public function new(id:String, xSpeed:Float, ySpeed:Float):Void
 	{
-		super(xSpeed, ySpeed);
+		super(id, xSpeed, ySpeed);
 		state = State_Idle;
 
 		type = EntityType.SATELLITE;
@@ -40,21 +41,7 @@ class Satellite extends Entity
 
 		emitPosition = new Point(0, -15);
 		setEmitter();
-
-		path = getPath();
 	};
-
-	private function getPath():String
-	{
-		return "images/game/satellite/satellite.png";
-	}
-
-	private override function addImage():Void
-	{
-		image = new Image(getPath());
-		addChild(image);
-		image.center();
-	}
 
 	private function setEmitter():Void
 	{
@@ -78,11 +65,13 @@ class Satellite extends Entity
 		switch (state)
 		{
 			case State_Exit:
-				image.parent.removeChild(image);
+				mc.parent.removeChild(mc);
+				/*
 				image = new Image(getPath(), true);
 				addChild(image);
 				this.rotation = 0;
 				image.center();
+				*/
 		}
 	}
 
@@ -116,7 +105,7 @@ class Satellite extends Entity
 
 	public function duplicate():Satellite
 	{
-		var satellite:Satellite = new Satellite(xSpeed, ySpeed);
+		var satellite:Satellite = new Satellite(id, xSpeed, ySpeed);
 		satellite.x = this.x;
 		satellite.y = this.y;
 		satellite.rotation = this.rotation;

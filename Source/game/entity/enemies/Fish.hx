@@ -3,6 +3,7 @@ package game.entity.enemies;
 import game.entity.enemies.Enemy;
 
 import common.Image;
+import utils.SWFHandler;
 
 import box2D.common.math.B2Vec2;
 import box2D.common.math.B2Mat22;

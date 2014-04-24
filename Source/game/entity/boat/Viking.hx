@@ -13,19 +13,15 @@ import game.emitter.*;
 import game.entity.boat.Boat;
 import game.entity.projectile.Axe;
 import game.entity.EntityProperties;
+import utils.SWFHandler;
 
 class Viking extends Boat
 {
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super("viking", xSpeed, ySpeed);
 		emitPosition = new Point(50, 70);
 	};
-
-	private override function getPath():String
-	{
-		return "images/game/boat/viking.png";
-	}
 
 	private override function setEmitter():Void
 	{

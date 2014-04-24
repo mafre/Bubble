@@ -8,20 +8,15 @@ import common.Image;
 import game.entity.Entity;
 import game.entity.EntityType;
 import common.StageInfo;
+import utils.SWFHandler;
 
 class Kelp3 extends Entity
 {
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super("kelp3", xSpeed, ySpeed);
 		type = EntityType.BACKGROUND;
 		layer = 3;
 		addBody = false;
 	};
-
-	private override function addImage():Void
-	{
-		image = new Image("images/game/background/floor2/kelp3.png");
-		addChild(image);
-	}
 }

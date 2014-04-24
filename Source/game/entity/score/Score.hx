@@ -10,14 +10,15 @@ import game.entity.EntityType;
 import common.StageInfo;
 import game.score.ScoreHandler;
 import game.entity.player.PlayerProperties;
+import utils.SWFHandler;
 
 class Score extends Entity
 {
 	public var points:Int;
 
-	public function new(xSpeed:Float, ySpeed:Float)
+	public function new(id:String, xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super(id, xSpeed, ySpeed);
 		type = EntityType.SCORE;
 		layer = 3;
 		points = 1;

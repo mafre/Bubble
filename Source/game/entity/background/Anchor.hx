@@ -8,20 +8,15 @@ import common.Image;
 import game.entity.Entity;
 import game.entity.EntityType;
 import common.StageInfo;
+import utils.SWFHandler;
 
 class Anchor extends Entity
 {
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super("anchor", xSpeed, ySpeed);
 		type = EntityType.BACKGROUND;
 		layer = 4;
 		addBody = false;
 	};
-
-	private override function addImage():Void
-	{
-		image = new Image("images/game/background/floor2/anchor.png");
-		addChild(image);
-	}
 }

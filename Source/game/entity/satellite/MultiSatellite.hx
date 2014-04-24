@@ -14,6 +14,7 @@ import game.entity.EntityType;
 import game.entity.satellite.Satellite;
 import game.entity.projectile.Orb1;
 import game.entity.player.Player;
+import utils.SWFHandler;
 
 class MultiSatellite extends Satellite
 {
@@ -28,13 +29,6 @@ class MultiSatellite extends Satellite
 		emitter = new MultiEmitter(Orb1, 10, 10);
 		var e:MultiEmitter = cast(emitter, MultiEmitter);
 		e.setAmount(3, Math.PI/5);
-	}
-
-	private override function addImage():Void
-	{
-		image = new Image("images/game/satellite/multiSatellite.png");
-		addChild(image);
-		image.center();
 	}
 
 	public override function duplicate():MultiSatellite

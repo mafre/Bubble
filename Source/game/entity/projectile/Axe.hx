@@ -10,6 +10,7 @@ import game.entity.EntityType;
 import common.StageInfo;
 import game.entity.player.Player;
 import utils.SoundHandler;
+import utils.SWFHandler;
 
 import game.entity.enemies.Enemy;
 
@@ -19,18 +20,11 @@ class Axe extends Entity
 
 	public function new(xSpeed:Float, ySpeed:Float, direction:Int)
 	{
-		super(xSpeed, ySpeed);
+		super("axe", xSpeed, ySpeed);
 		this.rotateSpeed = 30*direction;
 		type = EntityType.PROJECTILE;
 		layer = 8;
 	};
-
-	private override function addImage():Void
-	{
-		image = new Image("images/game/projectile/axe2.png");
-		addChild(image);
-		image.center();
-	}
 	
 	public override function handleCollision(entity:Entity):Void
 	{

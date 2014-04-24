@@ -22,6 +22,7 @@ import game.GameProperties;
 import game.entity.player.PlayerProperties;
 import game.entity.projectile.Orb1;
 import common.Animation;
+import utils.SWFHandler;
 
 class Player extends Entity
 {
@@ -34,11 +35,10 @@ class Player extends Entity
 	private var targetY:Float;
 	private var maxSatelliteCount:Int;
 	private var invunerable:Bool;
-	private var animation:Animation;
 
-	public function new(xSpeed:Float, ySpeed:Float):Void
+	public function new(xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super("turtle", xSpeed, ySpeed);
 
 		health = 100;
 		invunerable = false;
@@ -65,13 +65,6 @@ class Player extends Entity
 
 		setEmitter(new Emitter(Orb1, 5, 15));
 
-		animation = new Animation("images/game/player/turtle/turtle", [0, 1, 2, 3], true);
-		addChild(animation);
-		animation.setDelay(6);
-		animation.startAnimation();
-		animation.x = -image.width/2;
-		animation.y = -image.height/2;
-
 		PlayerProperties.getInstance().dispatcher.addEventListener(EventType.PLAYER_PROPERTIES_LOADED, setProperties);
 	}
 
@@ -79,14 +72,6 @@ class Player extends Entity
 	{
 		health = PlayerProperties.health;
 		setEmitter(new Emitter(Orb1, PlayerProperties.fireRate, PlayerProperties.fireSpeed));
-	}
-
-	private override function addImage():Void
-	{
-		image = new Image("images/game/player/turtle/turtle.png");
-		addChild(image);
-		image.visible = false;
-		image.center();
 	}
 
 	public override function handleCollision(entity:Entity):Void
@@ -211,9 +196,9 @@ class Player extends Entity
 
 	public function dragToPosition(xPos:Float, yPos:Float):Void
 	{
-		if(yPos < GameProperties.worldTop + image.height/2)
+		if(yPos < GameProperties.worldTop + mc.height/2)
 		{
-			yPos = GameProperties.worldTop + image.height/2;
+			yPos = GameProperties.worldTop + mc.height/2;
 		}
 
 		if(yPos > GameProperties.worldBottom)
@@ -221,14 +206,14 @@ class Player extends Entity
 			yPos = GameProperties.worldBottom;
 		}
 
-		if(xPos < image.width/2)
+		if(xPos < mc.width/2)
 		{
-			xPos = image.width/2;
+			xPos = mc.width/2;
 		}
 
-		if(xPos > (StageInfo.stageWidth-image.width/2))
+		if(xPos > (StageInfo.stageWidth-mc.width/2))
 		{
-			xPos = StageInfo.stageWidth-image.width/2;
+			xPos = StageInfo.stageWidth-mc.width/2;
 		}
 
 		targetX = xPos;
@@ -237,7 +222,6 @@ class Player extends Entity
 
 	public override function update():Void
 	{
-		animation.update();
 		emitter.update(getEmitPosition().x, getEmitPosition().y - GameProperties.cameraYOffset, this.rotation/45);
 
 		for (i in 0...satellites.length)

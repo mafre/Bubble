@@ -14,6 +14,7 @@ import game.entity.EntityType;
 import game.entity.satellite.Satellite;
 import game.entity.projectile.Orb1;
 import game.entity.player.Player;
+import utils.SWFHandler;
 
 class BurstSatellite extends Satellite
 {
@@ -28,13 +29,6 @@ class BurstSatellite extends Satellite
 		emitter = new BurstEmitter(Orb1, 50, 10);
 		var e:BurstEmitter = cast(emitter, BurstEmitter);
 		e.setBurst(30, 3);
-	}
-
-	private override function addImage():Void
-	{
-		image = new Image("images/game/satellite/burstSatellite.png");
-		addChild(image);
-		image.center();
 	}
 
 	public override function duplicate():BurstSatellite

@@ -12,17 +12,19 @@ import game.entity.Entity;
 import game.entity.EntityType;
 import common.StageInfo;
 import game.GameProperties;
+import utils.SWFHandler;
 
 class GodRay2 extends Entity
 {
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super("godRay2", xSpeed, ySpeed);
 		type = EntityType.BACKGROUND;
 		layer = 1;
 		addBody = false;
 	};
 
+	/*
 	private override function addImage():Void
 	{
 		image = new Image("images/game/background/water0/godRay2.png");
@@ -41,4 +43,5 @@ class GodRay2 extends Entity
 			});
 		});
 	}
+	*/
 }

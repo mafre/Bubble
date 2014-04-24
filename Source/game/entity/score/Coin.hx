@@ -11,6 +11,7 @@ import game.entity.Entity;
 import game.entity.EntityType;
 import common.StageInfo;
 import game.entity.score.Score;
+import utils.SWFHandler;
 
 class Coin extends Score
 {
@@ -18,17 +19,10 @@ class Coin extends Score
 
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super("coin", xSpeed, ySpeed);
 		yComplete = false;
 		points = 5;
 	};
-
-	private override function addImage():Void
-	{
-		image = new Image("images/game/score/coin.png");
-		addChild(image);
-		image.center();
-	}
 
 	private function getDistanceToPlayer(xPos:Float, yPos:Float):Float
 	{

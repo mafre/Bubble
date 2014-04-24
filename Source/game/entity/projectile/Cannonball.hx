@@ -10,24 +10,17 @@ import game.entity.EntityType;
 import common.StageInfo;
 import game.entity.player.Player;
 import utils.SoundHandler;
-
+import utils.SWFHandler;
 import game.entity.enemies.Enemy;
 
 class Cannonball extends Entity
 {
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
-		super(xSpeed, ySpeed);
+		super("cannonball", xSpeed, ySpeed);
 		type = EntityType.PROJECTILE;
 		layer = 8;
 	};
-
-	private override function addImage():Void
-	{
-		image = new Image("images/game/projectile/cannonball.png");
-		addChild(image);
-		image.center();
-	}
 	
 	public override function handleCollision(entity:Entity):Void
 	{

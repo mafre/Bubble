@@ -3,6 +3,7 @@ package game.entity;
 import flash.events.MouseEvent;
 import flash.events.Event;
 import flash.display.Sprite;
+import flash.display.MovieClip;
 
 import common.Image;
 import common.EventType;
@@ -12,6 +13,7 @@ import game.entity.EntityHandler;
 import game.entity.EntityProperties;
 import utils.SoundHandler;
 import flash.geom.Point;
+import utils.SWFHandler;
 
 import box2D.collision.shapes.B2CircleShape;
 import box2D.collision.shapes.B2PolygonShape;
@@ -26,7 +28,7 @@ import box2D.dynamics.B2World;
 
 class Entity extends Sprite
 {
-	private var image:Image;
+	private var mc:MovieClip;
 	public var xSpeed:Float;
 	public var ySpeed:Float;
 	public var path:String;
@@ -53,40 +55,30 @@ class Entity extends Sprite
 	public var addToItems:Bool;
 	public var addToStage:Bool;
 
-	public function new(xSpeed:Float, ySpeed:Float)
+	public function new(id:String, xSpeed:Float, ySpeed:Float)
 	{
 		super();
 
-		dispose = false;
-
-		addBody = true;
-		addToItems = true;
-		addToStage = true;
-
-		layer = 9;
-
-		maskBits = -1;
-		categoryBits = -1;
-		groupIndex = -1;
-
-		count = 0;
-		dispose = false;
-
+		this.id = id;
 		this.xSpeed = xSpeed;
 		this.ySpeed = ySpeed;
 
+		dispose = false;
+		count = 0;
+		addBody = true;
+		addToItems = true;
+		addToStage = true;
+		layer = 9;
+		maskBits = -1;
+		categoryBits = -1;
+		groupIndex = -1;
+		offsetY = 0;
 		mouseEnabled = false;
 		mouseChildren = false;
 
-		offsetY = 0;
-
-		addImage();
+		mc = SWFHandler.getMovieclip(id);
+		addChild(mc);
 	};
-
-	private function addImage():Void
-	{
-
-	}
 
 	public function handleCollision(entity:Entity):Void
 	{
@@ -100,7 +92,7 @@ class Entity extends Sprite
 		bodyDefinition.type = B2Body.b2_dynamicBody;
 
 		var polygon = new B2PolygonShape();
-		polygon.setAsBox((image.height / 2), (image.width / 2));
+		polygon.setAsBox((mc.height / 2), (mc.width / 2));
 		
 		var fixtureDefinition = new B2FixtureDef();
 		fixtureDefinition.shape = polygon;
@@ -145,7 +137,7 @@ class Entity extends Sprite
 
 	public function checkBoundaries():Bool
 	{
-		if(this.x < -image.width || this.y < -image.height || this.y > GameProperties.height)
+		if(this.x < -mc.width || this.y < -mc.height || this.y > GameProperties.height)
 		{
 			dispose = true;
 		}
