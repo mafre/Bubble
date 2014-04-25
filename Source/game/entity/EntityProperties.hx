@@ -2,7 +2,6 @@ package game.entity;
 
 import openfl.Assets;
 import haxe.Json;
-import sys.io.File;
 import haxe.ds.StringMap;
 
 import flash.events.EventDispatcher;
@@ -39,7 +38,7 @@ class EntityProperties
 	public function new():Void
     {
         dispatcher = new EventDispatcher();
-		so = SharedObject.getLocal("entity");
+		so = SharedObject.getLocal("entity1");
 
 		enemySpawnCount = new StringMap<Int>();
 		enemyKillCount = new StringMap<Int>();
@@ -59,20 +58,10 @@ class EntityProperties
 
 	public function load():Void
 	{
-		var properties:Dynamic = null;
-
-		if(GameProperties.getInstance().debug)
-		{
-			properties = Json.parse(File.getContent("/Users/mathiasfredriksson/Library/Application Support/BubbleProperties/entityProperties.json"));
-		}
-		else
-		{
-			properties = Json.parse(Assets.getText("assets/json/entityProperties.json"));
-		}
-
+		var properties:Dynamic = Json.parse(Assets.getText("assets/json/entityProperties.json"));
 		setProperties(properties);
 
-		if(so.data.enemySpawnCount != null)
+		if(so.data.enemySpawnCount != null && !GameProperties.getInstance().debug)
 		{
 			enemySpawnCount = so.data.enemySpawnCount;
 		}
@@ -82,7 +71,7 @@ class EntityProperties
 			so.flush();
 		}
 
-		if(so.data.enemyKillCount != null)
+		if(so.data.enemyKillCount != null && !GameProperties.getInstance().debug)
 		{
 			enemyKillCount = so.data.enemyKillCount;
 		}
@@ -92,7 +81,7 @@ class EntityProperties
 			so.flush();
 		}
 
-		if(so.data.satelliteSpawnCount != null)
+		if(so.data.satelliteSpawnCount != null && !GameProperties.getInstance().debug)
 		{
 			satelliteSpawnCount = so.data.satelliteSpawnCount;
 		}
@@ -102,7 +91,7 @@ class EntityProperties
 			so.flush();
 		}
 
-		if(so.data.satelliteUseCount != null)
+		if(so.data.satelliteUseCount != null && !GameProperties.getInstance().debug)
 		{
 			satelliteUseCount = so.data.satelliteUseCount;
 		}

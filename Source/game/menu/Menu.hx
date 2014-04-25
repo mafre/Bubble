@@ -53,24 +53,24 @@ class Menu extends Sprite
 	{
 		super();
 
-		settingsButton = new ImageButton("images/buttons/image/settings2.png");
+		settingsButton = new ImageButton("settings");
 		settingsButton.addEventListener(EventType.BUTTON_PRESSED, settingsSelected);
 		addChild(settingsButton);
 		settingsButton.x = settingsButton.y = 10;
 
-		propertiesButton = new ImageButton("images/buttons/image/reload.png");
+		propertiesButton = new ImageButton("reload");
 		propertiesButton.addEventListener(EventType.BUTTON_PRESSED, loadProperties);
 		addChild(propertiesButton);
 		propertiesButton.x = settingsButton.x + settingsButton.width + 10;
 		propertiesButton.y = 10;
 
-		statsButton = new ImageButton("images/buttons/image/settings2.png");
+		statsButton = new ImageButton("settings");
 		statsButton.addEventListener(EventType.BUTTON_PRESSED, statsSelected);
 		addChild(statsButton);
 		statsButton.x = propertiesButton.x + propertiesButton.width + 10;
 		statsButton.y = 10;
 
-		logButton = new ImageButton("images/buttons/image/settings2.png");
+		logButton = new ImageButton("settings");
 		logButton.addEventListener(EventType.BUTTON_PRESSED, logSelected);
 		addChild(logButton);
 		logButton.x = statsButton.x + statsButton.width + 10;

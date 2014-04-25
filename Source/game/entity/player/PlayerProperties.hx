@@ -2,7 +2,6 @@ package game.entity.player;
 
 import openfl.Assets;
 import haxe.Json;
-import sys.io.File;
 
 import flash.events.EventDispatcher;
 import flash.media.*;
@@ -68,18 +67,9 @@ class PlayerProperties
 
 	public function load():Void
 	{
-		var properties:Dynamic = null;
+		var properties:Dynamic = Json.parse(Assets.getText("assets/json/playerProperties.json"));
 
-		if(GameProperties.getInstance().debug)
-		{
-			properties = Json.parse(File.getContent("/Users/mathiasfredriksson/Library/Application Support/BubbleProperties/playerProperties.json"));
-		}
-		else
-		{
-			properties = Json.parse(Assets.getText("assets/json/playerProperties.json"));
-		}
-
-		if(so.data.speedModIndex != null)
+		if(so.data.speedModIndex != null && !GameProperties.getInstance().debug)
 		{
 			speedModIndex = so.data.speedModIndex;
 		}
@@ -89,7 +79,7 @@ class PlayerProperties
 			so.flush();
 		}
 
-		if(so.data.fireRateIndex != null)
+		if(so.data.fireRateIndex != null && !GameProperties.getInstance().debug)
 		{
 			fireRateIndex = so.data.fireRateIndex;
 		}
@@ -99,7 +89,7 @@ class PlayerProperties
 			so.flush();
 		}
 
-		if(so.data.fireSpeedIndex != null)
+		if(so.data.fireSpeedIndex != null && !GameProperties.getInstance().debug)
 		{
 			fireSpeedIndex = so.data.fireSpeedIndex;
 		}
@@ -109,7 +99,7 @@ class PlayerProperties
 			so.flush();
 		}
 
-		if(so.data.damageIndex != null)
+		if(so.data.damageIndex != null && !GameProperties.getInstance().debug)
 		{
 			damageIndex = so.data.damageIndex;
 		}
@@ -119,7 +109,7 @@ class PlayerProperties
 			so.flush();
 		}
 
-		if(so.data.healthIndex != null)
+		if(so.data.healthIndex != null && !GameProperties.getInstance().debug)
 		{
 			healthIndex = so.data.healthIndex;
 		}
@@ -129,7 +119,7 @@ class PlayerProperties
 			so.flush();
 		}
 
-		if(so.data.stars != null)
+		if(so.data.stars != null && !GameProperties.getInstance().debug)
 		{
 			stars = so.data.stars;
 		}

@@ -22,26 +22,19 @@ class GodRay2 extends Entity
 		type = EntityType.BACKGROUND;
 		layer = 1;
 		addBody = false;
-	};
 
-	/*
-	private override function addImage():Void
-	{
-		image = new Image("images/game/background/water0/godRay2.png");
-		addChild(image);
-		image.alpha = 0;
-		image.scaleX = image.scaleY = ((GameProperties.worldBottom-GameProperties.worldTop)/image.height);
+		mc.alpha = 0;
+		mc.scaleX = mc.scaleY = ((GameProperties.worldBottom-GameProperties.worldTop)/mc.height);
 
-		Actuate.tween(image, 1, { alpha:0.02 }, false).ease(Quad.easeIn).onComplete(function()
+		Actuate.tween(mc, 1, { alpha:0.02 }, false).ease(Quad.easeIn).onComplete(function()
 		{
-			Actuate.tween(image, 0.5, { alpha:0.02 }, false).ease(Quad.easeIn).onComplete(function()
+			Actuate.tween(mc, 0.5, { alpha:0.02 }, false).ease(Quad.easeIn).onComplete(function()
 			{
-				Actuate.tween(image, 1, { alpha:0 }, false).ease(Quad.easeOut).onComplete(function()
+				Actuate.tween(mc, 1, { alpha:0 }, false).ease(Quad.easeOut).onComplete(function()
 				{
 					dispose = true;
 				});
 			});
 		});
-	}
-	*/
+	};
 }

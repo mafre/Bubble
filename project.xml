@@ -5,7 +5,7 @@
 	<app main="Main" path="Export" file="Bubble" />
 
 	<window fps="60" orientation="landscape" hardware="true"/>
-	<window width="1136" height="640" if="desktop" />
+	<window width="1136" height="640"/>
 	
 	<source path="Source" />
 	
@@ -16,7 +16,6 @@
 	<haxelib name="swf" />
 	
 	<assets path="Assets" rename="assets" exclude="openfl.svg" />
-	<assets path="Assets/images" rename="images" include="*" exclude="icon.svg" />
 	<assets path="Assets/swf" rename="swf" include="*" />
 
 	<source path="Assets/fonts" />

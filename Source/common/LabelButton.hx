@@ -38,10 +38,10 @@ class LabelButton extends Sprite
 		labelTF = TextfieldFactory.getButtonLabel();
 		labelTF.text = label;
 
-		up = new GridSprite("images/buttons/button1/button1up_", (aWidth != null) ? aWidth : labelTF.textWidth+30, labelTF.height+10, true);
+		up = new GridSprite("button1up", (aWidth != null) ? aWidth : labelTF.textWidth+30, labelTF.height+10, true);
 		addChild(up);
 
-		down = new GridSprite("images/buttons/button1/button1down_", (aWidth != null) ? aWidth : labelTF.textWidth+30, labelTF.height+10, true);
+		down = new GridSprite("button1down", (aWidth != null) ? aWidth : labelTF.textWidth+30, labelTF.height+10, true);
 		addChild(down);
 		down.visible = false;
 		

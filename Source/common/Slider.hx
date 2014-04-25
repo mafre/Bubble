@@ -1,12 +1,14 @@
 package common;
 
 import flash.display.Sprite;
+import flash.display.MovieClip;
 import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.utils.Object;
 
 import utils.TextfieldFactory;
 import utils.SoundHandler;
+import utils.SWFHandler;
 import common.StageInfo;
 import common.GridSprite;
 import common.Button;
@@ -19,7 +21,7 @@ import common.Slider;
 class Slider extends Sprite
 {	
 	private var track:GridSprite;
-	private var handle:Image;
+	private var handle:MovieClip;
 	private var startX:Int;
 	private var startHandleX:Int;
 	public var percent:Float;
@@ -27,8 +29,8 @@ class Slider extends Sprite
 	public function new():Void
 	{
 		super();
-		track = new GridSprite("images/slider/track/", 250, 50, true);
-		handle = new Image("images/slider/handle.png");
+		track = new GridSprite("track", 250, 50, true);
+		handle = SWFHandler.getMovieclip("handle");
 		addChild(track);
 		addChild(handle);
 		handle.y = track.height/2 - handle.height/2;

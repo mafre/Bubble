@@ -27,7 +27,6 @@ import utils.SWFHandler;
 class Main extends Sprite
 {
 	private var game:Game;
-
 	private var stageResized:Bool;
 	private var entityPropertiesLoaded:Bool;
 	private var gamePropertiesLoaded:Bool;

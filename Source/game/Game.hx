@@ -1,6 +1,7 @@
 package game;
 
 import flash.display.Sprite;
+import flash.display.MovieClip;
 import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.events.TouchEvent;
@@ -39,14 +40,15 @@ import game.entity.projectile.Orb1;
 import game.score.ScoreHandler;
 import game.GameEngine;
 import game.GameProperties;
+import utils.SWFHandler;
 
 class Game extends Sprite
 {
 	static public inline var delay:Int = 25;
 
-	private var sky:GridSprite;
-	private var water:GridSprite;
-	private var sun:Image;
+	private var sky:MovieClip;
+	private var water:MovieClip;
+	private var sun:MovieClip;
 	private var container:Sprite;
 	private var menu:Menu;
 	private var player:Player;
@@ -72,18 +74,18 @@ class Game extends Sprite
 
 		SoundHandler.playMusic("lake", true);
 
-		sky = new GridSprite("images/background/bg1/", 200, 200, true);
+		sky = SWFHandler.getMovieclip("sky1");
 		sky.alpha = 0.3;
 		addChild(sky);
 
 		container = new Sprite();
 		addChild(container);
 
-		water = new GridSprite("images/background/bg1/", 200, 200, true);
+		water = SWFHandler.getMovieclip("water1");
 		container.addChild(water);
 		water.y = GameProperties.worldTop;
 
-		sun = new Image("images/game/background/sun.png");
+		sun = SWFHandler.getMovieclip("sun1");
 		container.addChild(sun);
 
 		pickups = new Array<Sprite>();
@@ -133,11 +135,11 @@ class Game extends Sprite
 
 	public function init():Void
 	{
-		stage.addEventListener(TouchEvent.TOUCH_BEGIN, onTouchStageBegin);
-		stage.addEventListener(TouchEvent.TOUCH_MOVE, onTouchMove);
-		stage.addEventListener(TouchEvent.TOUCH_END, onTouchEnd);
-		stage.addEventListener(Event.ACTIVATE, resume);
-		stage.addEventListener(Event.DEACTIVATE, pause);
+		flash.Lib.current.addEventListener(TouchEvent.TOUCH_BEGIN, onTouchStageBegin);
+		flash.Lib.current.addEventListener(TouchEvent.TOUCH_MOVE, onTouchMove);
+		flash.Lib.current.addEventListener(TouchEvent.TOUCH_END, onTouchEnd);
+		flash.Lib.current.addEventListener(Event.ACTIVATE, resume);
+		flash.Lib.current.addEventListener(Event.DEACTIVATE, pause);
 
 		level = new Level();
 		level.init(player, this);
@@ -194,8 +196,10 @@ class Game extends Sprite
 
 	public function resize(?e:Event):Void
 	{	
-		sky.setSize(StageInfo.stageWidth, StageInfo.stageHeight);
-		water.setSize(StageInfo.stageWidth, GameProperties.height);
+		sky.width = StageInfo.stageWidth;
+		sky.height = StageInfo.stageHeight;
+		water.width = StageInfo.stageWidth;
+		water.height = StageInfo.stageHeight-GameProperties.worldTop;
 		sun.x = StageInfo.stageWidth - sun.width - 50;
 		sun.y = -GameProperties.worldTop + 10;
 		reset();

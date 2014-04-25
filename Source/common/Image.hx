@@ -32,14 +32,14 @@ class Image extends Sprite
 		{
 			this.flipX = flipX;
 			bmd = flipBitmapData(tempBmd);
-			bm = new Bitmap(bmd, null, false);
+			bm = new Bitmap(bmd, PixelSnapping.AUTO, false);
 			addChild(bm);
 		}
 		else
 		{
 			bmd = new BitmapData(tempBmd.width, tempBmd.height, true, 0x000000);
 			bmd.draw(tempBmd);
-			bm = new Bitmap(bmd, null, false);
+			bm = new Bitmap(bmd, PixelSnapping.AUTO, false);
 			addChild(bm);
 		}
 		

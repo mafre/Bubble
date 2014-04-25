@@ -2,7 +2,6 @@ package game;
 
 import openfl.Assets;
 import haxe.Json;
-import sys.io.File;
 
 import flash.events.EventDispatcher;
 import flash.media.*;
@@ -36,7 +35,7 @@ class GameProperties
 	public function new():Void
     {
         dispatcher = new EventDispatcher();
-        debug = false;
+        debug = true;
         cameraYOffset = 0;
         multiplier = 0;
         StageInfo.addEventListener(EventType.STAGE_RESIZED, stageResized);
@@ -46,15 +45,7 @@ class GameProperties
     {
         var properties:Dynamic = null;
 
-        if(debug)
-        {
-            properties = Json.parse(File.getContent("/Users/mathiasfredriksson/Library/Application Support/BubbleProperties/gameProperties.json"));
-        }
-        else
-        {
-            properties = Json.parse(Assets.getText("assets/json/gameProperties.json"));
-        }
-
+        properties = Json.parse(Assets.getText("assets/json/gameProperties.json"));
         setProperties(properties);
 
         dispatcher.dispatchEvent(new Event(EventType.GAME_PROPERTIES_LOADED));

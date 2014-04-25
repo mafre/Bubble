@@ -5,10 +5,12 @@ import flash.media.*;
 import flash.events.Event;
 import flash.net.SharedObject;
 import flash.utils.Function;
+
 import haxe.ds.StringMap;
 import haxe.Json;
-import sys.io.File;
+
 import openfl.Assets;
+
 import hscript.ScriptParser;
 
 import common.EventType;
@@ -32,18 +34,10 @@ class SequenceProperties
     public function load(id:String):Void
     {
         sequences = new Array<SequenceVO>();
-        var properties:Dynamic = null;
 
-        if(GameProperties.getInstance().debug)
-        {
-            properties = Json.parse(File.getContent("/Users/mathiasfredriksson/Library/Application Support/BubbleProperties/sequenceProperties.json"));
-        }
-        else
-        {
-            properties = Json.parse(Assets.getText("assets/json/sequenceProperties9.json"));
-        }
-
+        var properties:Dynamic = Json.parse(Assets.getText("assets/json/sequenceProperties9.json"));
         setProperties(Reflect.field(properties.sequences, id));
+
         dispatcher.dispatchEvent(new Event(EventType.SEQUENCE_PROPERTIES_LOADED));
     }
 

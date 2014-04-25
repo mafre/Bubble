@@ -2,7 +2,6 @@ package game;
 
 import openfl.Assets;
 import haxe.Json;
-import sys.io.File;
 
 import flash.display.Sprite;
 import flash.events.EventDispatcher;

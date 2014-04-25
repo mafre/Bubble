@@ -3,19 +3,21 @@ package common;
 import flash.events.MouseEvent;
 import flash.events.Event;
 import flash.display.Sprite;
+import flash.display.MovieClip;
 import flash.text.TextField;
 
 import common.GridSprite;
 import common.EventType;
 import utils.TextfieldFactory;
 import utils.SoundHandler;
+import utils.SWFHandler;
 
 class ImageButton extends Sprite
 {
 	private var path:String;	
 	private var up:GridSprite;
 	private var down:GridSprite;
-	private var image:Image;
+	private var image:MovieClip;
 	private var event:String;
 
 	public function new(path:String, ?event:String)
@@ -34,13 +36,13 @@ class ImageButton extends Sprite
 			this.event = event;
 		};
 
-		image = new Image(path);
+		image = SWFHandler.getMovieclip(path);
 		image.scaleX = image.scaleY = 1.5;
 
-		up = new GridSprite("images/buttons/button1/button1up_", image.width+10, image.height+10, true);
+		up = new GridSprite("button1up", image.width+10, image.height+10, true);
 		addChild(up);
 
-		down = new GridSprite("images/buttons/button1/button1down_", image.width+10, image.height+10, true);
+		down = new GridSprite("button1down", image.width+10, image.height+10, true);
 		addChild(down);
 		down.visible = false;
 		

@@ -1,6 +1,7 @@
 package game.menu;
 
 import flash.display.Sprite;
+import flash.display.MovieClip;
 import flash.events.Event;
 import flash.text.TextField;
 import flash.geom.Point;
@@ -11,6 +12,7 @@ import utils.TextfieldFactory;
 import utils.SoundHandler;
 import utils.TextfieldFactory;
 import utils.PositionHelper;
+import utils.SWFHandler;
 import common.StageInfo;
 import common.GridSprite;
 import common.Button;
@@ -28,7 +30,7 @@ import game.entity.satellite.*;
 
 class Log extends Sprite
 {
-	private var background:GridSprite;
+	private var background:MovieClip;
 	private var container:Sprite;
 	private var closeButton:LabelButton;
 
@@ -39,13 +41,13 @@ class Log extends Sprite
 	{
 		super();
 
-		background = new GridSprite("images/background/bg1/", 200, 200, true);
+		background = SWFHandler.getMovieclip("sky1");
 		addChild(background);
 
 		container = new Sprite();
 		addChild(container);
 
-		closeButton = new LabelButton("images/buttons/button1/", "Close");
+		closeButton = new LabelButton("button1", "Close");
 		closeButton.addEventListener(EventType.BUTTON_PRESSED, closeSelected);
 		container.addChild(closeButton);
 
@@ -141,7 +143,8 @@ class Log extends Sprite
 
 	public function resize(?e:Event):Void
 	{	
-		background.setSize(StageInfo.stageWidth, StageInfo.stageHeight);
+		background.width = StageInfo.stageWidth;
+		background.height = StageInfo.stageHeight;
 		container.x = StageInfo.stageWidth/2 - container.width/2;
 		container.y = StageInfo.stageHeight/2 - container.height/2;
 	};

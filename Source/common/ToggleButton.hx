@@ -1,6 +1,7 @@
 package common;
 
 import flash.display.Sprite;
+import flash.display.MovieClip;
 import flash.events.Event;
 import flash.events.MouseEvent;
 
@@ -8,21 +9,22 @@ import common.EventType;
 import common.Image;
 import common.GridSprite;
 import utils.SoundHandler;
+import utils.SWFHandler;
 
 class ToggleButton extends Sprite
 {	
 	private var back:GridSprite;
-	private var front:Image;
+	private var front:MovieClip;
 	public var enabled:Bool;
 
 	public function new():Void
 	{
 		super();
 
-		front = new Image("images/buttons/check/check.png");
+		front = SWFHandler.getMovieclip("check");
 		front.x = front.y = 5;
 
-		back = new GridSprite("images/buttons/button1/button1up_", front.width+10, front.height+10, true);
+		back = new GridSprite("button1up", front.width+10, front.height+10, true);
 		addChild(back);
 		addChild(front);
 

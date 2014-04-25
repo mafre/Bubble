@@ -2,10 +2,12 @@ package common;
 
 import common.Image;
 import flash.display.Sprite;
+import flash.display.MovieClip;
+import utils.SWFHandler;
 
 class GridSprite extends Sprite
 {
-	private var images:Array<Image>;
+	private var images:Array<MovieClip>;
 	private var areImagesSpecific:Bool;
 
 	public function new(path:String, width:Float, height:Float, ?areImagesSpecific:Bool)
@@ -17,54 +19,54 @@ class GridSprite extends Sprite
 			return;
 		}
 
-		images = new Array<Image>();
+		images = new Array<MovieClip>();
 
 		if(areImagesSpecific != null)
 		{
 			this.areImagesSpecific = true;
 
 			//topleft
-			var c1:Image = new Image(path + "top-left.png");
+			var c1:MovieClip = SWFHandler.getMovieclip(path+"TopLeft");
 			addChild(c1);
 			images.push(c1);
 
 			//top
-			var s1:Image = new Image(path + "top.png");
+			var s1:MovieClip = SWFHandler.getMovieclip(path+"Top");
 			addChild(s1);
 			images.push(s1);
 
 			//topright
-			var c2:Image = new Image(path + "top-right.png");
+			var c2:MovieClip = SWFHandler.getMovieclip(path+"TopRight");
 			addChild(c2);
 			images.push(c2);
 
 			//left
-			var s2:Image = new Image(path + "left.png");
+			var s2:MovieClip = SWFHandler.getMovieclip(path+"Left");
 			addChild(s2);
 			images.push(s2);
 
 			//center
-			var c:Image = new Image(path + "center.png");
+			var c:MovieClip = SWFHandler.getMovieclip(path+"Center");
 			addChild(c);
 			images.push(c);
 
 			//right
-			var s3:Image = new Image(path + "right.png");
+			var s3:MovieClip = SWFHandler.getMovieclip(path+"Right");
 			addChild(s3);
 			images.push(s3);
 
 			//bottomleft
-			var c3:Image = new Image(path + "bottom-left.png");
+			var c3:MovieClip = SWFHandler.getMovieclip(path+"BottomLeft");
 			addChild(c3);
 			images.push(c3);
 
 			//bottom
-			var s4:Image = new Image(path + "bottom.png");
+			var s4:MovieClip = SWFHandler.getMovieclip(path+"Bottom");
 			addChild(s4);
 			images.push(s4);
 
 			//bottomright
-			var c4:Image = new Image(path + "bottom-right.png");
+			var c4:MovieClip = SWFHandler.getMovieclip(path+"BottomRight");
 			addChild(c4);
 			images.push(c4);
 
@@ -75,47 +77,47 @@ class GridSprite extends Sprite
 			this.areImagesSpecific = false;
 
 			//topleft
-			var c1:Image = new Image(path + "corner.png");
+			var c1:MovieClip = SWFHandler.getMovieclip(path+"Corner");
 			addChild(c1);
 			images.push(c1);
 
 			//top
-			var s1:Image = new Image(path + "straight.png");
+			var s1:MovieClip = SWFHandler.getMovieclip(path+"Straight");
 			addChild(s1);
 			images.push(s1);
 
 			//topright
-			var c2:Image = c1.duplicate();
+			var c2:MovieClip = c1.duplicate();
 			addChild(c2);
 			images.push(c2);
 
 			//left
-			var s2:Image = s1.duplicate();
+			var s2:MovieClip = s1.duplicate();
 			addChild(s2);
 			images.push(s2);
 
 			//center
-			var c:Image = new Image(path + "center.png");
+			var c:MovieClip = SWFHandler.getMovieclip(path+"Center");
 			addChild(c);
 			images.push(c);
 
 			//right
-			var s3:Image = s1.duplicate();
+			var s3:MovieClip = s1.duplicate();
 			addChild(s3);
 			images.push(s3);
 
 			//bottomleft
-			var c3:Image = c1.duplicate();
+			var c3:MovieClip = c1.duplicate();
 			addChild(c3);
 			images.push(c3);
 
 			//bottom
-			var s4:Image = s1.duplicate();
+			var s4:MovieClip = s1.duplicate();
 			addChild(s4);
 			images.push(s4);
 
 			//bottomright
-			var c4:Image = c1.duplicate();
+			var c4:MovieClip = c1.duplicate();
 			addChild(c4);
 			images.push(c4);
 

@@ -14,7 +14,7 @@ class Surface1 extends Entity
 {
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
-		super("surface", xSpeed, ySpeed);
+		super("surface1", xSpeed, ySpeed);
 		type = EntityType.BACKGROUND;
 		layer = 5;
 		addBody = false;
