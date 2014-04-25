@@ -135,9 +135,22 @@ class Game extends Sprite
 
 	public function init():Void
 	{
-		flash.Lib.current.addEventListener(TouchEvent.TOUCH_BEGIN, onTouchStageBegin);
-		flash.Lib.current.addEventListener(TouchEvent.TOUCH_MOVE, onTouchMove);
-		flash.Lib.current.addEventListener(TouchEvent.TOUCH_END, onTouchEnd);
+		#if flash
+
+			flash.Lib.current.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+			flash.Lib.current.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
+			flash.Lib.current.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
+
+		#end
+		
+		#if !flash
+
+			flash.Lib.current.addEventListener(TouchEvent.TOUCH_BEGIN, onTouchStageBegin);
+			flash.Lib.current.addEventListener(TouchEvent.TOUCH_MOVE, onTouchMove);
+			flash.Lib.current.addEventListener(TouchEvent.TOUCH_END, onTouchEnd);
+
+		#end
+		
 		flash.Lib.current.addEventListener(Event.ACTIVATE, resume);
 		flash.Lib.current.addEventListener(Event.DEACTIVATE, pause);
 
@@ -164,29 +177,61 @@ class Game extends Sprite
 		timer.run = update;
 	}
 
-	private function onTouchStageBegin(e:TouchEvent):Void 
-	{
-		if(dragging)
+	#if flash
+
+		private function onMouseDown(e:MouseEvent):Void
 		{
-			return;
-		}
+			if(dragging)
+			{
+				return;
+			}
 
-		touchStartX = e.stageX;
-		touchStartY = e.stageY;
-		playerStartX = player.x;
-		playerStartY = player.y;
-		dragging = true;
-	};
+			touchStartX = e.stageX;
+			touchStartY = e.stageY;
+			playerStartX = player.x;
+			playerStartY = player.y;
+			dragging = true;
+		};
 
-	private function onTouchMove(e:TouchEvent):Void 
-	{
-		player.dragToPosition(playerStartX + (e.stageX-touchStartX), playerStartY + (e.stageY-touchStartY));
-	};
+		private function onMouseMove(e:MouseEvent):Void
+		{
+			player.dragToPosition(playerStartX + (e.stageX-touchStartX), playerStartY + (e.stageY-touchStartY));
+		};
+
+		private function onMouseUp(e:MouseEvent):Void
+		{
+			dragging = false;
+		};
+
+	#end
 	
-	private function onTouchEnd(e:TouchEvent):Void 
-	{	
-		dragging = false;
-	};
+	#if !flash
+
+		private function onTouchStageBegin(e:TouchEvent):Void 
+		{
+			if(dragging)
+			{
+				return;
+			}
+
+			touchStartX = e.stageX;
+			touchStartY = e.stageY;
+			playerStartX = player.x;
+			playerStartY = player.y;
+			dragging = true;
+		};
+
+		private function onTouchMove(e:TouchEvent):Void 
+		{
+			player.dragToPosition(playerStartX + (e.stageX-touchStartX), playerStartY + (e.stageY-touchStartY));
+		};
+		
+		private function onTouchEnd(e:TouchEvent):Void 
+		{	
+			dragging = false;
+		};
+
+	#end
 
 	public function reset(?e:Event):Void
 	{

@@ -13,7 +13,7 @@ class SWFHandler
 
 	public function new()
 	{
-		swf = new SWF(Assets.getBytes("swf/assets9.swf"));
+		swf = new SWF(Assets.getBytes("swf/assets10.swf"));
 	}
 
 	public static function getMovieclip(id:String):MovieClip

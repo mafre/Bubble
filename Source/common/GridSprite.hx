@@ -72,57 +72,6 @@ class GridSprite extends Sprite
 
 			setSize(width, height);
 		}
-		else
-		{
-			this.areImagesSpecific = false;
-
-			//topleft
-			var c1:MovieClip = SWFHandler.getMovieclip(path+"Corner");
-			addChild(c1);
-			images.push(c1);
-
-			//top
-			var s1:MovieClip = SWFHandler.getMovieclip(path+"Straight");
-			addChild(s1);
-			images.push(s1);
-
-			//topright
-			var c2:MovieClip = c1.duplicate();
-			addChild(c2);
-			images.push(c2);
-
-			//left
-			var s2:MovieClip = s1.duplicate();
-			addChild(s2);
-			images.push(s2);
-
-			//center
-			var c:MovieClip = SWFHandler.getMovieclip(path+"Center");
-			addChild(c);
-			images.push(c);
-
-			//right
-			var s3:MovieClip = s1.duplicate();
-			addChild(s3);
-			images.push(s3);
-
-			//bottomleft
-			var c3:MovieClip = c1.duplicate();
-			addChild(c3);
-			images.push(c3);
-
-			//bottom
-			var s4:MovieClip = s1.duplicate();
-			addChild(s4);
-			images.push(s4);
-
-			//bottomright
-			var c4:MovieClip = c1.duplicate();
-			addChild(c4);
-			images.push(c4);
-
-			setSize(width, height);
-		}
 
 		mouseChildren = false;
 		buttonMode = false;
