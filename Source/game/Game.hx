@@ -46,54 +46,20 @@ class Game extends Sprite
 {
 	static public inline var delay:Int = 25;
 
-	private var sky:MovieClip;
-	private var water:MovieClip;
-	private var sun:MovieClip;
-	private var container:Sprite;
 	private var menu:Menu;
 	private var player:Player;
 	private var timer:Timer;
 	private var multiTouchSupported : Bool;
-	private var touches : IntMap<Sprite>;
-	private var pickups:Array<Sprite>;
-	private var add:Array<Sprite>;
 	private var World:B2World;
 	private var PhysicsDebug:Sprite;
 	private var contactListener:ContactListener;
-	private var entityHandler:EntityHandler;
-	private var touchStartX:Float;
-	private var touchStartY:Float;
-	private var playerStartX:Float;
-	private var playerStartY:Float;
-	private var dragging:Bool;
 	private var level:Level;
 
 	public function new()
 	{
 		super ();
 
-		SoundHandler.playMusic("lake", true);
-
-		sky = SWFHandler.getMovieclip("sky1");
-		sky.alpha = 0.3;
-		addChild(sky);
-
-		container = new Sprite();
-		addChild(container);
-
-		water = SWFHandler.getMovieclip("water1");
-		container.addChild(water);
-		water.y = GameProperties.worldTop;
-
-		sun = SWFHandler.getMovieclip("sun1");
-		container.addChild(sun);
-
-		pickups = new Array<Sprite>();
-		add = new Array<Sprite>();
-
 		StageInfo.addEventListener(EventType.STAGE_RESIZED, resize);
-
-		touches = new IntMap<Sprite>();
 		
 		multiTouchSupported = Multitouch.supportsTouchEvents;
 
@@ -106,6 +72,8 @@ class Game extends Sprite
 		contactListener = new ContactListener();
 		World.setContactListener(contactListener);
 		World.setGravity(new B2Vec2(0, -5));
+	
+		EntityHandler.getInstance().world = World;
  	
  		PhysicsDebug = new Sprite();
 		addChild(PhysicsDebug);
@@ -116,54 +84,27 @@ class Game extends Sprite
 	 
 		World.setDebugDraw(debugDraw);
 
-		entityHandler = EntityHandler.getInstance();
-		entityHandler.world = World;
-		entityHandler.setContainer(container);
-
-		GameEngine.getInstance().setContainer(container);
-
 		var score:ScoreHandler = ScoreHandler.getInstance();
-
-		player = new Player(0, 0);
-		entityHandler.addEntity(player);
-
-		GameProperties.playerWidht = player.width;
-		GameProperties.playerHeight = player.height;
-
-		resize();
 	};
 
 	public function init():Void
 	{
-		#if flash
-
-			flash.Lib.current.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
-			flash.Lib.current.addEventListener(MouseEvent.MOUSE_MOVE, onMouseMove);
-			flash.Lib.current.addEventListener(MouseEvent.MOUSE_UP, onMouseUp);
-
-		#end
-		
-		#if !flash
-
-			flash.Lib.current.addEventListener(TouchEvent.TOUCH_BEGIN, onTouchStageBegin);
-			flash.Lib.current.addEventListener(TouchEvent.TOUCH_MOVE, onTouchMove);
-			flash.Lib.current.addEventListener(TouchEvent.TOUCH_END, onTouchEnd);
-
-		#end
-		
 		flash.Lib.current.addEventListener(Event.ACTIVATE, resume);
 		flash.Lib.current.addEventListener(Event.DEACTIVATE, pause);
 
 		level = new Level();
-		level.init(player, this);
-
-		timer = new haxe.Timer(delay);
-		timer.run = update;
+		addChild(level);
+		level.init();
 
 		menu = new Menu();
 		addChild(menu);
-		menu.init(player, this);
+		menu.init(this);
 		menu.y = 20;
+
+		resize();
+
+		timer = new haxe.Timer(delay);
+		timer.run = update;
 	};
 
 	private function pause(?e:Dynamic):Void
@@ -177,77 +118,14 @@ class Game extends Sprite
 		timer.run = update;
 	}
 
-	#if flash
-
-		private function onMouseDown(e:MouseEvent):Void
-		{
-			if(dragging)
-			{
-				return;
-			}
-
-			touchStartX = e.stageX;
-			touchStartY = e.stageY;
-			playerStartX = player.x;
-			playerStartY = player.y;
-			dragging = true;
-		};
-
-		private function onMouseMove(e:MouseEvent):Void
-		{
-			player.dragToPosition(playerStartX + (e.stageX-touchStartX), playerStartY + (e.stageY-touchStartY));
-		};
-
-		private function onMouseUp(e:MouseEvent):Void
-		{
-			dragging = false;
-		};
-
-	#end
-	
-	#if !flash
-
-		private function onTouchStageBegin(e:TouchEvent):Void 
-		{
-			if(dragging)
-			{
-				return;
-			}
-
-			touchStartX = e.stageX;
-			touchStartY = e.stageY;
-			playerStartX = player.x;
-			playerStartY = player.y;
-			dragging = true;
-		};
-
-		private function onTouchMove(e:TouchEvent):Void 
-		{
-			player.dragToPosition(playerStartX + (e.stageX-touchStartX), playerStartY + (e.stageY-touchStartY));
-		};
-		
-		private function onTouchEnd(e:TouchEvent):Void 
-		{	
-			dragging = false;
-		};
-
-	#end
-
 	public function reset(?e:Event):Void
 	{
-		player.setPosition(StageInfo.stageWidth/2-player.width/2, StageInfo.stageHeight/2-player.height/2);
-		player.disposePlayer();
+		level.reset();
 	};
 
 	public function resize(?e:Event):Void
 	{	
-		sky.width = StageInfo.stageWidth;
-		sky.height = StageInfo.stageHeight;
-		water.width = StageInfo.stageWidth;
-		water.height = StageInfo.stageHeight-GameProperties.worldTop;
-		sun.x = StageInfo.stageWidth - sun.width - 50;
-		sun.y = -GameProperties.worldTop + 10;
-		reset();
+		level.resize();
 	};
 
 	private function update():Void

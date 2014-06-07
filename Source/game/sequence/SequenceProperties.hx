@@ -35,7 +35,7 @@ class SequenceProperties
     {
         sequences = new Array<SequenceVO>();
 
-        var properties:Dynamic = Json.parse(Assets.getText("assets/json/sequenceProperties9.json"));
+        var properties:Dynamic = Json.parse(Assets.getText("assets/json/sequenceProperties10.json"));
         setProperties(Reflect.field(properties.sequences, id));
 
         dispatcher.dispatchEvent(new Event(EventType.SEQUENCE_PROPERTIES_LOADED));

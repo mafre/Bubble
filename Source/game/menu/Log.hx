@@ -41,7 +41,7 @@ class Log extends Sprite
 	{
 		super();
 
-		background = SWFHandler.getMovieclip("sky1");
+		background = SWFHandler.getMovieclip("menuBg");
 		addChild(background);
 
 		container = new Sprite();

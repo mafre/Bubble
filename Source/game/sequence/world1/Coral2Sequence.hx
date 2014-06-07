@@ -16,7 +16,7 @@ class Coral2Sequence extends Sequence implements ISequence
 	{
 		emitter = new RandomEmitter(
 			[Coral1, Coral2, Coral3, Coral4, Coral5],
-			function():Float{return Math.random()*60+60;},
+			function():Float{return Math.random()*100+60;},
 			function():Float{return 0;},
 			function():Float{return 15+Math.random()*5;},
 			vo.speed,

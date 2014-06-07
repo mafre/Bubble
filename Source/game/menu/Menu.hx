@@ -28,7 +28,6 @@ import game.entity.player.PlayerProperties;
 
 class Menu extends Sprite
 {
-	private var player:Player;
 	private var game:Game;
 	private var normalShotButton:LabelButton;
 	private var burstShotButton:LabelButton;
@@ -125,9 +124,8 @@ class Menu extends Sprite
 		PlayerProperties.getInstance().dispatcher.addEventListener(EventType.PLAYER_PROPERTIES_LOADED, updatePlayerProperties);
 	};
 
-	public function init(player:Player, game:Game):Void
+	public function init(game:Game):Void
 	{
-		this.player = player;
 		this.game = game;
 	}
 

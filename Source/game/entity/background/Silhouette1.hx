@@ -14,7 +14,7 @@ class Silhouette1 extends Entity
 {
 	public function new(xSpeed:Float, ySpeed:Float)
 	{
-		super("coral1", xSpeed, ySpeed);
+		super("backCoral1", xSpeed, ySpeed);
 		type = EntityType.BACKGROUND;
 		layer = 1;
 		addBody = false;

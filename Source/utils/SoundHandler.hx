@@ -151,14 +151,14 @@ class SoundHandler
 
 	public static function setEffectsVolume(effectsVolume:Float):Void
 	{
-		effectsSoundTransform.volume = effectsVolume;
+		effectsSoundTransform.volume = 0;
 		so.data.effectsVolume = effectsVolume;
 		so.flush();
 	}
 
 	public static function setMusicVolume(musicVolume:Float):Void
 	{
-		musicSoundTransform.volume = musicVolume;
+		musicSoundTransform.volume = 0;
 		so.data.musicVolume = musicVolume;
 		so.flush();
 

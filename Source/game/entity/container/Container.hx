@@ -76,8 +76,6 @@ class Container extends Entity
 		{
 			case State_Open:
 				mc.parent.removeChild(mc);
-				trace(id);
-				trace(id+"_Open");
 				mc = SWFHandler.getMovieclip(id+"_Open");
 				addChild(mc);
 
